@@ -1,0 +1,15 @@
+{
+  "governing_specification": "construction/S2_CANDIDATE_SPEC_v0.11.md",
+  "freeze_commit": "97410ca512d0c87571b4f321712c4c7c564a6a82",
+  "python": "3.12.3",
+  "scikit_learn": "1.4.2",
+  "k3": {
+    "classifier": "multinomial logistic regression",
+    "penalty": "L2",
+    "C": 1.0,
+    "max_iter": 1000,
+    "n_permutations": 2000,
+    "seed": 20260912,
+    "fire_if_p_lt": 0.01
+  }
+}

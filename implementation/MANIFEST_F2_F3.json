@@ -1,0 +1,135 @@
+{
+  "manifest_type": "S2_F2_F3_IMPLEMENTATION_PROVENANCE",
+  "status": "READY_FOR_G2_ARTIFACT_CONFORMITY_GATE",
+  "governing_freeze_commit": "97410ca512d0c87571b4f321712c4c7c564a6a82",
+  "governing_specification": "construction/S2_CANDIDATE_SPEC_v0.11.md",
+  "generation_timestamp_utc": "2026-09-12T20:53:05.276573+00:00",
+  "test_command": "python3 implementation/generate_and_verify_all.py",
+  "test_summary": {
+    "tests_run": 31,
+    "failures": 0,
+    "errors": 0,
+    "verdict": "ALL_TESTS_PASS"
+  },
+  "assertions_verified": [
+    "30 parameter-cells per parameter (330 total)",
+    "six classes, exactly five each (exact balance)",
+    "scope marginals differ by at most 1",
+    "class x scope table: max cell - min cell <= 1",
+    "every scope spans >= 2 classes where s > 1",
+    "every class spans >= 2 scopes where s > 1",
+    "bundle max class count <= 3",
+    "every (parameter, fold) has one item from each class",
+    "exactly one admissible scope per (bundle, parameter)",
+    "every (parameter, scope) has >= 2 legal semantic values (SCOPE-2)",
+    "E8a joint scope and unit satisfiability for 4/6, 5/5, and 6/4 cases",
+    "E8a standalone determining cells: current >= 4, voltage >= 4",
+    "E8a within current: A >= 2, mA >= 2",
+    "E8a within voltage: V >= 2, mV >= 2",
+    "K3 62-feature design and 20 formatting markers",
+    "Canonical numeric serialization (\u00a76.6)",
+    "Prohibition of note_text in adjudication output (\u00a76.1)"
+  ],
+  "artifacts": {
+    "__init__.py": {
+      "sha256": "b227cee5178518939f9e26ba2175202c3db32cd87f2d77fec4189b9dfe3ce0bd",
+      "size_bytes": 39
+    },
+    "f2_corpus/__init__.py": {
+      "sha256": "4d26e23bc1abee787db250dbc33beec932dc0104b2bfe27c1f74c6ff4598ebac",
+      "size_bytes": 25
+    },
+    "f2_corpus/bank_schema.py": {
+      "sha256": "756d88f9b837bfa9f79bc5f68fa4d7b0ac5dd59844e9d03a6230ee8ed5022a80",
+      "size_bytes": 3789
+    },
+    "f2_corpus/class_assignment.py": {
+      "sha256": "cb71d364dd8bac26afe29cdaa5719e67209f6ad62cbc5b963a13838c1e37a97f",
+      "size_bytes": 3067
+    },
+    "f2_corpus/constants.py": {
+      "sha256": "1eed2923c2240b7e0d67af36f6d33b7e07b3b3cc65ec900777bb3458cb22b0b7",
+      "size_bytes": 3199
+    },
+    "f2_corpus/coverage_verifier.py": {
+      "sha256": "02f7a505903efae544b42e13f0fbba0e64f14857f0fe3e91d622b52c7a24b0f6",
+      "size_bytes": 5137
+    },
+    "f2_corpus/e8a_joint_solver.py": {
+      "sha256": "8a2be2a7e3f054bb0fa24c595f7799337b9c65f40876a9374fe14903ddc43e4f",
+      "size_bytes": 10249
+    },
+    "f2_corpus/frozen_scope_table.json": {
+      "sha256": "3d74ffe92bf77751f5785dc17f989ce28a3cc7ac9835045162832cfc5114fc72",
+      "size_bytes": 6830
+    },
+    "f2_corpus/scope_solver.py": {
+      "sha256": "0beb90fb7a50d9a0e871b534942405f9359150ef8fe6f079d5f6f452cec25449",
+      "size_bytes": 4148
+    },
+    "f2_corpus/structural_validators.py": {
+      "sha256": "ca7015cf07c40817a8227c0d24a4d89cb595ce00b880f5b24e7dc66c57ba0e8a",
+      "size_bytes": 4488
+    },
+    "f2_corpus/template_generator.py": {
+      "sha256": "337c95508fa802a36e2c5651dd53a81a64aaa12f876ab9c0743a234a95487bbd",
+      "size_bytes": 16167
+    },
+    "f3_protocol/__init__.py": {
+      "sha256": "a3c0eb54d3048c8dedba333995f953a148089f09d5ac1a389b638dec9872c2ed",
+      "size_bytes": 27
+    },
+    "f3_protocol/adjudication_schema.py": {
+      "sha256": "1d7158272c20ab8ff200da1820ddf7af950f9e64d8bff3e4d25ffca78fe3aef0",
+      "size_bytes": 4035
+    },
+    "f3_protocol/canonical_serializer.py": {
+      "sha256": "ea83f2c51f307a92729f015368e8da577d4133902e45358cfb6cd815b850c8c7",
+      "size_bytes": 7028
+    },
+    "f3_protocol/k3_leakage_probe.py": {
+      "sha256": "bd7d35a4a683e8b21ffde6f9747ebaf8c65dcaad2c0d1607af70434aff9c6ca6",
+      "size_bytes": 10679
+    },
+    "f3_protocol/runtime_pins.json": {
+      "sha256": "f17ff2d75ad4e0e5fa4c31ee30bbbccecf519e6be849898446728dd6c5239e0d",
+      "size_bytes": 387
+    },
+    "f3_protocol/sidecar_spec.json": {
+      "sha256": "5697a9f1b082192e6159699fe997455d8d03f3e3ca62872bc659419e4a4f3054",
+      "size_bytes": 975
+    },
+    "generate_and_verify_all.py": {
+      "sha256": "31be79d58bd08b0a4754d6db123b610134502b84bba05e9df161d2b1331484c9",
+      "size_bytes": 5356
+    },
+    "tests/__init__.py": {
+      "sha256": "c6ab093d3d504764c7ff91982bcb621e9f8b6f6f5c8711acaf5e3b316a0b019c",
+      "size_bytes": 21
+    },
+    "tests/test_e8a_joint_witness.py": {
+      "sha256": "20d17c0f65076964294305ddb8d022a56850ea8bbb4315bfb6ab0e9eedb8b7e6",
+      "size_bytes": 3297
+    },
+    "tests/test_f2_corpus_constraints.py": {
+      "sha256": "dab8e5bccda1e54987a3bf57004773f44e07df809eae22fa059f8566ac9e516a",
+      "size_bytes": 1966
+    },
+    "tests/test_f2_fidelity.py": {
+      "sha256": "1c5c734db85146447a429ff91512ae63d280ca3cd4693234e8845e0e763a8b31",
+      "size_bytes": 11632
+    },
+    "tests/test_f2_validators.py": {
+      "sha256": "e7ece315af55575e697f20e10fffbdf9e6da4fca267e73e235071cc0e1cfe43c",
+      "size_bytes": 5242
+    },
+    "tests/test_f3_k3_probe.py": {
+      "sha256": "441b7b216ecccfe2fa17942f700667c1143f202c7e3a63a8c1d35ebc7e55cc76",
+      "size_bytes": 2450
+    },
+    "tests/test_f3_serialization.py": {
+      "sha256": "bab2df556af8bdd50931b47ea6ab3b150fe254db97e02cc77987dd325877d2f7",
+      "size_bytes": 7649
+    }
+  }
+}

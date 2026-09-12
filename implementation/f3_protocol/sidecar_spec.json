@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "S2 Adjudication Sidecar Specification",
+  "description": "Model, version, and sampling configuration pinning for deterministic CVD qualification adjudication (§7, §11 F3).",
+  "governing_specification": "construction/S2_CANDIDATE_SPEC_v0.11.md",
+  "freeze_commit": "97410ca512d0c87571b4f321712c4c7c564a6a82",
+  "configuration": {
+    "sampling_parameters": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "top_k": 1,
+      "seed": 20260912,
+      "max_output_tokens": 4096
+    },
+    "serialization_requirements": {
+      "canonical_numerics": "§6.6",
+      "prohibit_note_text": true,
+      "prohibit_timestamps": true,
+      "prohibit_run_ids": true,
+      "readings_lexicographical_sort": true
+    },
+    "determinism_verification": {
+      "protocol": "rename previous output, rerun all 330 parameter-cells, assert byte-identical recreation",
+      "required_match": "byte-exact"
+    }
+  }
+}
