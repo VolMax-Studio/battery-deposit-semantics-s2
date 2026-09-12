@@ -5,7 +5,7 @@ operator: Ivan
 final_ratifier: Ivan
 
 phase: internal_qualification_pending_gate
-status: candidate_v0.7_self_contained_pending_gating
+status: candidate_v0.8_self_contained_pending_gating
 predecessor: VolMax-Studio/battery-deposit-semantics-s1
 predecessor_terminal_state: INSTRUMENT_INVALID
 predecessor_terminal_commit: "8812111d77e3526ec07a6d613fa4e82594496b9d"
@@ -27,12 +27,11 @@ verdict: null
 
 ## Current State
 
-- S2 Candidate Specification v0.7 registered in `construction/S2_CANDIDATE_SPEC_v0.7.md`.
+- S2 Candidate Specification v0.8 registered in `construction/S2_CANDIDATE_SPEC_v0.8.md`.
 - Prior Art Elimination v0.2 registered in `construction/PRIOR_ART_ELIMINATION_v0.2.md`.
-- Scope orthogonal to class by construction: `scope_index(i, j) = (i + 2j) mod 5`.
-- 5-field role-aware bank back-translation (`parameter, scope, semantic_value, semantic_role, exclusive_assertion`).
-- Finite bank loop: 330 single-use entries, 3-round limit, 30% cumulative rejection ceiling.
-- Semantic stability separated from evidence concordance.
-- `note_text` prohibited.
-- Excluded parties (Fable, Sol, Ivan, Gemini) explicit: pre-gate reviews marked `ADVERSARIAL_PRE_GATE_REVIEW`.
-- Status: strictly candidate, not frozen, **not gated**.
+- `SCOPE-1` rule ratified: semantics-first scope assignment with heterogeneous scope counts (s ∈ [1, 8]).
+- Bank metadata separated into semantic (validated) vs placement (unvalidated); 6-field back-translation.
+- Frozen coverage contract: canonical values ≥ 2, composition ≥ 2, strata ≥ 2 S-DOC & ≥ 2 S-FILE (E8a unit enum scoped to 5 units).
+- Loop termination: byte-unambiguous ceiling (floor(0.30 × 330) = 99 cumulative rejections).
+- Process rule frozen (§12.2): internal adversarial review terminates; next internal pass is closure check only, then handed off to party 7 (Independent Gate).
+- Status: strictly candidate, not frozen, **never gated**.
