@@ -3,10 +3,10 @@
   "status": "READY_FOR_G2_ARTIFACT_CONFORMITY_GATE",
   "governing_freeze_commit": "97410ca512d0c87571b4f321712c4c7c564a6a82",
   "governing_specification": "construction/S2_CANDIDATE_SPEC_v0.11.md",
-  "generation_timestamp_utc": "2026-09-12T18:24:19.280561+00:00",
+  "generation_timestamp_utc": "2026-09-12T20:53:05.276573+00:00",
   "test_command": "python3 implementation/generate_and_verify_all.py",
   "test_summary": {
-    "tests_run": 19,
+    "tests_run": 31,
     "failures": 0,
     "errors": 0,
     "verdict": "ALL_TESTS_PASS"
@@ -72,8 +72,8 @@
       "size_bytes": 4488
     },
     "f2_corpus/template_generator.py": {
-      "sha256": "c7b4eda7a826cec0acc5ba31f2845f0bea6ed7d8dfcdc766fe081aa3683a4e03",
-      "size_bytes": 3192
+      "sha256": "337c95508fa802a36e2c5651dd53a81a64aaa12f876ab9c0743a234a95487bbd",
+      "size_bytes": 16167
     },
     "f3_protocol/__init__.py": {
       "sha256": "a3c0eb54d3048c8dedba333995f953a148089f09d5ac1a389b638dec9872c2ed",
@@ -84,8 +84,8 @@
       "size_bytes": 4035
     },
     "f3_protocol/canonical_serializer.py": {
-      "sha256": "c6afb8025c34b3b395eb4593b5b4bbf9561a4e611d5f8f344d1172353454453a",
-      "size_bytes": 4550
+      "sha256": "ea83f2c51f307a92729f015368e8da577d4133902e45358cfb6cd815b850c8c7",
+      "size_bytes": 7028
     },
     "f3_protocol/k3_leakage_probe.py": {
       "sha256": "bd7d35a4a683e8b21ffde6f9747ebaf8c65dcaad2c0d1607af70434aff9c6ca6",
@@ -115,6 +115,10 @@
       "sha256": "dab8e5bccda1e54987a3bf57004773f44e07df809eae22fa059f8566ac9e516a",
       "size_bytes": 1966
     },
+    "tests/test_f2_fidelity.py": {
+      "sha256": "1c5c734db85146447a429ff91512ae63d280ca3cd4693234e8845e0e763a8b31",
+      "size_bytes": 11632
+    },
     "tests/test_f2_validators.py": {
       "sha256": "e7ece315af55575e697f20e10fffbdf9e6da4fca267e73e235071cc0e1cfe43c",
       "size_bytes": 5242
@@ -124,8 +128,8 @@
       "size_bytes": 2450
     },
     "tests/test_f3_serialization.py": {
-      "sha256": "24adc027a31ccb6bebfcd2907139900368227ddacd4777acef796b3e46f3f1bb",
-      "size_bytes": 3598
+      "sha256": "bab2df556af8bdd50931b47ea6ab3b150fe254db97e02cc77987dd325877d2f7",
+      "size_bytes": 7649
     }
   }
 }

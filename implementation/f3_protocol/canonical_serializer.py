@@ -5,6 +5,7 @@ Governing specification: construction/S2_CANDIDATE_SPEC_v0.11.md (§6.1, §6.6, 
 
 from typing import Any, Dict, List, Union
 import json
+import re
 import decimal
 from decimal import Decimal
 
@@ -33,15 +34,9 @@ def serialize_canonical_numeric(val: Union[int, float, str, Decimal]) -> str:
         int_val = int(d.to_integral_value())
         return str(int_val)
 
-    # Format to 6 significant digits
-    # Use context with precision 6
-    ctx = decimal.Context(prec=6, rounding=decimal.ROUND_HALF_EVEN)
-    d_sig = d.quantize(Decimal(1), context=ctx) if d == d.to_integral() else +d
     # Format with 6 sig digits in decimal notation (never exponential)
     formatted = f"{d:.6g}"
     if "e" in formatted.lower():
-        # Expand scientific notation to plain decimal
-        # Parse exponent
         d_val = Decimal(formatted)
         formatted = format(d_val, "f")
 
@@ -49,32 +44,96 @@ def serialize_canonical_numeric(val: Union[int, float, str, Decimal]) -> str:
     if "." in formatted:
         formatted = formatted.rstrip("0").rstrip(".")
 
-    # Ensure no leading +
     formatted = formatted.lstrip("+")
     return formatted
 
 
-def serialize_canonical_semantic_value(val: Any) -> str:
+def canonicalize_frozen_typed_payload(val_str: str) -> str:
     """
-    Serialize semantic value canonically.
-    For sets: sort elements and serialize as sorted comma-separated list or JSON.
-    For numeric payloads (e.g. fixed(10 s), factor(2), affine(2, 1)):
-    Apply §6.6 to numeric fields.
+    Strict canonicalization restricted ONLY to frozen typed forms from §4.1, §4.3, §5.2.1:
+    - fixed(<interval_seconds> s) or fixed(<interval_seconds>)
+    - factor(<factor_value>)
+    - affine(<factor_value>, <offset_value>)
+    Arbitrary strings are returned verbatim.
+    """
+    # 1. fixed(...) pattern
+    m_fixed = re.match(r"^fixed\(\s*([+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)\s*(s)?\s*\)$", val_str.strip())
+    if m_fixed:
+        num_part = m_fixed.group(1)
+        has_s = m_fixed.group(2) is not None
+        canon_num = serialize_canonical_numeric(num_part)
+        return f"fixed({canon_num} s)" if has_s else f"fixed({canon_num})"
+
+    # 2. factor(...) pattern
+    m_factor = re.match(r"^factor\(\s*([+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)\s*\)$", val_str.strip())
+    if m_factor:
+        num_part = m_factor.group(1)
+        canon_num = serialize_canonical_numeric(num_part)
+        return f"factor({canon_num})"
+
+    # 3. affine(...) pattern
+    m_affine = re.match(
+        r"^affine\(\s*([+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)\s*,\s*([+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)\s*\)$",
+        val_str.strip(),
+    )
+    if m_affine:
+        fac_part = m_affine.group(1)
+        off_part = m_affine.group(2)
+        canon_fac = serialize_canonical_numeric(fac_part)
+        canon_off = serialize_canonical_numeric(off_part)
+        return f"affine({canon_fac}, {canon_off})"
+
+    # Return any other string verbatim (do NOT canonicalize arbitrary text or numbers)
+    return val_str
+
+
+def canonicalize_semantic_value(val: Any) -> Any:
+    """
+    Canonicalize semantic_value BEFORE placing it in the serialized output record:
+    - Scalar numbers (int, float, Decimal): serialized via §6.6 as canonical string bytes (no int/float cast).
+    - Strings: strictly restricted to frozen typed forms (fixed, factor, affine), else verbatim.
+    - Lists and sets: recursively canonicalized and sorted canonically.
+    - Dicts: keys sorted, values recursively canonicalized.
     """
     if val is None:
-        return "null"
+        return None
+
+    # Scalar numbers: convert directly to §6.6 canonical string. No int() or float() conversion!
     if isinstance(val, (int, float, Decimal)):
         return serialize_canonical_numeric(val)
+
     if isinstance(val, str):
-        return val
+        return canonicalize_frozen_typed_payload(val)
+
     if isinstance(val, (list, set)):
-        sorted_vals = sorted([serialize_canonical_semantic_value(x) for x in val])
-        return "[" + ",".join(sorted_vals) + "]"
+        canon_elements = [canonicalize_semantic_value(x) for x in val]
+        return sorted(canon_elements, key=lambda x: serialize_canonical_semantic_value_string(x))
+
     if isinstance(val, dict):
-        keys = sorted(val.keys())
-        items = [f"{k}:{serialize_canonical_semantic_value(val[k])}" for k in keys]
+        canon_dict = {}
+        for k in sorted(val.keys()):
+            canon_dict[k] = canonicalize_semantic_value(val[k])
+        return canon_dict
+
+    return val
+
+
+def serialize_canonical_semantic_value_string(val: Any) -> str:
+    """
+    Produce a canonical string representation used for lexicographical sorting of readings.
+    """
+    canon_val = canonicalize_semantic_value(val)
+    if canon_val is None:
+        return "null"
+    if isinstance(canon_val, str):
+        return canon_val
+    if isinstance(canon_val, list):
+        items = [serialize_canonical_semantic_value_string(x) for x in canon_val]
+        return "[" + ",".join(items) + "]"
+    if isinstance(canon_val, dict):
+        items = [f"{k}:{serialize_canonical_semantic_value_string(canon_val[k])}" for k in sorted(canon_val.keys())]
         return "{" + ",".join(items) + "}"
-    return str(val)
+    return str(canon_val)
 
 
 def serialize_adjudication_record(record: Dict[str, Any]) -> str:
@@ -87,17 +146,18 @@ def serialize_adjudication_record(record: Dict[str, Any]) -> str:
     - readings: [ { semantic_value, evidence_stratum, artifact_sha256, locator, verbatim_excerpt } ]
     - traversal_record (optional, required for ABSENT and NOT_APPLICABLE)
 
-    Prohibitions:
-    - note_text is strictly prohibited.
+    Enforces:
+    - semantic_value in output is CANONICALIZED before placement.
+    - Set/list values are themselves sorted canonically.
+    - Readings sorted lexicographically by canonical string of semantic_value.
+    - note_text is strictly prohibited (§6.1).
     - No timestamps, no run IDs, no model-version strings.
-    - Readings sorted lexicographically by canonical serialization of semantic_value.
     """
     if "note_text" in record:
         raise ValueError("note_text is strictly prohibited in adjudication records (§6.1)")
 
     output: Dict[str, Any] = {}
-    
-    # Enforce field order
+
     output["parameter_id"] = record["parameter_id"]
     output["scope"] = record["scope"]
     output["verdict_class"] = record["verdict_class"]
@@ -105,8 +165,9 @@ def serialize_adjudication_record(record: Dict[str, Any]) -> str:
     readings = record.get("readings", [])
     formatted_readings = []
     for r in readings:
+        canon_val = canonicalize_semantic_value(r.get("semantic_value"))
         r_entry = {
-            "semantic_value": r.get("semantic_value"),
+            "semantic_value": canon_val,
             "evidence_stratum": r.get("evidence_stratum"),
             "artifact_sha256": r.get("artifact_sha256"),
             "locator": r.get("locator"),
@@ -114,12 +175,12 @@ def serialize_adjudication_record(record: Dict[str, Any]) -> str:
         }
         formatted_readings.append(r_entry)
 
-    # Sort readings lexicographically by canonical serialization of semantic_value
-    formatted_readings.sort(key=lambda x: serialize_canonical_semantic_value(x["semantic_value"]))
+    # Sort readings lexicographically by canonical string representation of semantic_value
+    formatted_readings.sort(key=lambda x: serialize_canonical_semantic_value_string(x["semantic_value"]))
     output["readings"] = formatted_readings
 
     if "traversal_record" in record:
         output["traversal_record"] = record["traversal_record"]
 
-    # Byte-deterministic JSON serialization: 2-space indent, sorted keys=False (we fixed order)
+    # Byte-deterministic JSON serialization: 2-space indent, sorted keys=False
     return json.dumps(output, indent=2, ensure_ascii=False)
