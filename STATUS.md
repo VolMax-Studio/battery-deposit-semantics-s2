@@ -12,7 +12,7 @@ project_owner: Ivan / VolMax Studio Lab
 operator: Ivan
 final_ratifier: Ivan
 
-construction_status: candidate_v0.3_self_contained_pending_gating
+construction_status: candidate_v0.4_self_contained_pending_gating
 current_methodology_drafter: Claude/Fable
 drafter_conflict_disclosed: true
 corpus_reference_label_party: pending_fresh_unconflicted_party (strictly not Sol, K5)
@@ -44,25 +44,24 @@ S2 is formally categorized as an **`INTERNAL_QUALIFICATION`** instance (instrume
   - `METHOD_STATUS: CORE_COMPONENTS_ANTICIPATED (no novelty claim)`
   - `OPEN_PRIOR_ART_ITEM: BatteryLake public curation / processing manifests pending L3 ratification`
 
-### Candidate Specification v0.3 Registered (Self-Contained)
-- Artifact: `construction/S2_CANDIDATE_SPEC_v0.3.md` (self-contained normative candidate; v0.1 and v0.2 retained as history).
-- **Core Resolutions & Hardening:**
-  1. **Semantic Value Scoring (`B2`):** Correctness requires joint match on `(verdict_class, semantic_value)`. Output schema explicitly tracks factual determinations and isolates `value error`.
-  2. **Explicit Qualification Decision Function (`B1`):** Complete deterministic mapping to `QUALIFIED` / `NOT_QUALIFIED` across discrimination, stability, determinism, fidelity, leakage, and staffing.
-  3. **Cluster-Honest `K1` (`B3`):** Deleted unjustified Bernoulli rate bounds; strict literal zero-tolerance (0 of 50 per adjudicator).
-  4. **Fully Executable `K3` Probe (`B4`):** Fixed multinomial logistic regression on 49 frozen surface features + one-hot parameter ID; grouped 5-fold CV by bundle; 2000-iteration bundle-vector permutation test ($\alpha=0.01$).
-  5. **Deterministic Template Generator & Fidelity Proof (`B5`):** Bundles generated from sentence bank via frozen seed; mechanical 100% byte-identical re-derivation check required.
-  6. **Corrected Freeze Order (`B6`):** Ground truth authored and sealed at `F5` *before* bundle generation (`F6`) and leakage probe (`F7`).
-  7. **Strictly Delimited `EXPLICIT_FILE`:** Text/header/units declarations only; value patterns explicitly prohibited.
-  8. **Deterministic Re-Run on Both Adjudicators:** Canonical serialization; 1200 total adjudication events.
-  9. **Declared Ecological Gap:** Passing `QUALIFIED` does not license S3; prevents starting S3 with a broken instrument.
+### Candidate Specification v0.4 Registered (Self-Contained)
+- Artifact: `construction/S2_CANDIDATE_SPEC_v0.4.md` (self-contained normative candidate; earlier versions retained as history).
+- **Core Resolutions & Hardening in v0.4:**
+  1. **Eleven Atomic Parameters (`B7`):** Split `E7` into `E7a` (operation indexing rule) and `E7b` (operational state encoding); `E3` asks for *finest* reset boundary; `E4b` canonical answer space encodes exact orientation.
+  2. **Closed-by-Construction Semantic Values (`B8`):** All gold semantic values are frozen enums or typed fields; free text (`note_text`) is recorded and never scored. `AMBIGUOUS` uses canonically sorted set comparison.
+  3. **Parameter-Scoped Qualification (`B9`):** Qualification emits `QUALIFIED_FOR` / `NOT_QUALIFIED_FOR` lists; S3 may only use qualified parameters. Hardened with the **dead-cell rule** (no cell 0/5) and a per-parameter stability floor.
+  4. **Strict Byte-Level Fidelity Verification (`B10`):** Checker independently parses emitted bundle bytes against sentence bank (100% check; realization index is cross-check only).
+  5. **Fabrication Hardened (`F1`):** `AMBIGUOUS` on `NEG-ABSENT` is classified as fabrication (`K1`). Mechanical `EVIDENCE_INVALID` byte-exact check applied to every verdict.
+  6. **Model-Free Error Decomposition (`F2`):** Removed unverified independence model; replaced with direct 4-way empirical joint error breakdown.
+  7. **Exact Permutation Leakage Probe (`K3`, `F3`):** 50 features (incl. 20 enumerated formatting markers), exact permutation p-value formula frozen on 330 parameter-cells.
+  8. **Corpus Volume:** 30 bundles $\times$ 11 parameters = 330 cells (55/class); 1320 total adjudication events.
 
 ### Governance & L3 Status
 1. **Reclassification [RATIFIED]:** S2 is `INTERNAL_QUALIFICATION`.
 2. **Publication Policy [RATIFIED]:** Public qualification artifact permitted without methodological novelty claim.
 3. **Five-Party Separation [RATIFIED]:** Constructor $\ne$ Corpus Party $\ne$ Fidelity Checker $\ne$ Adjudicator A $\ne$ Adjudicator B $\ne$ Gate.
-4. **Discrimination Thresholds & Stability Floor [PENDING L3 RATIFICATION]:** §8.1 thresholds and 80% stability floor.
-5. **Corpus Budget [PENDING L3 RATIFICATION]:** 30 bundles / 300 cells / 1200 adjudication events.
+4. **Discrimination Thresholds & Stability Floor [PENDING L3 RATIFICATION]:** §8.2 per-parameter conditions, §8.3 class minima, 80% instrument stability floor.
+5. **Corpus Budget [PENDING L3 RATIFICATION]:** 30 bundles / 330 cells / 1320 adjudication events.
 6. **BatteryLake Manifest Review [PENDING L3 RATIFICATION]:** Open prior-art review under §4.3 constraints.
 7. **S3 Frame [DEFERRED]:** Frame selection deferred until prior-art item closes.
 
