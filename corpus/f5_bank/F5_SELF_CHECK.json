@@ -280,5 +280,6 @@
   "duplicate_entry_text_count": 0,
   "invalid_e8b_canonical_forms": 0,
   "tid_marker_count": 0,
-  "sfile_prose_issue_count": 0
+  "sfile_prose_issue_count": 0,
+  "spaced_meta_key_count": 0
 }

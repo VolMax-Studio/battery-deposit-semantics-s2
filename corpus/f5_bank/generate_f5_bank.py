@@ -1320,7 +1320,7 @@ for e in entries:
 
     if "meta." in e["entry_text"]:
         meta_match = re.search(r"meta\.([^=]+)=", e["entry_text"])
-        if meta_match and " " in meta_match.group(1):
+        if meta_match and " " in meta_match.group(1).strip():
             spaced_meta_keys += 1
 
 dup_count = len(texts) - len(set(texts))
