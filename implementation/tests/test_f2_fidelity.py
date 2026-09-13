@@ -239,6 +239,77 @@ class TestF2FidelityChecker(unittest.TestCase):
         self.assertFalse(res["valid"])
         self.assertIn("E4 positive-duration validation failed", res["error"])
 
+    def test_pos_class_derived_from_actual_placement_not_metadata(self):
+        """Regression IC-2: POS-EXPLICIT vs POS-BURIED is derived strictly from actual byte position, not metadata."""
+        # 1. Prominent placement: before ## Supplementary Appendix
+        prominent_text = f"Intro.\n## Overview and Experimental Specification\n{self.entry_pos.entry_text}\n## Supplementary Appendix\nOutro."
+        artifacts_prominent = BundleArtifacts(0, prominent_text.encode("utf-8"), b"", b"")
+        discovered_p = search_bundle_bytes_for_bank_entries(artifacts_prominent, self.frozen_bank)
+
+        # Even if slot metadata claimed 'buried', actual bytes are prominent -> MUST derive POS-EXPLICIT!
+        slots_claiming_buried = dict(self.bundle_slots)
+        slots_claiming_buried["E1"] = {"scope": "current", "class": "POS-BURIED", "placement": "buried"}
+        derived_p = reconstruct_derived_ground_truth(discovered_p, slots_claiming_buried, artifacts_prominent)
+        self.assertEqual(derived_p["E1"]["class"], "POS-EXPLICIT")
+
+        # 2. Buried placement: at or after ## Supplementary Appendix
+        buried_text = f"Intro.\n## Overview and Experimental Specification\nMain text.\n## Supplementary Appendix\n{self.entry_pos.entry_text}\nOutro."
+        artifacts_buried = BundleArtifacts(0, buried_text.encode("utf-8"), b"", b"")
+        discovered_b = search_bundle_bytes_for_bank_entries(artifacts_buried, self.frozen_bank)
+
+        # Even if slot metadata claimed 'prominent', actual bytes are buried -> MUST derive POS-BURIED!
+        slots_claiming_prominent = dict(self.bundle_slots)
+        slots_claiming_prominent["E1"] = {"scope": "current", "class": "POS-EXPLICIT", "placement": "prominent"}
+        derived_b = reconstruct_derived_ground_truth(discovered_b, slots_claiming_prominent, artifacts_buried)
+        self.assertEqual(derived_b["E1"]["class"], "POS-BURIED")
+
+    def test_location_independence_and_support_entry_ids(self):
+        """Regression IC-1: Ground truth record is strictly location-independent and carries support_entry_ids."""
+        article_text = f"Intro.\n{self.entry_pos.entry_text}\n{self.entry_adj_keyed.entry_text}\nOutro."
+        artifacts = BundleArtifacts(0, article_text.encode("utf-8"), b"", b"")
+        discovered = search_bundle_bytes_for_bank_entries(artifacts, self.frozen_bank)
+        derived = reconstruct_derived_ground_truth(discovered, self.bundle_slots, artifacts)
+
+        # Check POS-EXPLICIT cell
+        e1_cell = derived["E1"]
+        self.assertEqual(e1_cell["class"], "POS-EXPLICIT")
+        self.assertEqual(e1_cell["support_entry_ids"], ["e_e1_det"])
+        self.assertEqual(len(e1_cell["readings"]), 1)
+        r = e1_cell["readings"][0]
+        self.assertNotIn("component", r)
+        self.assertNotIn("byte_start", r)
+        self.assertNotIn("byte_end", r)
+        self.assertEqual(r["entry_id"], "e_e1_det")
+        self.assertEqual(r["verbatim_excerpt"], self.entry_pos.entry_text)
+
+        # Check NEG-ADJACENT cell
+        e2_cell = derived["E2"]
+        self.assertEqual(e2_cell["class"], "NEG-ADJACENT")
+        self.assertEqual(e2_cell["support_entry_ids"], ["e_e2_adj_correct"])
+        self.assertEqual(e2_cell["readings"], [])
+
+        # Check NEG-ABSENT cell (E3)
+        e3_cell = derived["E3"]
+        self.assertEqual(e3_cell["class"], "NEG-ABSENT")
+        self.assertEqual(e3_cell["support_entry_ids"], [])
+        self.assertEqual(e3_cell["readings"], [])
+
+    def test_all_cells_emitted_including_neg_absent(self):
+        """Regression Preserved Invariant: all cells in layout are emitted, even zero-occurrence cells."""
+        artifacts = BundleArtifacts(0, b"No bank entries here at all.", b"", b"")
+        discovered = search_bundle_bytes_for_bank_entries(artifacts, self.frozen_bank)
+        derived = reconstruct_derived_ground_truth(discovered, self.bundle_slots, artifacts)
+
+        # All 4 parameters in bundle_slots must be emitted as NEG-ABSENT
+        self.assertEqual(len(derived), len(self.bundle_slots))
+        for p in self.bundle_slots:
+            self.assertIn(p, derived)
+            self.assertEqual(derived[p]["class"], "NEG-ABSENT")
+            self.assertEqual(derived[p]["verdict_class"], "ABSENT")
+            self.assertEqual(derived[p]["readings"], [])
+            self.assertEqual(derived[p]["support_entry_ids"], [])
+
 
 if __name__ == "__main__":
     unittest.main()
+

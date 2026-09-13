@@ -29,6 +29,17 @@ from .structural_validators import (
     check_incompatibility,
 )
 
+try:
+    from ..f3_protocol.canonical_serializer import (
+        canonicalize_semantic_value,
+        serialize_canonical_semantic_value_string,
+    )
+except (ImportError, ValueError):
+    from f3_protocol.canonical_serializer import (
+        canonicalize_semantic_value,
+        serialize_canonical_semantic_value_string,
+    )
+
 
 class BankEntry:
     def __init__(
@@ -180,20 +191,52 @@ def search_bundle_bytes_for_bank_entries(
     return discovered
 
 
+def get_placement_in_component(component: str, pos: int, comp_bytes: bytes) -> str:
+    """
+    Mechanically determine whether byte offset `pos` is in prominent or buried region.
+    Independent of expected class or slot metadata.
+
+    Prominent and buried regions are defined by natural document section structure:
+    - In 'article': text before '## Supplementary Appendix' is prominent; text at or after is buried.
+    - In 'readme': text before '## Supplemental Archive Notes' is prominent; text at or after is buried.
+    - In 'csv_header': text before '# --- Extended File Annotations ---' is prominent; text at or after is buried.
+    """
+    if component == "article":
+        marker = b"## Supplementary Appendix"
+        idx = comp_bytes.find(marker)
+        if idx != -1 and pos >= idx:
+            return "buried"
+        return "prominent"
+    elif component == "readme":
+        marker = b"## Supplemental Archive Notes"
+        idx = comp_bytes.find(marker)
+        if idx != -1 and pos >= idx:
+            return "buried"
+        return "prominent"
+    elif component == "csv_header":
+        marker = b"# --- Extended File Annotations ---"
+        idx = comp_bytes.find(marker)
+        if idx != -1 and pos >= idx:
+            return "buried"
+        return "prominent"
+    return "prominent"
+
+
 def reconstruct_derived_ground_truth(
     discovered: List[DiscoveredOccurrence],
     bundle_slots: Dict[str, Dict[str, Any]],
+    artifacts: Optional[BundleArtifacts] = None,
+    bundle_idx: int = 0,
 ) -> Dict[str, Any]:
     """
     Reconstruct derived ground truth from discovered occurrences and byte spans.
     MUST NOT read expected class or verdict from a sealed record.
 
-    bundle_slots provides frozen construction layout metadata:
-    bundle_slots[param] = {
-        'scope': <assigned_scope>,
-        'placement': 'prominent' | 'buried' | 'absent',
-        'keyed_adjacent_entry_id': <optional entry_id for NEG-ADJACENT>,
-    }
+    - Derives POS-EXPLICIT vs POS-BURIED strictly from actual byte placement in bundle bytes.
+    - Emits location-independent readings: (entry_id, semantic_value, evidence_stratum,
+      exclusive_assertion, verbatim_excerpt) without component or byte spans.
+    - Populates support_entry_ids (canonically sorted bank entry IDs).
+    - Preserves iteration over all parameter-cells in bundle_slots (including NEG-ABSENT).
     """
     derived: Dict[str, Any] = {}
 
@@ -207,7 +250,6 @@ def reconstruct_derived_ground_truth(
 
     for param, slot_info in bundle_slots.items():
         scope = slot_info["scope"]
-        slot_placement = slot_info.get("placement", "prominent")
         matching_occs = occurrences_by_param_scope.get((param, scope), [])
 
         det_occs = [occ for occ in matching_occs if occ.entry.semantic_role == "determining"]
@@ -218,21 +260,34 @@ def reconstruct_derived_ground_truth(
             det = det_occs[0]
             stratum = det.entry.evidence_stratum
             vc = "EXPLICIT_DOC" if stratum == "S-DOC" else "EXPLICIT_FILE"
-            # Class derived strictly from placement of the determining statement (§5.2, §5.3)
-            cls_name = "POS-BURIED" if slot_placement == "buried" else "POS-EXPLICIT"
+
+            # IC-2: Class derived strictly from actual occurrence position in bundle bytes
+            if artifacts is not None:
+                comp_bytes = artifacts.get_component_bytes(det.component)
+                placement = get_placement_in_component(det.component, det.byte_start, comp_bytes)
+                cls_name = "POS-BURIED" if placement == "buried" else "POS-EXPLICIT"
+            else:
+                slot_placement = slot_info.get("placement", "prominent")
+                cls_name = "POS-BURIED" if slot_placement == "buried" else "POS-EXPLICIT"
+
+            canon_val = canonicalize_semantic_value(det.entry.semantic_value)
+            readings = [{
+                "entry_id": det.entry.entry_id,
+                "semantic_value": canon_val,
+                "evidence_stratum": stratum,
+                "exclusive_assertion": det.entry.exclusive_assertion,
+                "verbatim_excerpt": det.entry.entry_text,
+            }]
+            support_entry_ids = [det.entry.entry_id]
+
             derived[param] = {
+                "bundle_idx": bundle_idx,
                 "parameter": param,
                 "scope": scope,
                 "class": cls_name,
                 "verdict_class": vc,
-                "readings": [{
-                    "semantic_value": det.entry.semantic_value,
-                    "evidence_stratum": stratum,
-                    "component": det.component,
-                    "byte_start": det.byte_start,
-                    "byte_end": det.byte_end,
-                    "verbatim_excerpt": det.entry.entry_text,
-                }],
+                "readings": readings,
+                "support_entry_ids": support_entry_ids,
             }
 
         elif len(det_occs) >= 2:
@@ -251,54 +306,81 @@ def reconstruct_derived_ground_truth(
             vc = "AMBIGUOUS" if incompatible else ("EXPLICIT_DOC" if det_occs[0].entry.evidence_stratum == "S-DOC" else "EXPLICIT_FILE")
             readings = [
                 {
-                    "semantic_value": occ.entry.semantic_value,
+                    "entry_id": occ.entry.entry_id,
+                    "semantic_value": canonicalize_semantic_value(occ.entry.semantic_value),
                     "evidence_stratum": occ.entry.evidence_stratum,
-                    "component": occ.component,
-                    "byte_start": occ.byte_start,
-                    "byte_end": occ.byte_end,
+                    "exclusive_assertion": occ.entry.exclusive_assertion,
                     "verbatim_excerpt": occ.entry.entry_text,
                 }
                 for occ in det_occs
             ]
+            readings.sort(key=lambda x: serialize_canonical_semantic_value_string(x["semantic_value"]))
+            support_entry_ids = sorted([occ.entry.entry_id for occ in det_occs])
+
             derived[param] = {
+                "bundle_idx": bundle_idx,
                 "parameter": param,
                 "scope": scope,
                 "class": cls_name,
                 "verdict_class": vc,
                 "readings": readings,
+                "support_entry_ids": support_entry_ids,
             }
 
         else:  # 0 determining occurrences
             if len(adj_occs) >= 1:
                 derived[param] = {
+                    "bundle_idx": bundle_idx,
                     "parameter": param,
                     "scope": scope,
                     "class": "NEG-ADJACENT",
                     "verdict_class": "ABSENT",
                     "readings": [],
+                    "support_entry_ids": sorted([occ.entry.entry_id for occ in adj_occs]),
                 }
             elif len(na_occs) >= 1:
                 derived[param] = {
+                    "bundle_idx": bundle_idx,
                     "parameter": param,
                     "scope": scope,
                     "class": "NA-CONSTRUCTED",
                     "verdict_class": "NOT_APPLICABLE",
                     "readings": [],
+                    "support_entry_ids": sorted([occ.entry.entry_id for occ in na_occs]),
                 }
             else:
                 derived[param] = {
+                    "bundle_idx": bundle_idx,
                     "parameter": param,
                     "scope": scope,
                     "class": "NEG-ABSENT",
                     "verdict_class": "ABSENT",
                     "readings": [],
+                    "support_entry_ids": [],
                 }
 
     return derived
 
 
-def serialize_ground_truth_canonically(gt: Dict[str, Any]) -> bytes:
-    """Produce deterministic canonical bytes for ground truth comparison."""
+def serialize_ground_truth_canonically(gt: Any) -> bytes:
+    """
+    Produce deterministic canonical bytes for ground truth comparison (§6.6).
+    Supports:
+    - Dict mapping param -> cell
+    - List of parameter-cell dicts (11 cells for bundle or 330 cells for corpus)
+    """
+    if isinstance(gt, list):
+        def cell_sort_key(c: Any) -> Tuple[int, int]:
+            if isinstance(c, dict):
+                b_idx = c.get("bundle_idx", 0)
+                p_str = c.get("parameter", "")
+                p_idx = PARAMETERS.index(p_str) if p_str in PARAMETERS else 0
+                return (b_idx, p_idx)
+            return (0, 0)
+        gt_sorted = sorted(gt, key=cell_sort_key)
+        return json.dumps(gt_sorted, indent=2, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    elif isinstance(gt, dict):
+        return json.dumps(gt, indent=2, sort_keys=True, ensure_ascii=False).encode("utf-8")
     return json.dumps(gt, indent=2, sort_keys=True, ensure_ascii=False).encode("utf-8")
 
 
@@ -384,8 +466,18 @@ def check_fidelity(
             }
 
     # 5. Reconstruct derived ground truth independently
-    derived_gt = reconstruct_derived_ground_truth(discovered, bundle_slots)
-    derived_bytes = serialize_ground_truth_canonically(derived_gt)
+    derived_gt = reconstruct_derived_ground_truth(discovered, bundle_slots, artifacts, bundle_idx=artifacts.bundle_idx)
+
+    # Check if sealed_ground_truth_bytes decodes to a list of cells
+    try:
+        sealed_data = json.loads(sealed_ground_truth_bytes.decode("utf-8"))
+        if isinstance(sealed_data, list):
+            derived_list = [derived_gt[p] for p in PARAMETERS if p in derived_gt]
+            derived_bytes = serialize_ground_truth_canonically(derived_list)
+        else:
+            derived_bytes = serialize_ground_truth_canonically(derived_gt)
+    except Exception:
+        derived_bytes = serialize_ground_truth_canonically(derived_gt)
 
     # 6. Compare actual canonical derived bytes against actual sealed record bytes (§5.8 item 3)
     if derived_bytes != sealed_ground_truth_bytes:

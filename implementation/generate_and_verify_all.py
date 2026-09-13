@@ -113,6 +113,10 @@ def main():
             "K3 62-feature design and 20 formatting markers",
             "Canonical numeric serialization (§6.6)",
             "Prohibition of note_text in adjudication output (§6.1)",
+            "F7 location-independent canonical logical GT schema and serializer (IC-1)",
+            "F8 placement-derived class from actual byte occurrence position (IC-2)",
+            "Executable CVD bundle generator implementing frozen placement across 30 bundles (IC-3)",
+            "Preservation of 330-cell layout iteration including NEG-ABSENT",
         ],
         "artifacts": artifacts_manifest,
     }
