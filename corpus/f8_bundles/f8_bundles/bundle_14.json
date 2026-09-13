@@ -1,0 +1,22 @@
+{
+  "bundle_idx": 14,
+  "article.md": "# Battery Cell Performance Characterization - Test Dataset B14\n\n## 1. Operating Specifications and Protocol\nThis experimental report documents the electrochemical cycling, thermal behavior, and\noperational parameters for commercial lithium-ion test cells evaluated under laboratory validation protocols.\n\nNotes refer to the voltage field yet omit whether it holds measured data or a placeholder.\nLaboratory notes record that energy is reset on step boundaries.\nFiles contain no time-interval structure around the temperature, rendering sample-point semantics outside scope.\nThe interval semantics for the power are defined as closed at the start and open at the end.\nNotes mention test index indexing but omit the recovery method.\n\nBaseline environmental chamber temperature was maintained at 25.0 C across all test runs.\n\n### 1.1 Detailed Instrumentation and Channel Mapping\nGalvanostatic cycling was conducted using an automated multi-channel battery test system.\n\nChannel voltages were calibrated against secondary standards prior to dataset acquisition.\n\nAccording to the README, operating state in the dataset is obtained exclusively by step_type_column.\nFiles contain no voltage column or trace, rendering unit semantics for voltage inapplicable.\nAccording to the README, power values are adjusted by the affine map affine(2, 1).\n\n## 2. Archival Summary and End of Report\nValidation dataset B14 concluded without hardware interrupt flags.\n\n---\nEnd of Report B14.\n",
+  "README.md": "# README - Battery Dataset B14\n\n## Primary Metadata and File Inventory\nThis deposit contains the following components:\n- `article.md`: Technical report and measurement specification.\n- `README.md`: Deposit metadata and archival file inventory.\n- `data.csv`: Time-series acquisition records.\n\n## Supplemental Archive Notes\nArchival packaging generated under Protocol P10 CVD qualification standards.\nDeposit identifier: B14\n",
+  "data.csv": "# Battery Test Time-Series Acquisition Data — Dataset B14\nmeta.energy_boundary = cycle\n# System: Dual-Channel High-Precision Battery Cycler\ntime_s,current_A,voltage_V,power_W,temperature_C\n0.0,0.0,3.600,0.0,25.0\n1.0,1.5,3.650,5.475,25.1\n2.0,1.5,3.680,5.520,25.2\n3.0,1.5,3.710,5.565,25.3\n4.0,1.5,3.730,5.595,25.4\n5.0,0.0,3.725,0.0,25.3\n# Post-Run Operational Verification Log\nheader: temperature_sample=fixed(10 s),event_driven(delta_voltage)\n# Acquisition log reconciliation completed.\n# dataset_state_encoding=current_sign; exclusive=true; alternatives=none\n",
+  "manifest": {
+    "bundle_idx": 14,
+    "e3_structure": {
+      "num_tests": 2,
+      "cycles_per_test": [
+        2,
+        1
+      ],
+      "steps_per_cycle": [
+        3,
+        1,
+        1
+      ]
+    },
+    "interval_duration_seconds": 1.0
+  }
+}

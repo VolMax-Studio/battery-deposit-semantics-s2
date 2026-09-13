@@ -1,0 +1,22 @@
+{
+  "bundle_idx": 12,
+  "article.md": "# Battery Cell Performance Characterization - Test Dataset B12\n\n## 1. Operating Specifications and Protocol\nThis experimental report documents the electrochemical cycling, thermal behavior, and\noperational parameters for commercial lithium-ion test cells evaluated under laboratory validation protocols.\n\nNotes mention voltage sampling within intervals without identifying start, end or midpoint.\nLaboratory notes record inclusive bounds on both sides for the power interval.\nFiles contain continuous temperature streams without a declared trigger set, so sampling-policy semantics are outside scope.\nCompleteness of the power records is verified using: completeness_counter, gap_flag_column.\n\nBaseline environmental chamber temperature was maintained at 25.0 C across all test runs.\n\nThe data dictionary lists the index recovery method for cycle index as explicit_index_column, filename_encoding.\n\n### 1.1 Detailed Instrumentation and Channel Mapping\nGalvanostatic cycling was conducted using an automated multi-channel battery test system.\n\nChannel voltages were calibrated against secondary standards prior to dataset acquisition.\n\nNotes refer to units of the current channel without stating A, mA, V or mV.\nDeposit description indicates no scale or offset is applied to the temperature values.\n\n## 2. Archival Summary and End of Report\nValidation dataset B12 concluded without hardware interrupt flags.\n\n---\nEnd of Report B12.\n",
+  "README.md": "# README - Battery Dataset B12\n\n## Primary Metadata and File Inventory\nThis deposit contains the following components:\n- `article.md`: Technical report and measurement specification.\n- `README.md`: Deposit metadata and archival file inventory.\n- `data.csv`: Time-series acquisition records.\n\n## Supplemental Archive Notes\nArchival packaging generated under Protocol P10 CVD qualification standards.\nDeposit identifier: B12\n",
+  "data.csv": "# Battery Test Time-Series Acquisition Data — Dataset B12\ncolumn: I_charge_pos\n# System: Dual-Channel High-Precision Battery Cycler\ntime_s,current_A,voltage_V,power_W,temperature_C\n0.0,0.0,3.600,0.0,25.0\n1.0,1.5,3.650,5.475,25.1\n2.0,1.5,3.680,5.520,25.2\n3.0,1.5,3.710,5.565,25.3\n4.0,1.5,3.730,5.595,25.4\n5.0,0.0,3.725,0.0,25.3\n# Post-Run Operational Verification Log\nheader: temperature_measured\n# Acquisition log reconciliation completed.\nmeta.power_bounds = open_open\n# scale_temperature: factor(2)\n",
+  "manifest": {
+    "bundle_idx": 12,
+    "e3_structure": {
+      "num_tests": 2,
+      "cycles_per_test": [
+        2,
+        1
+      ],
+      "steps_per_cycle": [
+        3,
+        1,
+        1
+      ]
+    },
+    "interval_duration_seconds": 1.0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "bundle_idx": 19,
+  "article.md": "# Battery Cell Performance Characterization - Test Dataset B19\n\n## 1. Operating Specifications and Protocol\nThis experimental report documents the electrochemical cycling, thermal behavior, and\noperational parameters for commercial lithium-ion test cells evaluated under laboratory validation protocols.\n\nDeposit description places the temperature sample at the leading edge of each interval.\nSampling of the temperature is performed by the following rule(s): event_driven(delta_current), event_driven(step_transition).\n\nBaseline environmental chamber temperature was maintained at 25.0 C across all test runs.\n\nThe laboratory data dictionary defines positive values on the current channel as discharge direction.\n\n### 1.1 Detailed Instrumentation and Channel Mapping\nGalvanostatic cycling was conducted using an automated multi-channel battery test system.\n\nChannel voltages were calibrated against secondary standards prior to dataset acquisition.\n\nAccording to the data dictionary the voltage values are expressed in V.\n\n## 2. Archival Summary and End of Report\nValidation dataset B19 concluded without hardware interrupt flags.\n\n---\nEnd of Report B19.\n",
+  "README.md": "# README - Battery Dataset B19\n\n## Primary Metadata and File Inventory\nThis deposit contains the following components:\n- `article.md`: Technical report and measurement specification.\n- `README.md`: Deposit metadata and archival file inventory.\n- `data.csv`: Time-series acquisition records.\n\n## Supplemental Archive Notes\nArchival packaging generated under Protocol P10 CVD qualification standards.\nDeposit identifier: B19\n",
+  "data.csv": "# Battery Test Time-Series Acquisition Data — Dataset B19\nmeta.energy_reset = TBD\n# System: Dual-Channel High-Precision Battery Cycler\ntime_s,current_A,voltage_V,power_W,temperature_C\n0.0,0.0,3.600,0.0,25.0\n1.0,1.5,3.650,5.475,25.1\n2.0,1.5,3.680,5.520,25.2\n3.0,1.5,3.710,5.565,25.3\n4.0,1.5,3.730,5.595,25.4\n5.0,0.0,3.725,0.0,25.3\n# Post-Run Operational Verification Log\nlegend: current completeness = gap_flag_column\n# Acquisition log reconciliation completed.\nCOL_NOTE: temperature end-sample\nmeta.current_bounds = not_applicable\nmeta.dataset_state = TBD\nlegend: voltage unit = mV\nmeta.discharge_capacity_scale = not_applicable\n",
+  "manifest": {
+    "bundle_idx": 19,
+    "e3_structure": {
+      "num_tests": 2,
+      "cycles_per_test": [
+        2,
+        1
+      ],
+      "steps_per_cycle": [
+        3,
+        1,
+        1
+      ]
+    },
+    "interval_duration_seconds": 1.0
+  }
+}

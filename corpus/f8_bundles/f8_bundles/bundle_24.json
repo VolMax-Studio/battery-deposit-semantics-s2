@@ -1,0 +1,22 @@
+{
+  "bundle_idx": 24,
+  "article.md": "# Battery Cell Performance Characterization - Test Dataset B24\n\n## 1. Operating Specifications and Protocol\nThis experimental report documents the electrochemical cycling, thermal behavior, and\noperational parameters for commercial lithium-ion test cells evaluated under laboratory validation protocols.\n\nA timestamp field accompanies the temperature intervals without stating the sampling position.\nAccording to the data dictionary the current interval is closed-closed.\nThe deposit configuration uses continuous capture for voltage; discrete sampling policies are consequently not defined.\nCompleteness of the current records is verified using: acquisition_log_reconciliation, completeness_counter.\n\nBaseline environmental chamber temperature was maintained at 25.0 C across all test runs.\n\nLaboratory documentation records step index recovery via row_grouping_marker, explicit_index_column.\n\n### 1.1 Detailed Instrumentation and Channel Mapping\nGalvanostatic cycling was conducted using an automated multi-channel battery test system.\n\nChannel voltages were calibrated against secondary standards prior to dataset acquisition.\n\nThe deposit shows a unit placeholder for voltage without the concrete unit string.\nDeposit description indicates no scale or offset is applied to the current values.\n\n## 2. Archival Summary and End of Report\nValidation dataset B24 concluded without hardware interrupt flags.\n\n---\nEnd of Report B24.\n",
+  "README.md": "# README - Battery Dataset B24\n\n## Primary Metadata and File Inventory\nThis deposit contains the following components:\n- `article.md`: Technical report and measurement specification.\n- `README.md`: Deposit metadata and archival file inventory.\n- `data.csv`: Time-series acquisition records.\n\n## Supplemental Archive Notes\nArchival packaging generated under Protocol P10 CVD qualification standards.\nDeposit identifier: B24\n",
+  "data.csv": "# Battery Test Time-Series Acquisition Data — Dataset B24\nlegend: +I = discharge\n# System: Dual-Channel High-Precision Battery Cycler\ntime_s,current_A,voltage_V,power_W,temperature_C\n0.0,0.0,3.600,0.0,25.0\n1.0,1.5,3.650,5.475,25.1\n2.0,1.5,3.680,5.520,25.2\n3.0,1.5,3.710,5.565,25.3\n4.0,1.5,3.730,5.595,25.4\n5.0,0.0,3.725,0.0,25.3\n# Post-Run Operational Verification Log\nCOL_NOTE: voltage placeholder\n# Acquisition log reconciliation completed.\nheader: current_oo\n# scale_current: factor(2)\n",
+  "manifest": {
+    "bundle_idx": 24,
+    "e3_structure": {
+      "num_tests": 2,
+      "cycles_per_test": [
+        2,
+        1
+      ],
+      "steps_per_cycle": [
+        3,
+        1,
+        1
+      ]
+    },
+    "interval_duration_seconds": 1.0
+  }
+}

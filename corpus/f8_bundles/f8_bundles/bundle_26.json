@@ -1,0 +1,22 @@
+{
+  "bundle_idx": 26,
+  "article.md": "# Battery Cell Performance Characterization - Test Dataset B26\n\n## 1. Operating Specifications and Protocol\nThis experimental report documents the electrochemical cycling, thermal behavior, and\noperational parameters for commercial lithium-ion test cells evaluated under laboratory validation protocols.\n\nMetadata lists the temperature column without stating its measurement status.\nAccording to the README the charge capacity accumulator restarts with every step.\nThe experiment logs discrete events rather than intervals for voltage; sampling-point questions therefore do not apply.\nLaboratory notes record inclusive bounds on both sides for the current interval.\nAn index marker for cycle index is present yet the encoding scheme remains unspecified.\n\nBaseline environmental chamber temperature was maintained at 25.0 C across all test runs.\n\n### 1.1 Detailed Instrumentation and Channel Mapping\nGalvanostatic cycling was conducted using an automated multi-channel battery test system.\n\nChannel voltages were calibrated against secondary standards prior to dataset acquisition.\n\nDeposit description specifies the dataset state procedure exclusively as step_type_column.\nThe deposit omits the voltage channel entirely; unit declarations for it are consequently undefined.\nThe data dictionary records that the discharge capacity channel is transformed by affine(1.5, 0.5).\n\n## 2. Archival Summary and End of Report\nValidation dataset B26 concluded without hardware interrupt flags.\n\n---\nEnd of Report B26.\n",
+  "README.md": "# README - Battery Dataset B26\n\n## Primary Metadata and File Inventory\nThis deposit contains the following components:\n- `article.md`: Technical report and measurement specification.\n- `README.md`: Deposit metadata and archival file inventory.\n- `data.csv`: Time-series acquisition records.\n\n## Supplemental Archive Notes\nArchival packaging generated under Protocol P10 CVD qualification standards.\nDeposit identifier: B26\n",
+  "data.csv": "# Battery Test Time-Series Acquisition Data — Dataset B26\nheader: charge_capacity_per_cycle\n# System: Dual-Channel High-Precision Battery Cycler\ntime_s,current_A,voltage_V,power_W,temperature_C\n0.0,0.0,3.600,0.0,25.0\n1.0,1.5,3.650,5.475,25.1\n2.0,1.5,3.680,5.520,25.2\n3.0,1.5,3.710,5.565,25.3\n4.0,1.5,3.730,5.595,25.4\n5.0,0.0,3.725,0.0,25.3\n# Post-Run Operational Verification Log\nheader: voltage_sample=event_driven(step_transition),fixed(2 s)\n# Acquisition log reconciliation completed.\n# state_encoding_dataset:current_sign exclusive Additionally documented.\n",
+  "manifest": {
+    "bundle_idx": 26,
+    "e3_structure": {
+      "num_tests": 2,
+      "cycles_per_test": [
+        2,
+        1
+      ],
+      "steps_per_cycle": [
+        3,
+        1,
+        1
+      ]
+    },
+    "interval_duration_seconds": 1.0
+  }
+}

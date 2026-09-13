@@ -1,0 +1,22 @@
+{
+  "bundle_idx": 13,
+  "article.md": "# Battery Cell Performance Characterization - Test Dataset B13\n\n## 1. Operating Specifications and Protocol\nThis experimental report documents the electrochemical cycling, thermal behavior, and\noperational parameters for commercial lithium-ion test cells evaluated under laboratory validation protocols.\n\nLaboratory notes record sampling of power at interval onset.\nSampling of the power is performed by the following rule(s): event_driven(step_transition).\n\nBaseline environmental chamber temperature was maintained at 25.0 C across all test runs.\n\nThe laboratory data dictionary defines positive values on the power channel as discharge-direction power flow.\n\n### 1.1 Detailed Instrumentation and Channel Mapping\nGalvanostatic cycling was conducted using an automated multi-channel battery test system.\n\nChannel voltages were calibrated against secondary standards prior to dataset acquisition.\n\nLaboratory notes list the unit of the voltage signal as V.\n\n## 2. Archival Summary and End of Report\nValidation dataset B13 concluded without hardware interrupt flags.\n\n---\nEnd of Report B13.\n",
+  "README.md": "# README - Battery Dataset B13\n\n## Primary Metadata and File Inventory\nThis deposit contains the following components:\n- `article.md`: Technical report and measurement specification.\n- `README.md`: Deposit metadata and archival file inventory.\n- `data.csv`: Time-series acquisition records.\n\n## Supplemental Archive Notes\nArchival packaging generated under Protocol P10 CVD qualification standards.\nDeposit identifier: B13\n",
+  "data.csv": "# Battery Test Time-Series Acquisition Data — Dataset B13\nlegend: discharge capacity reset open\n# System: Dual-Channel High-Precision Battery Cycler\ntime_s,current_A,voltage_V,power_W,temperature_C\n0.0,0.0,3.600,0.0,25.0\n1.0,1.5,3.650,5.475,25.1\n2.0,1.5,3.680,5.520,25.2\n3.0,1.5,3.710,5.565,25.3\n4.0,1.5,3.730,5.595,25.4\n5.0,0.0,3.725,0.0,25.3\n# Post-Run Operational Verification Log\nheader: temperature_complete=expected_count_comparison,acquisition_log_reconciliation\n# Acquisition log reconciliation completed.\nmeta.power_sample = end\nlegend: no temperature interval bounds\nlegend: dataset state open\n# unit_voltage: mV\n# scale_capacity_charge: N/A — capacity_charge channel absent from this file\n",
+  "manifest": {
+    "bundle_idx": 13,
+    "e3_structure": {
+      "num_tests": 2,
+      "cycles_per_test": [
+        2,
+        1
+      ],
+      "steps_per_cycle": [
+        3,
+        1,
+        1
+      ]
+    },
+    "interval_duration_seconds": 1.0
+  }
+}

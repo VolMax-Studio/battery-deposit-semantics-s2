@@ -1,0 +1,22 @@
+{
+  "bundle_idx": 2,
+  "article.md": "# Battery Cell Performance Characterization - Test Dataset B02\n\n## 1. Operating Specifications and Protocol\nThis experimental report documents the electrochemical cycling, thermal behavior, and\noperational parameters for commercial lithium-ion test cells evaluated under laboratory validation protocols.\n\nThe accompanying protocol description refers to the temperature field but does not state whether the values are measured instrument readings or placeholders.\nThe data dictionary specifies that the charge capacity counter resets at the beginning of every step.\nThe deposit stores only instantaneous snapshots of the voltage; interval-based sampling-point semantics do not arise.\nDocumentation states that current intervals include both endpoints.\nAn index-related column exists for the step index; the precise encoding scheme that recovers the index is not stated.\n\nBaseline environmental chamber temperature was maintained at 25.0 C across all test runs.\n\n### 1.1 Detailed Instrumentation and Channel Mapping\nGalvanostatic cycling was conducted using an automated multi-channel battery test system.\n\nChannel voltages were calibrated against secondary standards prior to dataset acquisition.\n\nWithin the dataset the charge/discharge state is determined by exclusively: step_type_column.\nNo current channel is present in this deposit configuration; unit declarations for that signal therefore do not apply.\nLaboratory documentation states the current scale factor is identity (none).\n\n## 2. Archival Summary and End of Report\nValidation dataset B02 concluded without hardware interrupt flags.\n\n---\nEnd of Report B02.\n",
+  "README.md": "# README - Battery Dataset B02\n\n## Primary Metadata and File Inventory\nThis deposit contains the following components:\n- `article.md`: Technical report and measurement specification.\n- `README.md`: Deposit metadata and archival file inventory.\n- `data.csv`: Time-series acquisition records.\n\n## Supplemental Archive Notes\nArchival packaging generated under Protocol P10 CVD qualification standards.\nDeposit identifier: B02\n",
+  "data.csv": "# Battery Test Time-Series Acquisition Data — Dataset B02\n# charge_capacity_reset: cycle\n# System: Dual-Channel High-Precision Battery Cycler\ntime_s,current_A,voltage_V,power_W,temperature_C\n0.0,0.0,3.600,0.0,25.0\n1.0,1.5,3.650,5.475,25.1\n2.0,1.5,3.680,5.520,25.2\n3.0,1.5,3.710,5.565,25.3\n4.0,1.5,3.730,5.595,25.4\n5.0,0.0,3.725,0.0,25.3\n# Post-Run Operational Verification Log\nheader: voltage_sample=fixed(5 s)\n# Acquisition log reconciliation completed.\n# state_via_dataset=current_sign; exclusive=true; alternatives=none\n",
+  "manifest": {
+    "bundle_idx": 2,
+    "e3_structure": {
+      "num_tests": 2,
+      "cycles_per_test": [
+        2,
+        1
+      ],
+      "steps_per_cycle": [
+        3,
+        1,
+        1
+      ]
+    },
+    "interval_duration_seconds": 1.0
+  }
+}
