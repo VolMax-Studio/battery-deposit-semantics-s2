@@ -4,7 +4,7 @@
   "instance_status": "F7_BLOCKED_PENDING_SCOPED_G2_REGATE",
   "governing_freeze_commit": "97410ca512d0c87571b4f321712c4c7c564a6a82",
   "governing_specification": "construction/S2_CANDIDATE_SPEC_v0.11.md",
-  "generation_timestamp_utc": "2026-09-13T16:05:10.035901+00:00",
+  "generation_timestamp_utc": "2026-09-13T16:32:04.354085+00:00",
   "test_command": "python3 implementation/generate_and_verify_all.py",
   "test_summary": {
     "tests_run": 42,
@@ -84,8 +84,8 @@
       "size_bytes": 4488
     },
     "f2_corpus/template_generator.py": {
-      "sha256": "a46416da48d7c3470e6d13921adc774bf80b41e2d376bcfee238988fec05f6f8",
-      "size_bytes": 26583
+      "sha256": "401a26c43406c33b6b8548153b9aa28eae842a8c39bb00a55bfa6c67e5905819",
+      "size_bytes": 26570
     },
     "f3_protocol/__init__.py": {
       "sha256": "a3c0eb54d3048c8dedba333995f953a148089f09d5ac1a389b638dec9872c2ed",
@@ -132,8 +132,8 @@
       "size_bytes": 1966
     },
     "tests/test_f2_fidelity.py": {
-      "sha256": "4a7795d9121e6bf270292334807fee856ca3972c34be449b6058aacad2f79f7f",
-      "size_bytes": 21005
+      "sha256": "0231f49fef3b7bf4bd2022162e0076b05b1eed52371fb16d3337ad033bc58ead",
+      "size_bytes": 21049
     },
     "tests/test_f2_validators.py": {
       "sha256": "e7ece315af55575e697f20e10fffbdf9e6da4fca267e73e235071cc0e1cfe43c",

@@ -114,7 +114,7 @@ class TestF2FidelityChecker(unittest.TestCase):
 
         # Reconstruct canonical derived ground truth
         discovered = search_bundle_bytes_for_bank_entries(artifacts, self.frozen_bank)
-        derived_gt = reconstruct_derived_ground_truth(discovered, self.bundle_slots)
+        derived_gt = reconstruct_derived_ground_truth(discovered, self.bundle_slots, artifacts)
         sealed_bytes = serialize_ground_truth_canonically(derived_gt)
 
         realization_index = [
@@ -143,7 +143,7 @@ class TestF2FidelityChecker(unittest.TestCase):
         artifacts = BundleArtifacts(0, article_text.encode("utf-8"), b"", b"")
 
         discovered = search_bundle_bytes_for_bank_entries(artifacts, self.frozen_bank)
-        derived_gt = reconstruct_derived_ground_truth(discovered, self.bundle_slots)
+        derived_gt = reconstruct_derived_ground_truth(discovered, self.bundle_slots, artifacts)
         sealed_bytes = serialize_ground_truth_canonically(derived_gt)
 
         res = check_fidelity(artifacts, self.frozen_bank, sealed_bytes, self.bundle_slots, self.valid_manifest)
@@ -183,7 +183,7 @@ class TestF2FidelityChecker(unittest.TestCase):
         artifacts = BundleArtifacts(0, article_text.encode("utf-8"), b"", b"")
 
         discovered = search_bundle_bytes_for_bank_entries(artifacts, self.frozen_bank)
-        derived_gt = reconstruct_derived_ground_truth(discovered, self.bundle_slots)
+        derived_gt = reconstruct_derived_ground_truth(discovered, self.bundle_slots, artifacts)
         correct_sealed_bytes = serialize_ground_truth_canonically(derived_gt)
 
         # Corrupt sealed bytes by 1 byte
@@ -199,7 +199,7 @@ class TestF2FidelityChecker(unittest.TestCase):
         artifacts = BundleArtifacts(0, article_text.encode("utf-8"), b"", b"")
 
         discovered = search_bundle_bytes_for_bank_entries(artifacts, self.frozen_bank)
-        derived_gt = reconstruct_derived_ground_truth(discovered, self.bundle_slots)
+        derived_gt = reconstruct_derived_ground_truth(discovered, self.bundle_slots, artifacts)
         sealed_bytes = serialize_ground_truth_canonically(derived_gt)
 
         pos_start = article_text.find(self.entry_pos.entry_text)

@@ -369,13 +369,13 @@ def reconstruct_derived_ground_truth(
             vc = "EXPLICIT_DOC" if stratum == "S-DOC" else "EXPLICIT_FILE"
 
             # IC-2: Class derived strictly from actual occurrence position in bundle bytes
-            if artifacts is not None:
-                comp_bytes = artifacts.get_component_bytes(det.component)
-                placement = get_placement_in_component(det.component, det.byte_start, comp_bytes)
-                cls_name = "POS-BURIED" if placement == "buried" else "POS-EXPLICIT"
-            else:
-                slot_placement = slot_info.get("placement", "prominent")
-                cls_name = "POS-BURIED" if slot_placement == "buried" else "POS-EXPLICIT"
+            if artifacts is None:
+                raise ValueError(
+                    f"Actual bundle artifacts are required to derive POS placement/class for parameter '{param}', scope '{scope}'."
+                )
+            comp_bytes = artifacts.get_component_bytes(det.component)
+            placement = get_placement_in_component(det.component, det.byte_start, comp_bytes)
+            cls_name = "POS-BURIED" if placement == "buried" else "POS-EXPLICIT"
 
             canon_val = canonicalize_semantic_value(det.entry.semantic_value)
             readings = [{
