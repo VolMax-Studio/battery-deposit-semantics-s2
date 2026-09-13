@@ -1,0 +1,160 @@
+{
+  "stage": "F6",
+  "party": "GROQ-CLEAN-P3-01",
+  "model_requested": "qwen/qwen3.8-27b",
+  "source_f5_commit": "e9b93b7baefee365b93d59002c225a6d22f09b6a",
+  "blind_input_sha256": "a4a628ab34bcc98873cab1df54c18c5a05c0607d7b0acf07cd5307390ec313cf",
+  "output_sha256": "fd99730c00ffeeefcb6924fab51736807263f65c0e20898c1291661166a597d3",
+  "record_count": 330,
+  "temperature": 0.0,
+  "random_seed": 20260913,
+  "execution_transport": "sequential_batches",
+  "batch_size": 33,
+  "batch_count": 10,
+  "inter_batch_seconds": 65,
+  "max_tokens_per_batch": 2500,
+  "response_format": "json_schema strict",
+  "batches": [
+    {
+      "batch_index": 1,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_01.json",
+      "raw_file_sha256": "42d2c3659c58a1eb1921ce799eff08c559aba46d98d98eb3efaeef00ae22ba28",
+      "usage": {
+        "queue_time": 0.147915466,
+        "prompt_tokens": 2269,
+        "prompt_time": 0.191425185,
+        "completion_tokens": 1998,
+        "completion_time": 4.165731112,
+        "total_tokens": 4267,
+        "total_time": 4.357156297
+      }
+    },
+    {
+      "batch_index": 2,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_02.json",
+      "raw_file_sha256": "1cbdb70caf436cbc0142d6f4481cd14664b0780e146a3d137f7f46e716201973",
+      "usage": {
+        "queue_time": 0.0260646,
+        "prompt_tokens": 2301,
+        "prompt_time": 0.200402611,
+        "completion_tokens": 1996,
+        "completion_time": 4.428612912,
+        "total_tokens": 4297,
+        "total_time": 4.629015523
+      }
+    },
+    {
+      "batch_index": 3,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_03.json",
+      "raw_file_sha256": "f959263002eb9346c70211c5791bb0085bd003502d2f7b1a3b033cb46871ac94",
+      "usage": {
+        "queue_time": 0.267200098,
+        "prompt_tokens": 2295,
+        "prompt_time": 0.196251176,
+        "completion_tokens": 2020,
+        "completion_time": 4.324494153,
+        "total_tokens": 4315,
+        "total_time": 4.520745329
+      }
+    },
+    {
+      "batch_index": 4,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_04.json",
+      "raw_file_sha256": "244f40970ecb838b2dcb3dc980085fcecd5d20e0c8d5592a133dc423d330f017",
+      "usage": {
+        "queue_time": 0.021988821,
+        "prompt_tokens": 2242,
+        "prompt_time": 0.188417473,
+        "completion_tokens": 1972,
+        "completion_time": 4.159523143,
+        "total_tokens": 4214,
+        "total_time": 4.347940616
+      }
+    },
+    {
+      "batch_index": 5,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_05.json",
+      "raw_file_sha256": "6314d0cc3181fb7b9479d0fbe07d53a0383226692031a32ba35c850ad451b308",
+      "usage": {
+        "queue_time": 0.024973907,
+        "prompt_tokens": 2276,
+        "prompt_time": 0.190044405,
+        "completion_tokens": 2000,
+        "completion_time": 4.068276731,
+        "total_tokens": 4276,
+        "total_time": 4.258321136
+      }
+    },
+    {
+      "batch_index": 6,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_06.json",
+      "raw_file_sha256": "b4ccc52b30ec81d211fc90d81c171ec37b4d18833e259b0641b91ec62893b57a",
+      "usage": {
+        "queue_time": 1.976945559,
+        "prompt_tokens": 2315,
+        "prompt_time": 0.20159962,
+        "completion_tokens": 2000,
+        "completion_time": 4.401290027,
+        "total_tokens": 4315,
+        "total_time": 4.602889647
+      }
+    },
+    {
+      "batch_index": 7,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_07.json",
+      "raw_file_sha256": "27ab408346500fd2aa39912ec88be5fea59d4a1e77ae7eddfcde438529250aad",
+      "usage": {
+        "queue_time": 0.278329347,
+        "prompt_tokens": 2298,
+        "prompt_time": 0.197934232,
+        "completion_tokens": 2048,
+        "completion_time": 4.49864736,
+        "total_tokens": 4346,
+        "total_time": 4.696581592
+      }
+    },
+    {
+      "batch_index": 8,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_08.json",
+      "raw_file_sha256": "de113493c552232ff2cac2602f9fef84555ab6b9a39e2c777e25bd4c80f753b3",
+      "usage": {
+        "queue_time": 0.022752675,
+        "prompt_tokens": 2306,
+        "prompt_time": 0.192505853,
+        "completion_tokens": 2055,
+        "completion_time": 4.206318446,
+        "total_tokens": 4361,
+        "total_time": 4.398824299
+      }
+    },
+    {
+      "batch_index": 9,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_09.json",
+      "raw_file_sha256": "623615f48b223d6aacd59b128fc9b444a4aaa53267125eb26b45e93650ba4933",
+      "usage": {
+        "queue_time": 0.02248131,
+        "prompt_tokens": 2287,
+        "prompt_time": 0.197517357,
+        "completion_tokens": 2008,
+        "completion_time": 4.420559969,
+        "total_tokens": 4295,
+        "total_time": 4.618077326
+      }
+    },
+    {
+      "batch_index": 10,
+      "raw_file": "corpus/f6_backtranslation/raw_groq/batch_10.json",
+      "raw_file_sha256": "99534a9dea1be66e5537b8113f61d99e72a60ac19e096507179c2a830e8a3e32",
+      "usage": {
+        "queue_time": 0.145195832,
+        "prompt_tokens": 2261,
+        "prompt_time": 0.191196966,
+        "completion_tokens": 2013,
+        "completion_time": 4.142736654,
+        "total_tokens": 4274,
+        "total_time": 4.33393362
+      }
+    }
+  ],
+  "note": "Party-3 protected exposure began at the API call. No F5 private key or authored semantic metadata was supplied."
+}
