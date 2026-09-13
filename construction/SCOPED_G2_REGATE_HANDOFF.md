@@ -1,12 +1,12 @@
 # Scoped G2 Artifact-Conformity Re-Gate Handoff
 
-Instance: `battery-deposit-semantics-s2`  
-Target Gate: Scoped G2 Artifact-Conformity Re-Gate  
-Governing Specification: `construction/S2_CANDIDATE_SPEC_v0.11.md` (Freeze Commit: `97410ca512d0c87571b4f321712c4c7c564a6a82`)  
-Authorizing Operator Decision: `construction/F7_F8_BOUNDARY_CORRECTION_RATIFICATION_001.md`  
-Designated Gate Party: Party 7 (`GEMINI-GATE-01`)  
-Package status: `READY_FOR_SCOPED_G2_ARTIFACT_CONFORMITY_REVIEW`  
-Instance status: `F7_BLOCKED_PENDING_SCOPED_G2_REGATE`  
+Instance: `battery-deposit-semantics-s2`
+Target Gate: Scoped G2 Artifact-Conformity Re-Gate
+Governing Specification: `construction/S2_CANDIDATE_SPEC_v0.11.md` (Freeze Commit: `97410ca512d0c87571b4f321712c4c7c564a6a82`)
+Authorizing Operator Decision: `construction/F7_F8_BOUNDARY_CORRECTION_RATIFICATION_001.md`
+Designated Gate Party: Party 7 (`GEMINI-GATE-01`)
+Package status: `READY_FOR_SCOPED_G2_ARTIFACT_CONFORMITY_REVIEW`
+Instance status: `F7_BLOCKED_PENDING_SCOPED_G2_REGATE`
 
 ---
 
