@@ -10,4 +10,4 @@
 - **F4 Substitutions:** `P2 = GROK-CLEAN-P2-01` (Sub-001), `P3 = MISTRAL-CLEAN-P3-01` (Sub-003; supersedes Sub-002)
 - **F5 Bank Status:** `F5_BANK_ATTEMPT_01` (Authored by Grok P2; 330 unique entries; local mechanical audit clean; R_total = 0)
 - **Operator:** Ivan (VolMax Studio Lab)
-- **Authorized Next Milestone:** F6 Metadata-Blind Back-Translation by MISTRAL-CLEAN-P3-01 (`mistral-large-2512`).
+- **Authorized Next Milestone:** F6 Metadata-Blind Back-Translation by MISTRAL-CLEAN-P3-01 (`mistral-medium-2604`; model availability correction 001).
