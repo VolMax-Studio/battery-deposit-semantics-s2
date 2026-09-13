@@ -7,7 +7,7 @@
 - **G1 Specification Gate:** `PASS`
 - **G2 Pre-Execution Artifact Conformity:** `PASS`
 - **F4 Staffing & Roster:** `RATIFIED` (Recorded: `construction/F4_ROLE_STAFFING_RECORD.md`)
-- **F4 Substitutions:** `P2 = GROK-CLEAN-P2-01` (Sub-001), `P3 = MISTRAL-CLEAN-P3-01` (Sub-003; supersedes Sub-002)
+- **F4 Substitutions:** `P2 = GROK-CLEAN-P2-01` (Sub-001), `P3 = GROQ-CLEAN-P3-01` (Sub-004; supersedes Sub-003)
 - **F5 Bank Status:** `F5_BANK_ATTEMPT_01` (Authored by Grok P2; 330 unique entries; local mechanical audit clean; R_total = 0)
 - **Operator:** Ivan (VolMax Studio Lab)
-- **Authorized Next Milestone:** F6 Metadata-Blind Back-Translation by MISTRAL-CLEAN-P3-01 (`mistral-medium-2604`; model availability correction 001).
+- **Authorized Next Milestone:** F6 Metadata-Blind Back-Translation by GROQ-CLEAN-P3-01 (`qwen/qwen3.8-27b`).
