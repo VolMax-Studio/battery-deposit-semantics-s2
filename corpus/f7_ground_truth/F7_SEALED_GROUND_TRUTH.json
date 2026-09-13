@@ -1,0 +1,5462 @@
+[
+  {
+    "bundle_idx": 0,
+    "class": "POS-EXPLICIT",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B00-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "The laboratory data dictionary defines positive values on the current channel as charge direction."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B00-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "POS-BURIED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B00-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "The README states that the voltage channel contains measured instrument readings."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E2-B00-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "NEG-ABSENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "energy",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4a-B00-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B00-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_closed",
+        "verbatim_excerpt": "The interval semantics for the current are defined as closed at both the start and the end."
+      },
+      {
+        "entry_id": "F5-E4b-B00-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "open_open",
+        "verbatim_excerpt": "# interval_bounds_current: open_open"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4b-B00-AMB1",
+      "F5-E4b-B00-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E5-B00-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "POS-EXPLICIT",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B00-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "completeness_counter"
+        ],
+        "verbatim_excerpt": "Completeness of the current records is verified using: completeness_counter."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E6-B00-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "POS-BURIED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B00-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "explicit_index_column"
+        ],
+        "verbatim_excerpt": "The test index is recovered from the deposit via: explicit_index_column."
+      }
+    ],
+    "scope": "test_index",
+    "support_entry_ids": [
+      "F5-E7a-B00-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "NEG-ABSENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B00-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 0,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B00-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "factor(2)",
+        "verbatim_excerpt": "header: discharge capacity_scale=factor(2)"
+      },
+      {
+        "entry_id": "F5-E8b-B00-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "none",
+        "verbatim_excerpt": "For the discharge capacity the stored numeric values undergo no scaling conversion."
+      }
+    ],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E8b-B00-AMB1",
+      "F5-E8b-B00-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "POS-BURIED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B01-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "The laboratory data dictionary defines positive values on the power channel as charge-direction power flow."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B01-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "NEG-ABSENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "NEG-ADJACENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "time",
+    "support_entry_ids": [
+      "F5-E3-B01-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B01-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "end",
+        "verbatim_excerpt": "# sample_point_current: end"
+      },
+      {
+        "entry_id": "F5-E4a-B01-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "start",
+        "verbatim_excerpt": "Interval records document that the current sample is taken at the start of the interval."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4a-B01-AMB1",
+      "F5-E4a-B01-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4b-B01-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "POS-EXPLICIT",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B01-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "fixed(10 s)"
+        ],
+        "verbatim_excerpt": "Sampling of the current is performed by the following rule(s): fixed(10 s)."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E5-B01-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "POS-BURIED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B01-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "expected_count_comparison"
+        ],
+        "verbatim_excerpt": "header: voltage_complete=expected_count_comparison"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E6-B01-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "NEG-ABSENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "cycle_index",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B01-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B01-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "A",
+        "verbatim_excerpt": "The declared unit for the current channel is A."
+      },
+      {
+        "entry_id": "F5-E8a-B01-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "mA",
+        "verbatim_excerpt": "header: current_[mA]"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B01-AMB1",
+      "F5-E8a-B01-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 1,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8b-B01-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "NEG-ABSENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "NEG-ADJACENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E2-B02-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B02-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "cycle",
+        "verbatim_excerpt": "# charge_capacity_reset: cycle"
+      },
+      {
+        "entry_id": "F5-E3-B02-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "step",
+        "verbatim_excerpt": "The data dictionary specifies that the charge capacity counter resets at the beginning of every step."
+      }
+    ],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E3-B02-AMB1",
+      "F5-E3-B02-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4a-B02-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B02-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_closed",
+        "verbatim_excerpt": "Documentation states that current intervals include both endpoints."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4b-B02-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "POS-BURIED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B02-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "fixed(5 s)"
+        ],
+        "verbatim_excerpt": "header: voltage_sample=fixed(5 s)"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E5-B02-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "NEG-ABSENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "step_index",
+    "support_entry_ids": [
+      "F5-E7a-B02-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B02-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "current_sign"
+        ],
+        "verbatim_excerpt": "# state_via_dataset=current_sign; exclusive=true; alternatives=none"
+      },
+      {
+        "entry_id": "F5-E7b-B02-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "step_type_column"
+        ],
+        "verbatim_excerpt": "Within the dataset the charge/discharge state is determined by exclusively: step_type_column."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B02-AMB1",
+      "F5-E7b-B02-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B02-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 2,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B02-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "none",
+        "verbatim_excerpt": "Laboratory documentation states the current scale factor is identity (none)."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8b-B02-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "NEG-ADJACENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B03-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B03-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "Deposit documentation records the current field as a live measured quantity."
+      },
+      {
+        "entry_id": "F5-E2-B03-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "# channel_type_current: placeholder"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E2-B03-AMB1",
+      "F5-E2-B03-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E3-B03-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B03-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "start",
+        "verbatim_excerpt": "The data dictionary states the current value corresponds to the interval start instant."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4a-B03-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "POS-BURIED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B03-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_closed",
+        "verbatim_excerpt": "# interval_bounds_voltage: closed_closed"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4b-B03-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "NEG-ABSENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "NEG-ADJACENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E6-B03-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B03-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "explicit_index_column"
+        ],
+        "verbatim_excerpt": "The test index is recovered from the deposit via exclusively: explicit_index_column."
+      },
+      {
+        "entry_id": "F5-E7a-B03-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "filename_encoding"
+        ],
+        "verbatim_excerpt": "# test_index_recovery=filename_encoding; exclusive=true; alternatives=none"
+      }
+    ],
+    "scope": "test_index",
+    "support_entry_ids": [
+      "F5-E7a-B03-AMB1",
+      "F5-E7a-B03-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B03-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B03-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "A",
+        "verbatim_excerpt": "legend: current unit = A"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B03-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 3,
+    "class": "POS-BURIED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B03-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "none",
+        "verbatim_excerpt": "COL_NOTE: energy none"
+      }
+    ],
+    "scope": "energy",
+    "support_entry_ids": [
+      "F5-E8b-B03-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B04-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "According to the deposit README, the current signal adopts a charge-positive polarity convention."
+      },
+      {
+        "entry_id": "F5-E1-B04-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "# polarity_current: discharge_positive"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B04-AMB1",
+      "F5-E1-B04-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E2-B04-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "POS-EXPLICIT",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B04-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "step",
+        "verbatim_excerpt": "Documentation states the charge capacity value is cleared on each new step."
+      }
+    ],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E3-B04-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "POS-BURIED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B04-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "start",
+        "verbatim_excerpt": "# sample_point_voltage: start"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4a-B04-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "NEG-ABSENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "NEG-ADJACENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E5-B04-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B04-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "completeness_counter"
+        ],
+        "verbatim_excerpt": "Completeness of the current records is verified using exclusively: completeness_counter."
+      },
+      {
+        "entry_id": "F5-E6-B04-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "gap_flag_column"
+        ],
+        "verbatim_excerpt": "# current_completeness=gap_flag_column; exclusive=true; alternatives=none"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E6-B04-AMB1",
+      "F5-E6-B04-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "cycle_index",
+    "support_entry_ids": [
+      "F5-E7a-B04-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B04-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "step_type_column"
+        ],
+        "verbatim_excerpt": "Within the dataset the charge/discharge state is determined by: step_type_column."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B04-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "POS-BURIED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B04-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "mA",
+        "verbatim_excerpt": "The README states that the current channel uses the unit mA."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B04-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 4,
+    "class": "NEG-ABSENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B05-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "POS-EXPLICIT",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B05-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "According to the data dictionary the current values are acquired from the instrument."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E2-B05-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "POS-BURIED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B05-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "step",
+        "verbatim_excerpt": "# discharge_capacity_reset: step"
+      }
+    ],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E3-B05-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "NEG-ABSENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4b-B05-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B05-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "event_driven(delta_voltage)"
+        ],
+        "verbatim_excerpt": "# sampling_policy_current: event_driven(delta_voltage) ONLY — exclusive sole trigger; no other sampling rule allowed"
+      },
+      {
+        "entry_id": "F5-E5-B05-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "fixed(10 s)"
+        ],
+        "verbatim_excerpt": "Sampling of the current is performed by the following rule(s) exclusively: fixed(10 s)."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E5-B05-AMB1",
+      "F5-E5-B05-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E6-B05-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B05-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "filename_encoding"
+        ],
+        "verbatim_excerpt": "# index_recovery_step_index:filename_encoding"
+      }
+    ],
+    "scope": "step_index",
+    "support_entry_ids": [
+      "F5-E7a-B05-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "POS-BURIED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B05-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "current_sign"
+        ],
+        "verbatim_excerpt": "legend: dataset state = current_sign"
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B05-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "NEG-ABSENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 5,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "time",
+    "support_entry_ids": [
+      "F5-E8b-B05-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "POS-EXPLICIT",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B06-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "According to the deposit README, the power signal adopts a charge-positive polarity convention for power flow."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B06-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "POS-BURIED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B06-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "The accompanying description confirms that power is a measured channel."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E2-B06-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "NEG-ABSENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "time",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4a-B06-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B06-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_closed",
+        "verbatim_excerpt": "According to the data dictionary the voltage interval is closed-closed."
+      },
+      {
+        "entry_id": "F5-E4b-B06-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "open_open",
+        "verbatim_excerpt": "# interval_bounds_voltage: open_open — start and end both excluded (open interval)"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4b-B06-AMB1",
+      "F5-E4b-B06-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E5-B06-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "POS-EXPLICIT",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B06-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "gap_flag_column"
+        ],
+        "verbatim_excerpt": "Completeness of the voltage records is verified using: gap_flag_column."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E6-B06-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "POS-BURIED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B06-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "time_segmentation_rule"
+        ],
+        "verbatim_excerpt": "The data dictionary lists the index recovery method for step index as time_segmentation_rule."
+      }
+    ],
+    "scope": "step_index",
+    "support_entry_ids": [
+      "F5-E7a-B06-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "NEG-ABSENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B06-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 6,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B06-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "factor(2)",
+        "verbatim_excerpt": "meta.energy_scale = factor(2)"
+      },
+      {
+        "entry_id": "F5-E8b-B06-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "none",
+        "verbatim_excerpt": "According to the README, energy values are stored without multiplicative or affine scaling."
+      }
+    ],
+    "scope": "energy",
+    "support_entry_ids": [
+      "F5-E8b-B06-AMB1",
+      "F5-E8b-B06-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "POS-BURIED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B07-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "# polarity_current: charge_positive"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B07-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "NEG-ABSENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "NEG-ADJACENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E3-B07-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B07-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "end",
+        "verbatim_excerpt": "header: voltage_at_end"
+      },
+      {
+        "entry_id": "F5-E4a-B07-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "start",
+        "verbatim_excerpt": "According to the README the voltage reading is captured when the interval begins."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4a-B07-AMB1",
+      "F5-E4a-B07-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4b-B07-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "POS-EXPLICIT",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B07-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "event_driven(delta_voltage)"
+        ],
+        "verbatim_excerpt": "Sampling of the voltage is performed by the following rule(s): event_driven(delta_voltage)."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E5-B07-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "POS-BURIED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B07-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "acquisition_log_reconciliation"
+        ],
+        "verbatim_excerpt": "header: power_complete=acquisition_log_reconciliation"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E6-B07-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "NEG-ABSENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "test_index",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B07-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B07-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "A",
+        "verbatim_excerpt": "Deposit documentation records the measurement unit of current as A."
+      },
+      {
+        "entry_id": "F5-E8a-B07-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "mA",
+        "verbatim_excerpt": "meta.current_unit = mA"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B07-AMB1",
+      "F5-E8a-B07-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 7,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E8b-B07-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "NEG-ABSENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "NEG-ADJACENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E2-B08-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B08-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "cycle",
+        "verbatim_excerpt": "header: discharge_capacity_per_cycle"
+      },
+      {
+        "entry_id": "F5-E3-B08-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "step",
+        "verbatim_excerpt": "According to the README the discharge capacity accumulator restarts with every step."
+      }
+    ],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E3-B08-AMB1",
+      "F5-E3-B08-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4a-B08-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B08-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "open_open",
+        "verbatim_excerpt": "The interval semantics for the voltage are defined as open at both the start and the end."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4b-B08-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "POS-BURIED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B08-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "event_driven(delta_current)"
+        ],
+        "verbatim_excerpt": "header: power_sample=event_driven(delta_current)"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E5-B08-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "NEG-ABSENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "cycle_index",
+    "support_entry_ids": [
+      "F5-E7a-B08-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B08-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "current_sign"
+        ],
+        "verbatim_excerpt": "# state_encoding_dataset=current_sign; exclusive=true; alternatives=none"
+      },
+      {
+        "entry_id": "F5-E7b-B08-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "step_type_column"
+        ],
+        "verbatim_excerpt": "The data dictionary lists the state encoding for the dataset exclusively as step_type_column."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B08-AMB1",
+      "F5-E7b-B08-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B08-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 8,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B08-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "factor(2)",
+        "verbatim_excerpt": "For the voltage the stored numeric values undergo a pure multiplicative conversion: factor(2)."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8b-B08-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "NEG-ADJACENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B09-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B09-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "Laboratory notes indicate that the voltage column holds measured data."
+      },
+      {
+        "entry_id": "F5-E2-B09-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "header: voltage_placeholder"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E2-B09-AMB1",
+      "F5-E2-B09-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "energy",
+    "support_entry_ids": [
+      "F5-E3-B09-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B09-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "end",
+        "verbatim_excerpt": "Interval records document that the voltage sample is taken at the end of the interval."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4a-B09-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "POS-BURIED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B09-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "open_open",
+        "verbatim_excerpt": "# interval_bounds_power: open_open — both start and end endpoints are excluded"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4b-B09-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "NEG-ABSENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "NEG-ADJACENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E6-B09-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B09-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "explicit_index_column"
+        ],
+        "verbatim_excerpt": "The step index is recovered from the deposit via exclusively: explicit_index_column."
+      },
+      {
+        "entry_id": "F5-E7a-B09-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "filename_encoding"
+        ],
+        "verbatim_excerpt": "# step_index_recovery=filename_encoding; exclusive=true; alternatives=none"
+      }
+    ],
+    "scope": "step_index",
+    "support_entry_ids": [
+      "F5-E7a-B09-AMB1",
+      "F5-E7a-B09-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B09-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B09-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "A",
+        "verbatim_excerpt": "COL_NOTE: current A"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B09-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 9,
+    "class": "POS-BURIED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B09-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "factor(10)",
+        "verbatim_excerpt": "header: temperature_scale=factor(10)"
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E8b-B09-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B10-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "Instrument documentation states that a positive power reading corresponds to charging power delivered to the cell."
+      },
+      {
+        "entry_id": "F5-E1-B10-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "# polarity_power: discharge_positive"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B10-AMB1",
+      "F5-E1-B10-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E2-B10-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "POS-EXPLICIT",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B10-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "cycle",
+        "verbatim_excerpt": "The data dictionary specifies that the discharge capacity counter resets at the beginning of every cycle."
+      }
+    ],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E3-B10-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "POS-BURIED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B10-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "end",
+        "verbatim_excerpt": "legend: power @ interval end"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4a-B10-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "NEG-ABSENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "NEG-ADJACENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E5-B10-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B10-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "completeness_counter"
+        ],
+        "verbatim_excerpt": "Completeness of the voltage records is verified using exclusively: completeness_counter."
+      },
+      {
+        "entry_id": "F5-E6-B10-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "gap_flag_column"
+        ],
+        "verbatim_excerpt": "# completeness_check_voltage=gap_flag_column; exclusive=true; alternatives=none"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E6-B10-AMB1",
+      "F5-E6-B10-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "test_index",
+    "support_entry_ids": [
+      "F5-E7a-B10-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B10-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "separate_state_column"
+        ],
+        "verbatim_excerpt": "Within the dataset the charge/discharge state is determined by: separate_state_column."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B10-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "POS-BURIED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B10-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "mA",
+        "verbatim_excerpt": "The declared unit for the current channel is mA."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B10-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 10,
+    "class": "NEG-ABSENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "capacity_charge",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B11-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "POS-EXPLICIT",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B11-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "# channel_type_voltage: measured"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E2-B11-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "POS-BURIED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B11-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "cycle",
+        "verbatim_excerpt": "legend: energy resets each cycle"
+      }
+    ],
+    "scope": "energy",
+    "support_entry_ids": [
+      "F5-E3-B11-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "NEG-ABSENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4b-B11-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B11-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "event_driven(delta_voltage)"
+        ],
+        "verbatim_excerpt": "# sampling_policy_voltage: event_driven(delta_voltage) ONLY — exclusive sole trigger; no other sampling rule permitted"
+      },
+      {
+        "entry_id": "F5-E5-B11-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "fixed(10 s)"
+        ],
+        "verbatim_excerpt": "Sampling of the voltage is performed by the following rule(s) exclusively: fixed(10 s)."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E5-B11-AMB1",
+      "F5-E5-B11-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E6-B11-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B11-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "row_grouping_marker"
+        ],
+        "verbatim_excerpt": "# index_recovery_cycle_index:row_grouping_marker"
+      }
+    ],
+    "scope": "cycle_index",
+    "support_entry_ids": [
+      "F5-E7a-B11-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "POS-BURIED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B11-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "mode_code_enum"
+        ],
+        "verbatim_excerpt": "header: state_via=mode_code_enum"
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B11-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "NEG-ABSENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 11,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8b-B11-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "POS-EXPLICIT",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B12-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "column: I_charge_pos"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B12-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "POS-BURIED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B12-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "header: temperature_measured"
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E2-B12-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "NEG-ABSENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "capacity_charge",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4a-B12-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B12-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_closed",
+        "verbatim_excerpt": "Laboratory notes record inclusive bounds on both sides for the power interval."
+      },
+      {
+        "entry_id": "F5-E4b-B12-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "open_open",
+        "verbatim_excerpt": "meta.power_bounds = open_open"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4b-B12-AMB1",
+      "F5-E4b-B12-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E5-B12-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "POS-EXPLICIT",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B12-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "completeness_counter",
+          "gap_flag_column"
+        ],
+        "verbatim_excerpt": "Completeness of the power records is verified using: completeness_counter, gap_flag_column."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E6-B12-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "POS-BURIED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B12-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "explicit_index_column",
+          "filename_encoding"
+        ],
+        "verbatim_excerpt": "The data dictionary lists the index recovery method for cycle index as explicit_index_column, filename_encoding."
+      }
+    ],
+    "scope": "cycle_index",
+    "support_entry_ids": [
+      "F5-E7a-B12-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "NEG-ABSENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B12-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 12,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B12-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "factor(2)",
+        "verbatim_excerpt": "# scale_temperature: factor(2)"
+      },
+      {
+        "entry_id": "F5-E8b-B12-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "none",
+        "verbatim_excerpt": "Deposit description indicates no scale or offset is applied to the temperature values."
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E8b-B12-AMB1",
+      "F5-E8b-B12-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "POS-BURIED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B13-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "The laboratory data dictionary defines positive values on the power channel as discharge-direction power flow."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B13-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "NEG-ABSENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "NEG-ADJACENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E3-B13-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B13-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "end",
+        "verbatim_excerpt": "meta.power_sample = end"
+      },
+      {
+        "entry_id": "F5-E4a-B13-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "start",
+        "verbatim_excerpt": "Laboratory notes record sampling of power at interval onset."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4a-B13-AMB1",
+      "F5-E4a-B13-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4b-B13-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "POS-EXPLICIT",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B13-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "event_driven(step_transition)"
+        ],
+        "verbatim_excerpt": "Sampling of the power is performed by the following rule(s): event_driven(step_transition)."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E5-B13-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "POS-BURIED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B13-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "acquisition_log_reconciliation",
+          "expected_count_comparison"
+        ],
+        "verbatim_excerpt": "header: temperature_complete=expected_count_comparison,acquisition_log_reconciliation"
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E6-B13-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "NEG-ABSENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "step_index",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B13-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B13-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "V",
+        "verbatim_excerpt": "Laboratory notes list the unit of the voltage signal as V."
+      },
+      {
+        "entry_id": "F5-E8a-B13-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "mV",
+        "verbatim_excerpt": "# unit_voltage: mV"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B13-AMB1",
+      "F5-E8a-B13-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 13,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E8b-B13-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "NEG-ABSENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "NEG-ADJACENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E2-B14-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B14-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "cycle",
+        "verbatim_excerpt": "meta.energy_boundary = cycle"
+      },
+      {
+        "entry_id": "F5-E3-B14-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "step",
+        "verbatim_excerpt": "Laboratory notes record that energy is reset on step boundaries."
+      }
+    ],
+    "scope": "energy",
+    "support_entry_ids": [
+      "F5-E3-B14-AMB1",
+      "F5-E3-B14-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4a-B14-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B14-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_open",
+        "verbatim_excerpt": "The interval semantics for the power are defined as closed at the start and open at the end."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4b-B14-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "POS-BURIED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B14-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "event_driven(delta_voltage)",
+          "fixed(10 s)"
+        ],
+        "verbatim_excerpt": "header: temperature_sample=fixed(10 s),event_driven(delta_voltage)"
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E5-B14-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "NEG-ABSENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "test_index",
+    "support_entry_ids": [
+      "F5-E7a-B14-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B14-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "current_sign"
+        ],
+        "verbatim_excerpt": "# dataset_state_encoding=current_sign; exclusive=true; alternatives=none"
+      },
+      {
+        "entry_id": "F5-E7b-B14-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "step_type_column"
+        ],
+        "verbatim_excerpt": "According to the README, operating state in the dataset is obtained exclusively by step_type_column."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B14-AMB1",
+      "F5-E7b-B14-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B14-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 14,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B14-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "affine(2, 1)",
+        "verbatim_excerpt": "According to the README, power values are adjusted by the affine map affine(2, 1)."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E8b-B14-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "NEG-ADJACENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B15-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B15-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "The README states that the power channel contains measured instrument readings."
+      },
+      {
+        "entry_id": "F5-E2-B15-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "legend: power = placeholder"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E2-B15-AMB1",
+      "F5-E2-B15-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "time",
+    "support_entry_ids": [
+      "F5-E3-B15-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B15-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "midpoint",
+        "verbatim_excerpt": "Interval records document that the power sample is taken at the temporal midpoint of the interval."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4a-B15-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "POS-BURIED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B15-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_open",
+        "verbatim_excerpt": "# interval_bounds_temperature: closed_open"
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4b-B15-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "NEG-ABSENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "NEG-ADJACENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E6-B15-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B15-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "explicit_index_column"
+        ],
+        "verbatim_excerpt": "According to the deposit README the cycle index is recovered exclusively via an explicit index column present in the data table."
+      },
+      {
+        "entry_id": "F5-E7a-B15-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "filename_encoding"
+        ],
+        "verbatim_excerpt": "# cycle_index_recovery=filename_encoding; exclusive=true; alternatives=none"
+      }
+    ],
+    "scope": "cycle_index",
+    "support_entry_ids": [
+      "F5-E7a-B15-AMB1",
+      "F5-E7a-B15-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B15-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B15-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "mA",
+        "verbatim_excerpt": "legend: current unit = mA"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8a-B15-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 15,
+    "class": "POS-BURIED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B15-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "affine(0.5, -1)",
+        "verbatim_excerpt": "meta.time_scale = affine(0.5, -1)"
+      }
+    ],
+    "scope": "time",
+    "support_entry_ids": [
+      "F5-E8b-B15-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B16-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "Instrument documentation states that a positive current reading corresponds to charging of the cell."
+      },
+      {
+        "entry_id": "F5-E1-B16-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "column: I_discharge_pos"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B16-AMB1",
+      "F5-E1-B16-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E2-B16-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "POS-EXPLICIT",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B16-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "test",
+        "verbatim_excerpt": "The data dictionary specifies that the energy counter resets at the beginning of every test."
+      }
+    ],
+    "scope": "energy",
+    "support_entry_ids": [
+      "F5-E3-B16-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "POS-BURIED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B16-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "midpoint",
+        "verbatim_excerpt": "# sample_point_temperature: midpoint"
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4a-B16-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "NEG-ABSENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "NEG-ADJACENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E5-B16-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B16-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "completeness_counter"
+        ],
+        "verbatim_excerpt": "Completeness of the power records is verified using exclusively: completeness_counter."
+      },
+      {
+        "entry_id": "F5-E6-B16-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "gap_flag_column"
+        ],
+        "verbatim_excerpt": "# completeness_check_power=gap_flag_column; exclusive=true; alternatives=none"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E6-B16-AMB1",
+      "F5-E6-B16-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "step_index",
+    "support_entry_ids": [
+      "F5-E7a-B16-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B16-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "current_sign",
+          "step_type_column"
+        ],
+        "verbatim_excerpt": "Within the dataset the charge/discharge state is determined by: step_type_column, current_sign."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B16-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "POS-BURIED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B16-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "mV",
+        "verbatim_excerpt": "The README states that the voltage channel uses the unit mV."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B16-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 16,
+    "class": "NEG-ABSENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B17-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "POS-EXPLICIT",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B17-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "The README states that the power channel is a placeholder and not a live measurement."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E2-B17-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "POS-BURIED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B17-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "test",
+        "verbatim_excerpt": "# time_reset: test"
+      }
+    ],
+    "scope": "time",
+    "support_entry_ids": [
+      "F5-E3-B17-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "NEG-ABSENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4b-B17-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B17-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "event_driven(delta_voltage)"
+        ],
+        "verbatim_excerpt": "# sampling_policy_power=event_driven(delta_voltage); exclusive=true; alternatives=none"
+      },
+      {
+        "entry_id": "F5-E5-B17-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "fixed(10 s)"
+        ],
+        "verbatim_excerpt": "Sampling of the power is performed by the following rule(s) exclusively: fixed(10 s)."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E5-B17-AMB1",
+      "F5-E5-B17-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E6-B17-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B17-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "row_grouping_marker",
+          "time_segmentation_rule"
+        ],
+        "verbatim_excerpt": "# index_recovery_test_index:time_segmentation_rule,row_grouping_marker"
+      }
+    ],
+    "scope": "test_index",
+    "support_entry_ids": [
+      "F5-E7a-B17-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "POS-BURIED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B17-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "mode_code_enum",
+          "separate_state_column"
+        ],
+        "verbatim_excerpt": "header: state_via=separate_state_column,mode_code_enum"
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B17-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "NEG-ABSENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 17,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8b-B17-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "POS-EXPLICIT",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B18-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "According to the deposit README, the power signal adopts a discharge-positive polarity convention for power flow."
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B18-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "POS-BURIED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B18-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "Deposit documentation records the current field as a placeholder value."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E2-B18-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "NEG-ABSENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4a-B18-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B18-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_closed",
+        "verbatim_excerpt": "Deposit description treats the temperature interval as closed at start and closed at end."
+      },
+      {
+        "entry_id": "F5-E4b-B18-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "open_open",
+        "verbatim_excerpt": "COL_NOTE: temperature open-open"
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4b-B18-AMB1",
+      "F5-E4b-B18-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E5-B18-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "POS-EXPLICIT",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B18-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "completeness_counter",
+          "expected_count_comparison",
+          "gap_flag_column"
+        ],
+        "verbatim_excerpt": "Completeness of the temperature records is verified using: completeness_counter, expected_count_comparison, gap_flag_column."
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E6-B18-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "POS-BURIED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B18-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "explicit_index_column",
+          "row_grouping_marker",
+          "time_segmentation_rule"
+        ],
+        "verbatim_excerpt": "The data dictionary lists the index recovery method for test index as explicit_index_column, time_segmentation_rule, row_grouping_marker."
+      }
+    ],
+    "scope": "test_index",
+    "support_entry_ids": [
+      "F5-E7a-B18-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "NEG-ABSENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B18-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 18,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B18-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "factor(2)",
+        "verbatim_excerpt": "legend: time scale = factor(2)"
+      },
+      {
+        "entry_id": "F5-E8b-B18-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "none",
+        "verbatim_excerpt": "The data dictionary records that the time channel has scaling set to none."
+      }
+    ],
+    "scope": "time",
+    "support_entry_ids": [
+      "F5-E8b-B18-AMB1",
+      "F5-E8b-B18-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "POS-BURIED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B19-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "The laboratory data dictionary defines positive values on the current channel as discharge direction."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B19-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "NEG-ABSENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "NEG-ADJACENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "energy",
+    "support_entry_ids": [
+      "F5-E3-B19-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B19-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "end",
+        "verbatim_excerpt": "COL_NOTE: temperature end-sample"
+      },
+      {
+        "entry_id": "F5-E4a-B19-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "start",
+        "verbatim_excerpt": "Deposit description places the temperature sample at the leading edge of each interval."
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4a-B19-AMB1",
+      "F5-E4a-B19-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4b-B19-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "POS-EXPLICIT",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B19-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "event_driven(delta_current)",
+          "event_driven(step_transition)"
+        ],
+        "verbatim_excerpt": "Sampling of the temperature is performed by the following rule(s): event_driven(delta_current), event_driven(step_transition)."
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E5-B19-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "POS-BURIED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B19-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "gap_flag_column"
+        ],
+        "verbatim_excerpt": "legend: current completeness = gap_flag_column"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E6-B19-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "NEG-ABSENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "cycle_index",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B19-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B19-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "V",
+        "verbatim_excerpt": "According to the data dictionary the voltage values are expressed in V."
+      },
+      {
+        "entry_id": "F5-E8a-B19-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "mV",
+        "verbatim_excerpt": "legend: voltage unit = mV"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B19-AMB1",
+      "F5-E8a-B19-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 19,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E8b-B19-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "NEG-ABSENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "NEG-ADJACENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E2-B20-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B20-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "cycle",
+        "verbatim_excerpt": "COL_NOTE: time cycle-reset"
+      },
+      {
+        "entry_id": "F5-E3-B20-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "step",
+        "verbatim_excerpt": "The deposit description indicates time returns to its initial value at each step start."
+      }
+    ],
+    "scope": "time",
+    "support_entry_ids": [
+      "F5-E3-B20-AMB1",
+      "F5-E3-B20-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4a-B20-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B20-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "open_closed",
+        "verbatim_excerpt": "The interval semantics for the temperature are defined as open at the start and closed at the end."
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4b-B20-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "POS-BURIED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B20-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "event_driven(delta_current)",
+          "event_driven(delta_voltage)",
+          "fixed(1 s)"
+        ],
+        "verbatim_excerpt": "header: current_sample=fixed(1 s),event_driven(delta_voltage),event_driven(delta_current)"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E5-B20-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "NEG-ABSENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "step_index",
+    "support_entry_ids": [
+      "F5-E7a-B20-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B20-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "current_sign"
+        ],
+        "verbatim_excerpt": "# state_encoding_dataset:current_sign exclusive"
+      },
+      {
+        "entry_id": "F5-E7b-B20-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "step_type_column"
+        ],
+        "verbatim_excerpt": "Laboratory documentation records dataset state encoding exclusively via step_type_column."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B20-AMB1",
+      "F5-E7b-B20-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B20-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 20,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B20-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "none",
+        "verbatim_excerpt": "Deposit description indicates no scale or offset is applied to the charge capacity values."
+      }
+    ],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E8b-B20-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "NEG-ADJACENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B21-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B21-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "Deposit documentation records the temperature field as a live measured quantity."
+      },
+      {
+        "entry_id": "F5-E2-B21-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "meta.temperature_status = placeholder"
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E2-B21-AMB1",
+      "F5-E2-B21-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E3-B21-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B21-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "start",
+        "verbatim_excerpt": "Interval records document that the temperature sample is taken at the start of the interval."
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4a-B21-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "POS-BURIED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B21-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "open_closed",
+        "verbatim_excerpt": "# interval_bounds_current: open_closed"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4b-B21-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "NEG-ABSENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "NEG-ADJACENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E6-B21-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B21-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "explicit_index_column"
+        ],
+        "verbatim_excerpt": "The data dictionary lists the index recovery method for test index exclusively as explicit_index_column."
+      },
+      {
+        "entry_id": "F5-E7a-B21-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "filename_encoding"
+        ],
+        "verbatim_excerpt": "# index_recovery_test_index: filename_encoding ONLY — exclusive sole method; no other recovery allowed"
+      }
+    ],
+    "scope": "test_index",
+    "support_entry_ids": [
+      "F5-E7a-B21-AMB1",
+      "F5-E7a-B21-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B21-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B21-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "V",
+        "verbatim_excerpt": "COL_NOTE: voltage V"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B21-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 21,
+    "class": "POS-BURIED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B21-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "factor(1000)",
+        "verbatim_excerpt": "# scale_current: factor(1000)"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8b-B21-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B22-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "The metadata sheet records that the power channel is signed so that charge-direction power flow produces positive numbers."
+      },
+      {
+        "entry_id": "F5-E1-B22-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "column: P_discharge_pos"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B22-AMB1",
+      "F5-E1-B22-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E2-B22-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "POS-EXPLICIT",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B22-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "never",
+        "verbatim_excerpt": "The data dictionary specifies that the time counter never resets within a test and accumulates continuously."
+      }
+    ],
+    "scope": "time",
+    "support_entry_ids": [
+      "F5-E3-B22-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "POS-BURIED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B22-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "end",
+        "verbatim_excerpt": "header: current_at_end"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4a-B22-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "NEG-ABSENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "NEG-ADJACENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E5-B22-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B22-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "completeness_counter"
+        ],
+        "verbatim_excerpt": "Completeness of the temperature records is verified using exclusively: completeness_counter."
+      },
+      {
+        "entry_id": "F5-E6-B22-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "gap_flag_column"
+        ],
+        "verbatim_excerpt": "# completeness_check_temperature=gap_flag_column; exclusive=true; alternatives=none"
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E6-B22-AMB1",
+      "F5-E6-B22-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "cycle_index",
+    "support_entry_ids": [
+      "F5-E7a-B22-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B22-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "mode_code_enum",
+          "separate_state_column",
+          "step_type_column"
+        ],
+        "verbatim_excerpt": "Within the dataset the charge/discharge state is determined by: step_type_column, separate_state_column, mode_code_enum."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B22-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "POS-BURIED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B22-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "mV",
+        "verbatim_excerpt": "The declared unit for the voltage channel is mV."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B22-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 22,
+    "class": "NEG-ABSENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "energy",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B23-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "POS-EXPLICIT",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B23-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "According to the data dictionary the temperature values are placeholders only."
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E2-B23-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "POS-BURIED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B23-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "never",
+        "verbatim_excerpt": "# charge_capacity_reset: never"
+      }
+    ],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E3-B23-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "NEG-ABSENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E4b-B23-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B23-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "event_driven(delta_voltage)"
+        ],
+        "verbatim_excerpt": "# sampling_policy_temperature=event_driven(delta_voltage); exclusive=true; alternatives=none"
+      },
+      {
+        "entry_id": "F5-E5-B23-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "fixed(10 s)"
+        ],
+        "verbatim_excerpt": "Sampling of the temperature is performed by the following rule(s) exclusively: fixed(10 s)."
+      }
+    ],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E5-B23-AMB1",
+      "F5-E5-B23-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E6-B23-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B23-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "filename_encoding"
+        ],
+        "verbatim_excerpt": "legend: step index recovery = filename_encoding"
+      }
+    ],
+    "scope": "step_index",
+    "support_entry_ids": [
+      "F5-E7a-B23-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "POS-BURIED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B23-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "current_sign"
+        ],
+        "verbatim_excerpt": "# state_encoding_dataset:current_sign"
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B23-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "NEG-ABSENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 23,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E8b-B23-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "POS-EXPLICIT",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B24-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "legend: +I = discharge"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B24-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "POS-BURIED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B24-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "COL_NOTE: voltage placeholder"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E2-B24-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "NEG-ABSENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "energy",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4a-B24-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B24-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_closed",
+        "verbatim_excerpt": "According to the data dictionary the current interval is closed-closed."
+      },
+      {
+        "entry_id": "F5-E4b-B24-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "open_open",
+        "verbatim_excerpt": "header: current_oo"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4b-B24-AMB1",
+      "F5-E4b-B24-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E5-B24-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "POS-EXPLICIT",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B24-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "acquisition_log_reconciliation",
+          "completeness_counter"
+        ],
+        "verbatim_excerpt": "Completeness of the current records is verified using: acquisition_log_reconciliation, completeness_counter."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E6-B24-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "POS-BURIED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B24-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "explicit_index_column",
+          "row_grouping_marker"
+        ],
+        "verbatim_excerpt": "Laboratory documentation records step index recovery via row_grouping_marker, explicit_index_column."
+      }
+    ],
+    "scope": "step_index",
+    "support_entry_ids": [
+      "F5-E7a-B24-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "NEG-ABSENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B24-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 24,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B24-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "factor(2)",
+        "verbatim_excerpt": "# scale_current: factor(2)"
+      },
+      {
+        "entry_id": "F5-E8b-B24-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "none",
+        "verbatim_excerpt": "Deposit description indicates no scale or offset is applied to the current values."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E8b-B24-AMB1",
+      "F5-E8b-B24-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "POS-BURIED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B25-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "legend: +P = discharge-direction power"
+      }
+    ],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B25-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "NEG-ABSENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "NEG-ADJACENT",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "time",
+    "support_entry_ids": [
+      "F5-E3-B25-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B25-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "end",
+        "verbatim_excerpt": "legend: current @ interval end"
+      },
+      {
+        "entry_id": "F5-E4a-B25-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "start",
+        "verbatim_excerpt": "According to the README the current reading is captured when the interval begins."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4a-B25-AMB1",
+      "F5-E4a-B25-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4b-B25-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "POS-EXPLICIT",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B25-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "fixed(30 s)"
+        ],
+        "verbatim_excerpt": "Sampling of the current is performed by the following rule(s): fixed(30 s)."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E5-B25-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "POS-BURIED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B25-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "expected_count_comparison"
+        ],
+        "verbatim_excerpt": "legend: voltage completeness = expected_count_comparison"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E6-B25-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "NEG-ABSENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "test_index",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B25-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B25-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "V",
+        "verbatim_excerpt": "The README states that the voltage channel uses the unit V."
+      },
+      {
+        "entry_id": "F5-E8a-B25-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "mV",
+        "verbatim_excerpt": "COL_NOTE: voltage mV"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B25-AMB1",
+      "F5-E8a-B25-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 25,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "energy",
+    "support_entry_ids": [
+      "F5-E8b-B25-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "NEG-ABSENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "current",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "NEG-ADJACENT",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E2-B26-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B26-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "cycle",
+        "verbatim_excerpt": "header: charge_capacity_per_cycle"
+      },
+      {
+        "entry_id": "F5-E3-B26-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "step",
+        "verbatim_excerpt": "According to the README the charge capacity accumulator restarts with every step."
+      }
+    ],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E3-B26-AMB1",
+      "F5-E3-B26-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4a-B26-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B26-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "closed_closed",
+        "verbatim_excerpt": "Laboratory notes record inclusive bounds on both sides for the current interval."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4b-B26-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "POS-BURIED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B26-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "event_driven(step_transition)",
+          "fixed(2 s)"
+        ],
+        "verbatim_excerpt": "header: voltage_sample=event_driven(step_transition),fixed(2 s)"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E5-B26-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "NEG-ABSENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "NEG-ADJACENT",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "cycle_index",
+    "support_entry_ids": [
+      "F5-E7a-B26-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B26-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "current_sign"
+        ],
+        "verbatim_excerpt": "# state_encoding_dataset:current_sign exclusive Additionally documented."
+      },
+      {
+        "entry_id": "F5-E7b-B26-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "step_type_column"
+        ],
+        "verbatim_excerpt": "Deposit description specifies the dataset state procedure exclusively as step_type_column."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B26-AMB1",
+      "F5-E7b-B26-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B26-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 26,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B26-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "affine(1.5, 0.5)",
+        "verbatim_excerpt": "The data dictionary records that the discharge capacity channel is transformed by affine(1.5, 0.5)."
+      }
+    ],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E8b-B26-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "NEG-ADJACENT",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B27-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B27-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "measured",
+        "verbatim_excerpt": "The accompanying description confirms that current is a measured channel."
+      },
+      {
+        "entry_id": "F5-E2-B27-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "header: current_placeholder"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E2-B27-AMB1",
+      "F5-E2-B27-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E3",
+    "readings": [],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E3-B27-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "POS-EXPLICIT",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B27-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "midpoint",
+        "verbatim_excerpt": "The data dictionary states the current value corresponds to the interval midpoint."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E4a-B27-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "POS-BURIED",
+    "parameter": "E4b",
+    "readings": [
+      {
+        "entry_id": "F5-E4b-B27-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "open_open",
+        "verbatim_excerpt": "# interval_bounds_voltage: open_open — both endpoints excluded"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4b-B27-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "NEG-ABSENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "NEG-ADJACENT",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E6-B27-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B27-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "explicit_index_column"
+        ],
+        "verbatim_excerpt": "The data dictionary lists the index recovery method for step index exclusively as explicit_index_column."
+      },
+      {
+        "entry_id": "F5-E7a-B27-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "filename_encoding"
+        ],
+        "verbatim_excerpt": "# index_recovery_step_index=filename_encoding; exclusive=true; alternatives=none"
+      }
+    ],
+    "scope": "step_index",
+    "support_entry_ids": [
+      "F5-E7a-B27-AMB1",
+      "F5-E7a-B27-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7b",
+    "readings": [],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B27-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "POS-EXPLICIT",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B27-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "V",
+        "verbatim_excerpt": "header: voltage_[V]"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B27-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 27,
+    "class": "POS-BURIED",
+    "parameter": "E8b",
+    "readings": [
+      {
+        "entry_id": "F5-E8b-B27-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "factor(0.001)",
+        "verbatim_excerpt": "legend: voltage scale = factor(0.001)"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8b-B27-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [
+      {
+        "entry_id": "F5-E1-B28-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "charge_positive",
+        "verbatim_excerpt": "The metadata sheet records that the current channel is signed so that charge produces positive numbers."
+      },
+      {
+        "entry_id": "F5-E1-B28-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "discharge_positive",
+        "verbatim_excerpt": "UNIT_NOTE: current sign convention = discharge positive"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E1-B28-AMB1",
+      "F5-E1-B28-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E2",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E2-B28-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "POS-EXPLICIT",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B28-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "step",
+        "verbatim_excerpt": "Laboratory notes record that charge capacity is reset on step boundaries."
+      }
+    ],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E3-B28-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "POS-BURIED",
+    "parameter": "E4a",
+    "readings": [
+      {
+        "entry_id": "F5-E4a-B28-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "start",
+        "verbatim_excerpt": "header: voltage_at_start"
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E4a-B28-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "NEG-ABSENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "NEG-ADJACENT",
+    "parameter": "E5",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E5-B28-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [
+      {
+        "entry_id": "F5-E6-B28-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "completeness_counter"
+        ],
+        "verbatim_excerpt": "The data dictionary lists the completeness method for current exclusively as completeness_counter."
+      },
+      {
+        "entry_id": "F5-E6-B28-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "gap_flag_column"
+        ],
+        "verbatim_excerpt": "# completeness_check_current=gap_flag_column; exclusive=true; alternatives=none"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E6-B28-AMB1",
+      "F5-E6-B28-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E7a",
+    "readings": [],
+    "scope": "test_index",
+    "support_entry_ids": [
+      "F5-E7a-B28-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B28-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "mode_code_enum",
+          "step_type_column"
+        ],
+        "verbatim_excerpt": "Within the dataset the charge/discharge state is determined by: mode_code_enum, step_type_column."
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B28-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "POS-BURIED",
+    "parameter": "E8a",
+    "readings": [
+      {
+        "entry_id": "F5-E8a-B28-DET",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": false,
+        "semantic_value": "mV",
+        "verbatim_excerpt": "Deposit documentation records the measurement unit of voltage as mV."
+      }
+    ],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E8a-B28-DET"
+    ],
+    "verdict_class": "EXPLICIT_DOC"
+  },
+  {
+    "bundle_idx": 28,
+    "class": "NEG-ABSENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E1",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [
+      "F5-E1-B29-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "POS-EXPLICIT",
+    "parameter": "E2",
+    "readings": [
+      {
+        "entry_id": "F5-E2-B29-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "placeholder",
+        "verbatim_excerpt": "legend: current = placeholder"
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E2-B29-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "POS-BURIED",
+    "parameter": "E3",
+    "readings": [
+      {
+        "entry_id": "F5-E3-B29-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": "cycle",
+        "verbatim_excerpt": "legend: discharge capacity resets each cycle"
+      }
+    ],
+    "scope": "capacity_discharge",
+    "support_entry_ids": [
+      "F5-E3-B29-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "NEG-ABSENT",
+    "parameter": "E4a",
+    "readings": [],
+    "scope": "power",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "NEG-ADJACENT",
+    "parameter": "E4b",
+    "readings": [],
+    "scope": "temperature",
+    "support_entry_ids": [
+      "F5-E4b-B29-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "AMBIG-CONSTRUCTED",
+    "parameter": "E5",
+    "readings": [
+      {
+        "entry_id": "F5-E5-B29-AMB2",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "event_driven(delta_voltage)"
+        ],
+        "verbatim_excerpt": "# sampling_policy_current=event_driven(delta_voltage); exclusive=true; alternatives=none"
+      },
+      {
+        "entry_id": "F5-E5-B29-AMB1",
+        "evidence_stratum": "S-DOC",
+        "exclusive_assertion": true,
+        "semantic_value": [
+          "fixed(10 s)"
+        ],
+        "verbatim_excerpt": "The data dictionary lists the sampling policy for current exclusively as fixed(10 s)."
+      }
+    ],
+    "scope": "current",
+    "support_entry_ids": [
+      "F5-E5-B29-AMB1",
+      "F5-E5-B29-AMB2"
+    ],
+    "verdict_class": "AMBIGUOUS"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "NA-CONSTRUCTED",
+    "parameter": "E6",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [
+      "F5-E6-B29-NA"
+    ],
+    "verdict_class": "NOT_APPLICABLE"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "POS-EXPLICIT",
+    "parameter": "E7a",
+    "readings": [
+      {
+        "entry_id": "F5-E7a-B29-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "time_segmentation_rule"
+        ],
+        "verbatim_excerpt": "# index_recovery_cycle_index:time_segmentation_rule"
+      }
+    ],
+    "scope": "cycle_index",
+    "support_entry_ids": [
+      "F5-E7a-B29-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "POS-BURIED",
+    "parameter": "E7b",
+    "readings": [
+      {
+        "entry_id": "F5-E7b-B29-DET",
+        "evidence_stratum": "S-FILE",
+        "exclusive_assertion": false,
+        "semantic_value": [
+          "separate_state_column"
+        ],
+        "verbatim_excerpt": "header: state_via=separate_state_column"
+      }
+    ],
+    "scope": "dataset",
+    "support_entry_ids": [
+      "F5-E7b-B29-DET"
+    ],
+    "verdict_class": "EXPLICIT_FILE"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "NEG-ABSENT",
+    "parameter": "E8a",
+    "readings": [],
+    "scope": "voltage",
+    "support_entry_ids": [],
+    "verdict_class": "ABSENT"
+  },
+  {
+    "bundle_idx": 29,
+    "class": "NEG-ADJACENT",
+    "parameter": "E8b",
+    "readings": [],
+    "scope": "capacity_charge",
+    "support_entry_ids": [
+      "F5-E8b-B29-ADJ"
+    ],
+    "verdict_class": "ABSENT"
+  }
+]
