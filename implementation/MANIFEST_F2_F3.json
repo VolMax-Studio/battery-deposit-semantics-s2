@@ -1,12 +1,13 @@
 {
   "manifest_type": "S2_F2_F3_IMPLEMENTATION_PROVENANCE",
-  "status": "READY_FOR_G2_ARTIFACT_CONFORMITY_GATE",
+  "status": "READY_FOR_SCOPED_G2_ARTIFACT_CONFORMITY_REVIEW",
+  "instance_status": "F7_BLOCKED_PENDING_SCOPED_G2_REGATE",
   "governing_freeze_commit": "97410ca512d0c87571b4f321712c4c7c564a6a82",
   "governing_specification": "construction/S2_CANDIDATE_SPEC_v0.11.md",
-  "generation_timestamp_utc": "2026-09-12T20:53:05.276573+00:00",
+  "generation_timestamp_utc": "2026-09-13T16:02:35.218204+00:00",
   "test_command": "python3 implementation/generate_and_verify_all.py",
   "test_summary": {
-    "tests_run": 31,
+    "tests_run": 42,
     "failures": 0,
     "errors": 0,
     "verdict": "ALL_TESTS_PASS"
@@ -28,7 +29,14 @@
     "E8a within voltage: V >= 2, mV >= 2",
     "K3 62-feature design and 20 formatting markers",
     "Canonical numeric serialization (\u00a76.6)",
-    "Prohibition of note_text in adjudication output (\u00a76.1)"
+    "Prohibition of note_text in adjudication output (\u00a76.1)",
+    "F7 location-independent canonical logical GT schema and serializer (IC-1)",
+    "F8 multi-structural XOR placement derivation from actual byte occurrence (IC-2)",
+    "Executable CVD bundle generator implementing frozen placement across 30 bundles (IC-3)",
+    "Downstream bank consumption: 330 entries consumed exactly once, verbatim, without paraphrase",
+    "Strict non-circular fidelity verification against pre-F8 expected ground truth",
+    "Preservation of 330-cell layout iteration including NEG-ABSENT",
+    "Inherited clean G2 regression baseline: 31 tests minimum; 0 deleted or weakened"
   ],
   "artifacts": {
     "__init__.py": {
@@ -36,12 +44,16 @@
       "size_bytes": 39
     },
     "f2_corpus/__init__.py": {
-      "sha256": "4d26e23bc1abee787db250dbc33beec932dc0104b2bfe27c1f74c6ff4598ebac",
-      "size_bytes": 25
+      "sha256": "06128ed3b6bbc7f36bfda09d62cef2cae2aed4051da92cc19823277aa6f76de1",
+      "size_bytes": 440
     },
     "f2_corpus/bank_schema.py": {
       "sha256": "756d88f9b837bfa9f79bc5f68fa4d7b0ac5dd59844e9d03a6230ee8ed5022a80",
       "size_bytes": 3789
+    },
+    "f2_corpus/bundle_generator.py": {
+      "sha256": "47e4424b9620dcd7ef9ff3a6d2dff5a024761efe01727b5a9db2ceea2e66d509",
+      "size_bytes": 15263
     },
     "f2_corpus/class_assignment.py": {
       "sha256": "cb71d364dd8bac26afe29cdaa5719e67209f6ad62cbc5b963a13838c1e37a97f",
@@ -72,8 +84,8 @@
       "size_bytes": 4488
     },
     "f2_corpus/template_generator.py": {
-      "sha256": "337c95508fa802a36e2c5651dd53a81a64aaa12f876ab9c0743a234a95487bbd",
-      "size_bytes": 16167
+      "sha256": "a46416da48d7c3470e6d13921adc774bf80b41e2d376bcfee238988fec05f6f8",
+      "size_bytes": 26583
     },
     "f3_protocol/__init__.py": {
       "sha256": "a3c0eb54d3048c8dedba333995f953a148089f09d5ac1a389b638dec9872c2ed",
@@ -84,8 +96,8 @@
       "size_bytes": 4035
     },
     "f3_protocol/canonical_serializer.py": {
-      "sha256": "ea83f2c51f307a92729f015368e8da577d4133902e45358cfb6cd815b850c8c7",
-      "size_bytes": 7028
+      "sha256": "54195a7ea405aa8d8949ff1859253f9b059fb93519b93cb47b442e7a2aed7f83",
+      "size_bytes": 7376
     },
     "f3_protocol/k3_leakage_probe.py": {
       "sha256": "bd7d35a4a683e8b21ffde6f9747ebaf8c65dcaad2c0d1607af70434aff9c6ca6",
@@ -100,8 +112,8 @@
       "size_bytes": 975
     },
     "generate_and_verify_all.py": {
-      "sha256": "31be79d58bd08b0a4754d6db123b610134502b84bba05e9df161d2b1331484c9",
-      "size_bytes": 5356
+      "sha256": "94a2283fb36c51c730921d9a5e2f43117630e6c5771d46d3f940c9852634c14c",
+      "size_bytes": 6181
     },
     "tests/__init__.py": {
       "sha256": "c6ab093d3d504764c7ff91982bcb621e9f8b6f6f5c8711acaf5e3b316a0b019c",
@@ -111,13 +123,17 @@
       "sha256": "20d17c0f65076964294305ddb8d022a56850ea8bbb4315bfb6ab0e9eedb8b7e6",
       "size_bytes": 3297
     },
+    "tests/test_f2_bundle_generator.py": {
+      "sha256": "1e036d582693187083b5fabf563fa424f3d3d5fc1bac9633d5035db2ccca3e38",
+      "size_bytes": 13625
+    },
     "tests/test_f2_corpus_constraints.py": {
       "sha256": "dab8e5bccda1e54987a3bf57004773f44e07df809eae22fa059f8566ac9e516a",
       "size_bytes": 1966
     },
     "tests/test_f2_fidelity.py": {
-      "sha256": "1c5c734db85146447a429ff91512ae63d280ca3cd4693234e8845e0e763a8b31",
-      "size_bytes": 11632
+      "sha256": "4a7795d9121e6bf270292334807fee856ca3972c34be449b6058aacad2f79f7f",
+      "size_bytes": 21005
     },
     "tests/test_f2_validators.py": {
       "sha256": "e7ece315af55575e697f20e10fffbdf9e6da4fca267e73e235071cc0e1cfe43c",
@@ -128,8 +144,8 @@
       "size_bytes": 2450
     },
     "tests/test_f3_serialization.py": {
-      "sha256": "bab2df556af8bdd50931b47ea6ab3b150fe254db97e02cc77987dd325877d2f7",
-      "size_bytes": 7649
+      "sha256": "c92eedbfd5958966f2145ee03a84493d15ad5784ed79b65d6e9c04dfb4f5019c",
+      "size_bytes": 13629
     }
   }
 }

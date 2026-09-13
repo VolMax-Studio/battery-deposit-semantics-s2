@@ -186,6 +186,162 @@ class TestF3Serialization(unittest.TestCase):
         self.assertEqual(parsed["readings"][0]["semantic_value"], "charge_positive")
         self.assertEqual(parsed["readings"][1]["semantic_value"], "discharge_positive")
 
+    def test_canonical_logical_gt_serializer_invariance(self):
+        """
+        Claude Regression: serialize_ground_truth_canonically must emit byte-identical output
+        for logically identical records regardless of:
+        - dict key insertion order
+        - set/list order of semantic values
+        - equivalent numeric representations (e.g. 10 vs 10.0, factor(2) vs factor(2.0))
+        """
+        from f2_corpus.template_generator import serialize_ground_truth_canonically
+
+        record_a = {
+            "verdict_class": "EXPLICIT_DOC",
+            "scope": "voltage",
+            "bundle_idx": 0,
+            "parameter": "E5",
+            "class": "POS-EXPLICIT",
+            "support_entry_ids": ["id_1"],
+            "readings": [
+                {
+                    "verbatim_excerpt": "Fixed interval.",
+                    "exclusive_assertion": False,
+                    "evidence_stratum": "S-DOC",
+                    "semantic_value": ["event_driven(delta_voltage)", "fixed(10 s)"],
+                    "entry_id": "id_1",
+                }
+            ],
+        }
+
+        # record_b has different key insertion order, equivalent numeric representation (10.0 s),
+        # reversed set/list order
+        record_b = {
+            "parameter": "E5",
+            "class": "POS-EXPLICIT",
+            "readings": [
+                {
+                    "entry_id": "id_1",
+                    "semantic_value": ["fixed(10.0 s)", "event_driven(delta_voltage)"],
+                    "evidence_stratum": "S-DOC",
+                    "verbatim_excerpt": "Fixed interval.",
+                    "exclusive_assertion": False,
+                }
+            ],
+            "support_entry_ids": ["id_1"],
+            "verdict_class": "EXPLICIT_DOC",
+            "bundle_idx": 0,
+            "scope": "voltage",
+        }
+
+        bytes_a = serialize_ground_truth_canonically(record_a)
+        bytes_b = serialize_ground_truth_canonically(record_b)
+
+        self.assertEqual(bytes_a, bytes_b, "Logical GT A and B must emit byte-identical canonical bytes!")
+
+    def test_reading_canonicalization_total_order(self):
+        """
+        Regression: when two readings share identical semantic_value, canonical serialization
+        must enforce a total sort order across entry_id, evidence_stratum, exclusive_assertion,
+        and verbatim_excerpt so that input insertion order does not affect emitted bytes.
+        """
+        from f2_corpus.template_generator import serialize_ground_truth_canonically
+
+        reading_1 = {
+            "entry_id": "entry_aaa",
+            "semantic_value": "charge_positive",
+            "evidence_stratum": "S-DOC",
+            "exclusive_assertion": False,
+            "verbatim_excerpt": "Charge is positive.",
+        }
+        reading_2 = {
+            "entry_id": "entry_zzz",
+            "semantic_value": "charge_positive",
+            "evidence_stratum": "S-DOC",
+            "exclusive_assertion": False,
+            "verbatim_excerpt": "Charge is positive.",
+        }
+
+        # Order 1: reading_1 before reading_2
+        record_order_1 = {
+            "parameter": "E1",
+            "scope": "current",
+            "class": "AMBIG-CONSTRUCTED",
+            "verdict_class": "AMBIGUOUS",
+            "readings": [reading_1, reading_2],
+            "support_entry_ids": ["entry_aaa", "entry_zzz"],
+            "bundle_idx": 0,
+        }
+
+        # Order 2: reading_2 before reading_1 (reversed)
+        record_order_2 = {
+            "parameter": "E1",
+            "scope": "current",
+            "class": "AMBIG-CONSTRUCTED",
+            "verdict_class": "AMBIGUOUS",
+            "readings": [reading_2, reading_1],
+            "support_entry_ids": ["entry_aaa", "entry_zzz"],
+            "bundle_idx": 0,
+        }
+
+        bytes_1 = serialize_ground_truth_canonically(record_order_1)
+        bytes_2 = serialize_ground_truth_canonically(record_order_2)
+
+        self.assertEqual(
+            bytes_1,
+            bytes_2,
+            "Readings with identical semantic_value must serialize identically regardless of input order",
+        )
+
+        # Also verify in serialize_adjudication_record
+        adj_rec_1 = {
+            "parameter_id": "E1",
+            "scope": "current",
+            "verdict_class": "AMBIGUOUS",
+            "readings": [
+                {
+                    "semantic_value": "charge_positive",
+                    "evidence_stratum": "S-DOC",
+                    "artifact_sha256": "0" * 64,
+                    "locator": "line 10",
+                    "verbatim_excerpt": "Charge is positive.",
+                },
+                {
+                    "semantic_value": "charge_positive",
+                    "evidence_stratum": "S-DOC",
+                    "artifact_sha256": "0" * 64,
+                    "locator": "line 20",
+                    "verbatim_excerpt": "Charge is positive.",
+                },
+            ],
+        }
+        adj_rec_2 = {
+            "parameter_id": "E1",
+            "scope": "current",
+            "verdict_class": "AMBIGUOUS",
+            "readings": [
+                {
+                    "semantic_value": "charge_positive",
+                    "evidence_stratum": "S-DOC",
+                    "artifact_sha256": "0" * 64,
+                    "locator": "line 20",
+                    "verbatim_excerpt": "Charge is positive.",
+                },
+                {
+                    "semantic_value": "charge_positive",
+                    "evidence_stratum": "S-DOC",
+                    "artifact_sha256": "0" * 64,
+                    "locator": "line 10",
+                    "verbatim_excerpt": "Charge is positive.",
+                },
+            ],
+        }
+        self.assertEqual(
+            serialize_adjudication_record(adj_rec_1),
+            serialize_adjudication_record(adj_rec_2),
+            "Adjudication records with identical semantic_value must serialize identically regardless of input order",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -28,6 +28,7 @@ from .template_generator import (
     RealizationRecord,
     reconstruct_derived_ground_truth,
     serialize_ground_truth_canonically,
+    get_placement_in_component,
 )
 
 
@@ -96,36 +97,73 @@ def generate_single_bundle(
             else:
                 s_file_prominent.append(entry)
 
-    # 1. Build article.md
+    # 1. Build article.md with multi-structural XOR realization (§5)
+    # Section depth (## level 2 vs ### level 3) x Ordinal position (early block vs late block)
+    # (shallow + early) -> prominent, (shallow + late) -> buried
+    # (deep + early) -> buried, (deep + late) -> prominent
     article_lines: List[str] = [
         f"# Battery Cell Performance Characterization - Test Dataset B{bundle_idx:02d}",
         "",
-        "## Executive Summary",
+        "## 1. Operating Specifications and Protocol",
         "This experimental report documents the electrochemical cycling, thermal behavior, and",
         "operational parameters for commercial lithium-ion test cells evaluated under laboratory validation protocols.",
         "",
-        "## Overview and Experimental Specification",
-        "The following parameters and conventions govern the primary test channel acquisition and analysis:",
     ]
 
-    for entry in s_doc_prominent:
-        article_lines.append(f"{entry.entry_text}")
+    # Half of prominent go to (shallow, early)
+    doc_prom_1 = s_doc_prominent[:len(s_doc_prominent)//2 + 1]
+    doc_prom_2 = s_doc_prominent[len(s_doc_prominent)//2 + 1:]
+
+    # Half of buried go to (shallow, late)
+    doc_bur_1 = s_doc_buried[:len(s_doc_buried)//2 + 1]
+    doc_bur_2 = s_doc_buried[len(s_doc_buried)//2 + 1:]
+
+    # Shallow + Early: block 2 (block <= 2 -> prominent)
+    # Emit all doc_prom_1 entries in one paragraph block
+    if doc_prom_1:
+        for entry in doc_prom_1:
+            article_lines.append(f"{entry.entry_text}")
         article_lines.append("")
 
+    # Spacer block to transition to late: block 3 (block >= 3)
+    article_lines.append("Baseline environmental chamber temperature was maintained at 25.0 C across all test runs.")
+    article_lines.append("")
+
+    # Shallow + Late: block 4+ (block >= 3 -> buried)
+    if doc_bur_1:
+        for entry in doc_bur_1:
+            article_lines.append(f"{entry.entry_text}")
+        article_lines.append("")
+
+    # Subsection: ### 1.1 Detailed Instrumentation & Channel Mapping (level 3 -> deep)
     article_lines.extend([
-        "## Experimental Procedure and Measurement Methodology",
-        "Galvanostatic cycling was conducted using an automated multi-channel battery test system inside a temperature-controlled chamber.",
-        "Voltage, current, and cell surface temperature were logged continuously throughout all charge, discharge, and rest periods.",
+        "### 1.1 Detailed Instrumentation and Channel Mapping",
+        "Galvanostatic cycling was conducted using an automated multi-channel battery test system.",
         "",
-        "## Supplementary Appendix: Operational Details and Notes",
-        "The following supplementary technical notes and low-level channel definitions apply to this deposit:",
     ])
 
-    for entry in s_doc_buried:
-        article_lines.append(f"{entry.entry_text}")
+    # Deep + Early: block 2 (block <= 2 -> buried)
+    if doc_bur_2:
+        for entry in doc_bur_2:
+            article_lines.append(f"{entry.entry_text}")
+        article_lines.append("")
+
+    # Spacer block to transition to late: block 3 (block >= 3)
+    article_lines.extend([
+        "Channel voltages were calibrated against secondary standards prior to dataset acquisition.",
+        "",
+    ])
+
+    # Deep + Late: block 4+ (block >= 3 -> prominent)
+    if doc_prom_2:
+        for entry in doc_prom_2:
+            article_lines.append(f"{entry.entry_text}")
         article_lines.append("")
 
     article_lines.extend([
+        "## 2. Archival Summary and End of Report",
+        f"Validation dataset B{bundle_idx:02d} concluded without hardware interrupt flags.",
+        "",
         "---",
         f"End of Report B{bundle_idx:02d}.",
         "",
@@ -152,13 +190,44 @@ def generate_single_bundle(
     readme_text = "\n".join(readme_lines)
     readme_bytes = readme_text.encode("utf-8")
 
-    # 3. Build data.csv
+    # 3. Build data.csv with multi-structural XOR realization (§5)
+    # Shallow region (before time_s):
+    #   comment_block_idx = 1: Title (shallow + early)
+    #   comment_block_idx = 2: Shallow + early capacity = EXACTLY 1 line -> prominent
+    #   comment_block_idx >= 3: Shallow + late -> buried
+    # Deep region (after time_s):
+    #   comment_block_idx = 1: Deep + early (idx <= 2) -> buried
+    #   comment_block_idx = 2: Deep + early (idx <= 2) capacity = EXACTLY 1 bank entry -> buried
+    #   comment_block_idx = 3: Spacer comment to transition to late
+    #   comment_block_idx >= 4: Deep + late (idx >= 3) -> prominent
+    #
+    # Distribute entries according to mechanical capacity:
+    # Prominent S-FILE entries:
+    #   Entry 0 -> shallow early (comment_block_idx = 2)
+    #   Entries 1+ -> deep late (comment_block_idx >= 4)
+    file_prom_shallow_early = s_file_prominent[:1]
+    file_prom_deep_late = s_file_prominent[1:]
+
+    # Buried S-FILE entries:
+    #   Entry 0 -> deep early (comment_block_idx = 2 in trailer)
+    #   Entries 1+ -> shallow late (comment_block_idx >= 3 in header)
+    file_bur_deep_early = s_file_buried[:1]
+    file_bur_shallow_late = s_file_buried[1:]
+
+    # Line 1: Header line (comment_block_idx = 1)
     csv_lines: List[str] = [
         f"# Battery Test Time-Series Acquisition Data — Dataset B{bundle_idx:02d}",
-        "# System: Dual-Channel High-Precision Battery Cycler",
     ]
 
-    for entry in s_file_prominent:
+    # Line 2: Shallow + Early (comment_block_idx = 2 -> prominent)
+    for entry in file_prom_shallow_early:
+        csv_lines.append(f"{entry.entry_text}")
+
+    # Line 3+: Spacer comment to transition to late (comment_block_idx = 3 if file_prom_shallow_early else 2)
+    csv_lines.append("# System: Dual-Channel High-Precision Battery Cycler")
+
+    # Shallow + Late (comment_block_idx >= 3 -> buried)
+    for entry in file_bur_shallow_late:
         csv_lines.append(f"{entry.entry_text}")
 
     csv_lines.extend([
@@ -169,15 +238,24 @@ def generate_single_bundle(
         "3.0,1.5,3.710,5.565,25.3",
         "4.0,1.5,3.730,5.595,25.4",
         "5.0,0.0,3.725,0.0,25.3",
-        "# --- Extended File Annotations ---",
     ])
 
-    for entry in s_file_buried:
+    # Trailer comments (deep): early (idx <= 2) -> buried; late (idx >= 3) -> prominent
+    # Trailer line 1 (idx = 1):
+    csv_lines.append("# Post-Run Operational Verification Log")
+    # Trailer line 2 (idx = 2): Deep + Early -> buried
+    for entry in file_bur_deep_early:
+        csv_lines.append(f"{entry.entry_text}")
+
+    # Trailer line 3+ (idx >= 3): Spacer comment to transition to late -> prominent
+    csv_lines.append("# Acquisition log reconciliation completed.")
+    for entry in file_prom_deep_late:
         csv_lines.append(f"{entry.entry_text}")
 
     csv_lines.append("")
     csv_text = "\n".join(csv_lines)
     csv_bytes = csv_text.encode("utf-8")
+
 
     artifacts = BundleArtifacts(
         bundle_idx=bundle_idx,
@@ -193,13 +271,26 @@ def generate_single_bundle(
         for comp_name, comp_bytes in artifacts.components():
             pos = comp_bytes.find(target_bytes)
             if pos != -1:
+                # Fail-fast generation assertion (§5):
+                # Verify that no entry silently spills across its intended structural placement boundary
+                entry_cls = getattr(entry, "class", "UNKNOWN")
+                if entry_cls in ("POS-EXPLICIT", "POS-BURIED"):
+                    expected_placement = "buried" if entry_cls == "POS-BURIED" else "prominent"
+                    actual_placement = get_placement_in_component(comp_name, pos, comp_bytes)
+                    if actual_placement != expected_placement:
+                        raise AssertionError(
+                            f"Bundle {bundle_idx}: Entry {entry.entry_id} (class {entry_cls}) "
+                            f"placed at byte {pos} in {comp_name} mechanically derived as '{actual_placement}', "
+                            f"expected '{expected_placement}'. Region capacity boundary violated!"
+                        )
+
                 realization_records.append(
                     RealizationRecord(
                         bundle_idx=bundle_idx,
                         entry_id=entry.entry_id,
                         param=entry.parameter,
                         scope=entry.scope,
-                        cls_name=getattr(entry, "class", "UNKNOWN"),
+                        cls_name=entry_cls,
                         entry_text=entry.entry_text,
                         component=comp_name,
                         byte_start=pos,

@@ -5,7 +5,8 @@ Target Gate: Scoped G2 Artifact-Conformity Re-Gate
 Governing Specification: `construction/S2_CANDIDATE_SPEC_v0.11.md` (Freeze Commit: `97410ca512d0c87571b4f321712c4c7c564a6a82`)  
 Authorizing Operator Decision: `construction/F7_F8_BOUNDARY_CORRECTION_RATIFICATION_001.md`  
 Designated Gate Party: Party 7 (`GEMINI-GATE-01`)  
-Status: `READY_FOR_SCOPED_G2_REGATE`  
+Package status: `READY_FOR_SCOPED_G2_ARTIFACT_CONFORMITY_REVIEW`  
+Instance status: `F7_BLOCKED_PENDING_SCOPED_G2_REGATE`  
 
 ---
 
@@ -29,11 +30,12 @@ Party 7 is requested to evaluate the following corrected/new implementation arti
 | Artifact Path | Role & Remediation |
 |---|---|
 | `construction/F7_F8_BOUNDARY_CORRECTION_RATIFICATION_001.md` | Operator ratification defining IC-1, IC-2, IC-3 and normative constraints. |
-| `implementation/f2_corpus/template_generator.py` | Location-independent GT schema, `support_entry_ids`, placement derivation from byte offsets (`get_placement_in_component`), and preserved 330-cell layout iteration. |
+| `implementation/f2_corpus/template_generator.py` | Location-independent GT schema, `support_entry_ids`, XOR multi-structural placement derivation (`get_placement_in_component`), canonical serializer invariance, and preserved 330-cell layout iteration. |
 | `implementation/f2_corpus/bundle_generator.py` | [NEW] Executable CVD bundle generator implementing frozen placement across 30 bundles, natural document formatting, and realization index generation. |
 | `implementation/f2_corpus/__init__.py` | Exporting bundle generator and template generator routines. |
-| `implementation/tests/test_f2_fidelity.py` | Regression tests verifying IC-1, IC-2, and preserved invariants. |
-| `implementation/tests/test_f2_bundle_generator.py` | [NEW] Comprehensive 30-bundle generation and 100% fidelity verification against `F5_BANK_ATTEMPT_03.jsonl`. |
+| `implementation/tests/test_f2_fidelity.py` | Regression tests verifying IC-1, IC-2 (all 4 XOR quadrants), and preserved invariants. |
+| `implementation/tests/test_f2_bundle_generator.py` | [NEW] Non-circular expected GT verification, downstream bank consumption check, and 100% fidelity verification across all 30 bundles. |
+| `implementation/tests/test_f3_serialization.py` | Serializer invariance regression test (byte-identical canonical output across representations). |
 | `implementation/generate_and_verify_all.py` | Master test runner and manifest builder updating `MANIFEST_F2_F3.json`. |
 
 ---
@@ -41,24 +43,44 @@ Party 7 is requested to evaluate the following corrected/new implementation arti
 ## 3. Party 7 Verification Criteria
 
 Party 7 should verify that:
-1. **Location Independence (IC-1)**:
-   - Canonical ground truth cells and reading objects do NOT contain `component`, `byte_start`, `byte_end`, `placement`, or `realization_index`.
-   - `readings` contains only `entry_id`, `semantic_value`, `evidence_stratum`, `exclusive_assertion`, and `verbatim_excerpt`.
-   - `support_entry_ids` provides exact bank entry ID provenance (sorted): cardinality 1 for `POS-*`, 2 for `AMBIG-CONSTRUCTED`, 1 for `NEG-ADJACENT`, 1 for `NA-CONSTRUCTED`, and 0 for `NEG-ABSENT`.
-   - `readings` is empty (`[]`) for `ABSENT` and `NOT_APPLICABLE`.
-2. **Invertible Placement Derivation (IC-2)**:
-   - In single-determining occurrences, `POS-EXPLICIT` vs `POS-BURIED` is derived mechanically from byte offsets relative to natural section headings (`## Supplementary Appendix`, `## Supplemental Archive Notes`, `# --- Extended File Annotations ---`).
-   - The checker does NOT read expected placement or class metadata to decide placement class.
-   - Document sections use standard prose headings without class-bearing markers (`"BURIED_SECTION"`).
-3. **Executable Bundle Generator (IC-3)**:
-   - `bundle_generator.py` can generate all 30 bundles from `F5_BANK_ATTEMPT_03.jsonl`.
-   - Exactly 330 bank entries are placed (each used exactly once).
-   - Generated bundles declare valid E3 cycle/step structure (§4.3) and positive E4 duration.
-   - `check_fidelity()` passes 100% on all 30 generated bundles.
-4. **Preserved Invariants**:
-   - `reconstruct_derived_ground_truth()` iterates over all 11 parameter cells for every bundle, ensuring `NEG-ABSENT` cells are always emitted.
-   - Zero methodology changes: all interrogatives, answer spaces, scopes, class definitions, and decision thresholds remain identical to v0.11.
-   - All regression tests pass cleanly.
+
+### 3.1 Completeness-First Gate Rule (§8.1)
+Before examining content conformity, Party 7 must first establish that every required artifact in the table above is present in the submitted package. The gate record must explicitly record:
+- `REQUIRED_ARTIFACT_PRESENT`
+- `REQUIRED_ARTIFACT_ABSENT`
+- `ARTIFACT_CONTENT_CONFORMANT`
+- `ARTIFACT_CONTENT_NONCONFORMANT`
+
+### 3.2 Downstream Bank Consumption Verification (§8)
+Party 7 must verify that the new bundle generator correctly consumes `F5_BANK_ATTEMPT_03.jsonl` (without reopening F5/F6 results):
+- Consumes all 330 required bank entries.
+- Every entry is used exactly once (single-use invariant §5.5).
+- Bank entry text is inserted verbatim and without paraphrase.
+- Zero silent duplication, omission, replacement, mutation, or re-keying.
+
+### 3.3 Location Independence (IC-1)
+- Canonical ground truth cells and reading objects do NOT contain `component`, `byte_start`, `byte_end`, `placement`, or `realization_index`.
+- `readings` contains only `entry_id`, `semantic_value`, `evidence_stratum`, `exclusive_assertion`, and `verbatim_excerpt`.
+- `support_entry_ids` provides exact bank entry ID provenance (sorted): cardinality 1 for `POS-*`, 2 for `AMBIG-CONSTRUCTED`, 1 for `NEG-ADJACENT`, 1 for `NA-CONSTRUCTED`, and 0 for `NEG-ABSENT`.
+- `readings` is empty (`[]`) for `ABSENT` and `NOT_APPLICABLE`.
+
+### 3.4 Invertible Multi-Structural Placement Derivation (IC-2, §5)
+- In single-determining occurrences, `POS-EXPLICIT` vs `POS-BURIED` is derived mechanically from document structure via the XOR rule:
+  `section depth (level 2 shallow vs level 3 deep) x ordinal block position (early vs late)`.
+- Neither depth nor ordinal position alone discloses the class.
+- Both `POS-EXPLICIT` and `POS-BURIED` have multiple structural realizations (1-to-many mapping).
+- Zero class-bearing tokens or global structural shortcuts exist for the adjudicator.
+- The checker does NOT read expected placement or class metadata to decide placement class.
+
+### 3.5 Executable Bundle Generator (IC-3)
+- `bundle_generator.py` can generate all 30 bundles from `F5_BANK_ATTEMPT_03.jsonl`.
+- Generated bundles declare valid E3 cycle/step structure (§4.3) and positive E4 duration.
+- `check_fidelity()` passes 100% on all 30 generated bundles against pre-F8 expected logical GT (strictly non-circular).
+
+### 3.6 Preserved Complete-Layout Invariant & Test Suite Baseline (§10)
+- `reconstruct_derived_ground_truth()` iterates over all 11 parameter cells for every bundle, ensuring `NEG-ABSENT` cells are always emitted.
+- The entire pre-existing test suite (inherited 31 clean G2 tests) plus all newly added tests passes with 0 failures and 0 errors.
+- No previously passing test has been deleted, disabled, narrowed, or weakened.
 
 ---
 

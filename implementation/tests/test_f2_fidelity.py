@@ -240,28 +240,63 @@ class TestF2FidelityChecker(unittest.TestCase):
         self.assertIn("E4 positive-duration validation failed", res["error"])
 
     def test_pos_class_derived_from_actual_placement_not_metadata(self):
-        """Regression IC-2: POS-EXPLICIT vs POS-BURIED is derived strictly from actual byte position, not metadata."""
-        # 1. Prominent placement: before ## Supplementary Appendix
-        prominent_text = f"Intro.\n## Overview and Experimental Specification\n{self.entry_pos.entry_text}\n## Supplementary Appendix\nOutro."
-        artifacts_prominent = BundleArtifacts(0, prominent_text.encode("utf-8"), b"", b"")
-        discovered_p = search_bundle_bytes_for_bank_entries(artifacts_prominent, self.frozen_bank)
-
-        # Even if slot metadata claimed 'buried', actual bytes are prominent -> MUST derive POS-EXPLICIT!
+        """Regression IC-2: POS-EXPLICIT vs POS-BURIED derived from XOR section depth x ordinal block position."""
         slots_claiming_buried = dict(self.bundle_slots)
         slots_claiming_buried["E1"] = {"scope": "current", "class": "POS-BURIED", "placement": "buried"}
-        derived_p = reconstruct_derived_ground_truth(discovered_p, slots_claiming_buried, artifacts_prominent)
-        self.assertEqual(derived_p["E1"]["class"], "POS-EXPLICIT")
 
-        # 2. Buried placement: at or after ## Supplementary Appendix
-        buried_text = f"Intro.\n## Overview and Experimental Specification\nMain text.\n## Supplementary Appendix\n{self.entry_pos.entry_text}\nOutro."
-        artifacts_buried = BundleArtifacts(0, buried_text.encode("utf-8"), b"", b"")
-        discovered_b = search_bundle_bytes_for_bank_entries(artifacts_buried, self.frozen_bank)
-
-        # Even if slot metadata claimed 'prominent', actual bytes are buried -> MUST derive POS-BURIED!
         slots_claiming_prominent = dict(self.bundle_slots)
         slots_claiming_prominent["E1"] = {"scope": "current", "class": "POS-EXPLICIT", "placement": "prominent"}
-        derived_b = reconstruct_derived_ground_truth(discovered_b, slots_claiming_prominent, artifacts_buried)
-        self.assertEqual(derived_b["E1"]["class"], "POS-BURIED")
+
+        # Quadrant 1: shallow (## level 2) + early (block 1) -> prominent (POS-EXPLICIT)
+        text_q1 = f"## 1. Overview\n{self.entry_pos.entry_text}\n"
+        art_q1 = BundleArtifacts(0, text_q1.encode("utf-8"), b"", b"")
+        disc_q1 = search_bundle_bytes_for_bank_entries(art_q1, self.frozen_bank)
+        derived_q1 = reconstruct_derived_ground_truth(disc_q1, slots_claiming_buried, art_q1)
+        self.assertEqual(derived_q1["E1"]["class"], "POS-EXPLICIT", "shallow + early must derive POS-EXPLICIT")
+
+        # Quadrant 2: shallow (## level 2) + late (block 3) -> buried (POS-BURIED)
+        text_q2 = f"## 1. Overview\nParagraph 1.\n\nParagraph 2.\n\n{self.entry_pos.entry_text}\n"
+        art_q2 = BundleArtifacts(0, text_q2.encode("utf-8"), b"", b"")
+        disc_q2 = search_bundle_bytes_for_bank_entries(art_q2, self.frozen_bank)
+        derived_q2 = reconstruct_derived_ground_truth(disc_q2, slots_claiming_prominent, art_q2)
+        self.assertEqual(derived_q2["E1"]["class"], "POS-BURIED", "shallow + late must derive POS-BURIED")
+
+        # Quadrant 3: deep (### level 3) + early (block 1) -> buried (POS-BURIED)
+        text_q3 = f"### 1.1 Methodology\n{self.entry_pos.entry_text}\n"
+        art_q3 = BundleArtifacts(0, text_q3.encode("utf-8"), b"", b"")
+        disc_q3 = search_bundle_bytes_for_bank_entries(art_q3, self.frozen_bank)
+        derived_q3 = reconstruct_derived_ground_truth(disc_q3, slots_claiming_prominent, art_q3)
+        self.assertEqual(derived_q3["E1"]["class"], "POS-BURIED", "deep + early must derive POS-BURIED")
+
+        # Quadrant 4: deep (### level 3) + late (block 3) -> prominent (POS-EXPLICIT)
+        text_q4 = f"### 1.1 Methodology\nParagraph 1.\n\nParagraph 2.\n\n{self.entry_pos.entry_text}\n"
+        art_q4 = BundleArtifacts(0, text_q4.encode("utf-8"), b"", b"")
+        disc_q4 = search_bundle_bytes_for_bank_entries(art_q4, self.frozen_bank)
+        derived_q4 = reconstruct_derived_ground_truth(disc_q4, slots_claiming_buried, art_q4)
+        self.assertEqual(derived_q4["E1"]["class"], "POS-EXPLICIT", "deep + late must derive POS-EXPLICIT")
+
+    def test_csv_numeric_data_rows_do_not_consume_annotation_capacity(self):
+        """Regression: Numeric data rows in CSV do not increment comment_block_idx in trailer."""
+        slots = dict(self.bundle_slots)
+        slots["E1"] = {"scope": "current", "class": "POS-BURIED", "placement": "buried"}
+
+        csv_text = (
+            "# Title (shallow early idx 1)\n"
+            "time_s,current_A,voltage_V\n"
+            "0.0,1.0,3.6\n"
+            "1.0,1.1,3.7\n"
+            "2.0,1.2,3.8\n"
+            "# Post-run log (deep early idx 1)\n"
+            f"{self.entry_pos.entry_text}\n"  # deep early idx 2 -> deep + early = POS-BURIED
+        )
+        art = BundleArtifacts(0, b"", b"", csv_text.encode("utf-8"))
+        disc = search_bundle_bytes_for_bank_entries(art, self.frozen_bank)
+        derived = reconstruct_derived_ground_truth(disc, slots, art)
+        self.assertEqual(
+            derived["E1"]["class"], "POS-BURIED",
+            "Deep early entry in trailer must derive POS-BURIED despite intervening numeric table rows"
+        )
+
 
     def test_location_independence_and_support_entry_ids(self):
         """Regression IC-1: Ground truth record is strictly location-independent and carries support_entry_ids."""
@@ -309,7 +344,71 @@ class TestF2FidelityChecker(unittest.TestCase):
             self.assertEqual(derived[p]["readings"], [])
             self.assertEqual(derived[p]["support_entry_ids"], [])
 
+    def test_strict_containment_overlap_resolution(self):
+        """
+        Regression Test A: STRICT CONTAINMENT (§5.5, §5.8).
+        A shorter frozen bank entry occurring as a strict prefix/substring of a longer
+        frozen bank entry must not be counted as an independent occurrence.
+        """
+        short_entry = BankEntry(
+            entry_id="e_short",
+            parameter="E7b",
+            scope="dataset",
+            evidence_stratum="S-FILE",
+            semantic_role="determining",
+            semantic_value=["current_sign"],
+            entry_text="# state_encoding_dataset:current_sign",
+        )
+        long_entry = BankEntry(
+            entry_id="e_long",
+            parameter="E7b",
+            scope="dataset",
+            evidence_stratum="S-FILE",
+            semantic_role="determining",
+            semantic_value=["current_sign"],
+            entry_text="# state_encoding_dataset:current_sign exclusive",
+        )
+        test_bank = [short_entry, long_entry]
+        # Component contains only the longer entry text
+        content = f"# Preamble\n{long_entry.entry_text}\n# Postamble\n".encode("utf-8")
+        artifacts = BundleArtifacts(0, b"", b"", content)
+        discovered = search_bundle_bytes_for_bank_entries(artifacts, test_bank)
+
+        # Only the longer entry must be discovered; the shorter contained entry must be discarded
+        self.assertEqual(len(discovered), 1)
+        self.assertEqual(discovered[0].entry.entry_id, "e_long")
+        expected_start = content.find(long_entry.entry_text.encode("utf-8"))
+        self.assertEqual(discovered[0].byte_start, expected_start)
+        self.assertEqual(discovered[0].byte_end, expected_start + len(long_entry.entry_text.encode("utf-8")))
+
+    def test_inline_exact_match_preservation(self):
+        """
+        Regression Test B: INLINE EXACT MATCH (§5.5, §5.8).
+        An exact frozen-bank entry embedded inside a longer ordinary/non-bank line
+        must still be discovered when it is NOT contained in another longer frozen-bank entry occurrence.
+        """
+        entry = BankEntry(
+            entry_id="e_inline",
+            parameter="E1",
+            scope="current",
+            evidence_stratum="S-DOC",
+            semantic_role="determining",
+            semantic_value="charge_positive",
+            entry_text="Positive current indicates charging mode.",
+        )
+        test_bank = [entry]
+        # Embedded inline inside non-bank prose on the same line (no newlines immediately bounding it)
+        content = f"Note: Positive current indicates charging mode. This applies across all test runs.".encode("utf-8")
+        artifacts = BundleArtifacts(0, content, b"", b"")
+        discovered = search_bundle_bytes_for_bank_entries(artifacts, test_bank)
+
+        # Must still be discovered despite surrounding ordinary line content
+        self.assertEqual(len(discovered), 1)
+        self.assertEqual(discovered[0].entry.entry_id, "e_inline")
+        expected_start = content.find(entry.entry_text.encode("utf-8"))
+        self.assertEqual(discovered[0].byte_start, expected_start)
+        self.assertEqual(discovered[0].byte_end, expected_start + len(entry.entry_text.encode("utf-8")))
+
 
 if __name__ == "__main__":
     unittest.main()
-

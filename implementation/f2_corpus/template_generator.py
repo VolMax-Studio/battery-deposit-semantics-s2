@@ -169,9 +169,13 @@ def search_bundle_bytes_for_bank_entries(
 ) -> List[DiscoveredOccurrence]:
     """
     Independently search bundle bytes for byte-exact occurrences of bank entries.
+    Matches all exact occurrences across components and resolves strict containment (§5.5, §5.8):
+    if an occurrence of one bank entry is strictly contained within a longer occurrence of another
+    bank entry in the same component, the contained occurrence is discarded.
     """
     discovered: List[DiscoveredOccurrence] = []
     for comp_name, comp_bytes in artifacts.components():
+        candidates: List[DiscoveredOccurrence] = []
         for entry in frozen_bank:
             target_bytes = entry.entry_text.encode("utf-8")
             start = 0
@@ -179,7 +183,7 @@ def search_bundle_bytes_for_bank_entries(
                 pos = comp_bytes.find(target_bytes, start)
                 if pos == -1:
                     break
-                discovered.append(
+                candidates.append(
                     DiscoveredOccurrence(
                         entry=entry,
                         component=comp_name,
@@ -187,8 +191,22 @@ def search_bundle_bytes_for_bank_entries(
                         byte_end=pos + len(target_bytes),
                     )
                 )
-                start = pos + len(target_bytes)
+                start = pos + 1
+
+        for a in candidates:
+            a_len = a.byte_end - a.byte_start
+            is_contained = any(
+                b is not a
+                and b.byte_start <= a.byte_start
+                and a.byte_end <= b.byte_end
+                and (b.byte_end - b.byte_start) > a_len
+                for b in candidates
+            )
+            if not is_contained:
+                discovered.append(a)
+
     return discovered
+
 
 
 def get_placement_in_component(component: str, pos: int, comp_bytes: bytes) -> str:
@@ -196,30 +214,119 @@ def get_placement_in_component(component: str, pos: int, comp_bytes: bytes) -> s
     Mechanically determine whether byte offset `pos` is in prominent or buried region.
     Independent of expected class or slot metadata.
 
-    Prominent and buried regions are defined by natural document section structure:
-    - In 'article': text before '## Supplementary Appendix' is prominent; text at or after is buried.
-    - In 'readme': text before '## Supplemental Archive Notes' is prominent; text at or after is buried.
-    - In 'csv_header': text before '# --- Extended File Annotations ---' is prominent; text at or after is buried.
+    Satisfies §5 multi-structural / XOR realization:
+    Neither section depth nor ordinal position alone discloses the class.
+    Both POS-EXPLICIT and POS-BURIED have multiple structural realizations.
+
+    Dimensions:
+    1. Depth:
+       - In markdown ('article', 'readme'):
+         Enclosing heading level at or before `pos`:
+         '## ' -> shallow (True)
+         '### ' -> deep (False)
+       - In tabular / comment ('csv_header'):
+         Header comment block (before column row 'time_s,...') -> shallow (True)
+         Trailer / appendix comment block (after column row / data rows) -> deep (False)
+    2. Ordinal:
+       - Within the enclosing section or comment block, count of text/comment blocks
+         preceding `pos`:
+         Block index <= 2   -> early (True)
+         Block index >= 3   -> late (False)
+
+    XOR Rule:
+    - shallow + early -> prominent
+    - shallow + late  -> buried
+    - deep + early    -> buried
+    - deep + late     -> prominent
+    Formula: 'prominent' if (is_shallow == is_early) else 'buried'
     """
-    if component == "article":
-        marker = b"## Supplementary Appendix"
-        idx = comp_bytes.find(marker)
-        if idx != -1 and pos >= idx:
-            return "buried"
-        return "prominent"
-    elif component == "readme":
-        marker = b"## Supplemental Archive Notes"
-        idx = comp_bytes.find(marker)
-        if idx != -1 and pos >= idx:
-            return "buried"
-        return "prominent"
+    text = comp_bytes.decode("utf-8", errors="replace")
+    char_pos = len(comp_bytes[:pos].decode("utf-8", errors="replace"))
+
+    if component in ("article", "readme"):
+        lines = text.splitlines(keepends=True)
+        current_offset = 0
+        enclosing_heading_level = 2
+        blocks_since_heading = 0
+        last_line_was_empty = True
+
+        for line in lines:
+            line_len = len(line)
+            line_start = current_offset
+            line_end = current_offset + line_len
+
+            stripped = line.strip()
+            if stripped.startswith("### "):
+                enclosing_heading_level = 3
+                blocks_since_heading = 0
+                last_line_was_empty = True
+            elif stripped.startswith("## "):
+                enclosing_heading_level = 2
+                blocks_since_heading = 0
+                last_line_was_empty = True
+            elif stripped:
+                if last_line_was_empty:
+                    blocks_since_heading += 1
+                last_line_was_empty = False
+            else:
+                last_line_was_empty = True
+
+            if line_start <= char_pos < line_end:
+                is_shallow = (enclosing_heading_level <= 2)
+                is_early = (blocks_since_heading <= 2)
+                return "prominent" if (is_shallow == is_early) else "buried"
+
+            current_offset += line_len
+
+        is_shallow = (enclosing_heading_level <= 2)
+        is_early = (blocks_since_heading <= 2)
+        return "prominent" if (is_shallow == is_early) else "buried"
+
     elif component == "csv_header":
-        marker = b"# --- Extended File Annotations ---"
-        idx = comp_bytes.find(marker)
-        if idx != -1 and pos >= idx:
-            return "buried"
-        return "prominent"
+        lines = text.splitlines(keepends=True)
+        current_offset = 0
+        is_shallow = True
+        comment_block_idx = 0
+        table_arity: Optional[int] = None
+
+        def is_numeric_data_record(s: str) -> bool:
+            if not table_arity or "," not in s:
+                return False
+            parts = s.split(",")
+            if len(parts) != table_arity:
+                return False
+            try:
+                for p in parts:
+                    float(p.strip())
+                return True
+            except ValueError:
+                return False
+
+        for line in lines:
+            line_len = len(line)
+            line_start = current_offset
+            line_end = current_offset + line_len
+
+            stripped = line.strip()
+            if stripped.startswith("time_s,") or stripped.startswith("time,"):
+                is_shallow = False
+                comment_block_idx = 0
+                table_arity = len(stripped.split(","))
+            elif stripped:
+                if not is_numeric_data_record(stripped):
+                    comment_block_idx += 1
+
+            if line_start <= char_pos < line_end:
+                is_early = (comment_block_idx <= 2)
+                return "prominent" if (is_shallow == is_early) else "buried"
+
+            current_offset += line_len
+
+        is_early = (comment_block_idx <= 2)
+        return "prominent" if (is_shallow == is_early) else "buried"
+
     return "prominent"
+
 
 
 def reconstruct_derived_ground_truth(
@@ -314,7 +421,15 @@ def reconstruct_derived_ground_truth(
                 }
                 for occ in det_occs
             ]
-            readings.sort(key=lambda x: serialize_canonical_semantic_value_string(x["semantic_value"]))
+            def reading_sort_key(r: Dict[str, Any]) -> Tuple[str, str, str, int, str]:
+                return (
+                    serialize_canonical_semantic_value_string(r.get("semantic_value")),
+                    str(r.get("entry_id", "")),
+                    str(r.get("evidence_stratum", "")),
+                    1 if r.get("exclusive_assertion") else 0,
+                    str(r.get("verbatim_excerpt", "")),
+                )
+            readings.sort(key=reading_sort_key)
             support_entry_ids = sorted([occ.entry.entry_id for occ in det_occs])
 
             derived[param] = {
@@ -362,14 +477,44 @@ def reconstruct_derived_ground_truth(
     return derived
 
 
+def canonicalize_gt_cell(cell: Dict[str, Any]) -> Dict[str, Any]:
+    """Canonicalize a single ground truth cell before emission."""
+    canon_cell = dict(cell)
+    if "readings" in canon_cell and isinstance(canon_cell["readings"], list):
+        canon_readings = []
+        for r in canon_cell["readings"]:
+            r_dict = dict(r)
+            if "semantic_value" in r_dict:
+                r_dict["semantic_value"] = canonicalize_semantic_value(r_dict["semantic_value"])
+            canon_readings.append(r_dict)
+
+        def reading_sort_key(r: Dict[str, Any]) -> Tuple[str, str, str, int, str]:
+            return (
+                serialize_canonical_semantic_value_string(r.get("semantic_value")),
+                str(r.get("entry_id", "")),
+                str(r.get("evidence_stratum", "")),
+                1 if r.get("exclusive_assertion") else 0,
+                str(r.get("verbatim_excerpt", "")),
+            )
+
+        canon_readings.sort(key=reading_sort_key)
+        canon_cell["readings"] = canon_readings
+    if "support_entry_ids" in canon_cell and isinstance(canon_cell["support_entry_ids"], list):
+        canon_cell["support_entry_ids"] = sorted(canon_cell["support_entry_ids"])
+    return canon_cell
+
+
 def serialize_ground_truth_canonically(gt: Any) -> bytes:
     """
     Produce deterministic canonical bytes for ground truth comparison (§6.6).
+    Applies pre-emission canonicalization to all semantic values and readings,
+    sorts support_entry_ids, and ensures exactly ONE byte representation for any logical GT.
     Supports:
     - Dict mapping param -> cell
     - List of parameter-cell dicts (11 cells for bundle or 330 cells for corpus)
     """
     if isinstance(gt, list):
+        canon_list = [canonicalize_gt_cell(c) if isinstance(c, dict) else c for c in gt]
         def cell_sort_key(c: Any) -> Tuple[int, int]:
             if isinstance(c, dict):
                 b_idx = c.get("bundle_idx", 0)
@@ -377,11 +522,23 @@ def serialize_ground_truth_canonically(gt: Any) -> bytes:
                 p_idx = PARAMETERS.index(p_str) if p_str in PARAMETERS else 0
                 return (b_idx, p_idx)
             return (0, 0)
-        gt_sorted = sorted(gt, key=cell_sort_key)
+        gt_sorted = sorted(canon_list, key=cell_sort_key)
         return json.dumps(gt_sorted, indent=2, sort_keys=True, ensure_ascii=False).encode("utf-8")
     elif isinstance(gt, dict):
-        return json.dumps(gt, indent=2, sort_keys=True, ensure_ascii=False).encode("utf-8")
+        # Single-cell ground truth dict
+        if "parameter" in gt and "class" in gt:
+            canon_cell = canonicalize_gt_cell(gt)
+            return json.dumps(canon_cell, indent=2, sort_keys=True, ensure_ascii=False).encode("utf-8")
+
+        canon_dict = {}
+        for k, v in gt.items():
+            if isinstance(v, dict):
+                canon_dict[k] = canonicalize_gt_cell(v)
+            else:
+                canon_dict[k] = v
+        return json.dumps(canon_dict, indent=2, sort_keys=True, ensure_ascii=False).encode("utf-8")
     return json.dumps(gt, indent=2, sort_keys=True, ensure_ascii=False).encode("utf-8")
+
 
 
 def check_fidelity(

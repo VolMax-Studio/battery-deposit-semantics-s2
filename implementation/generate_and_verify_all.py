@@ -84,7 +84,8 @@ def main():
 
     manifest = {
         "manifest_type": "S2_F2_F3_IMPLEMENTATION_PROVENANCE",
-        "status": "READY_FOR_G2_ARTIFACT_CONFORMITY_GATE",
+        "status": "READY_FOR_SCOPED_G2_ARTIFACT_CONFORMITY_REVIEW",
+        "instance_status": "F7_BLOCKED_PENDING_SCOPED_G2_REGATE",
         "governing_freeze_commit": "97410ca512d0c87571b4f321712c4c7c564a6a82",
         "governing_specification": "construction/S2_CANDIDATE_SPEC_v0.11.md",
         "generation_timestamp_utc": datetime.now(timezone.utc).isoformat(),
@@ -114,12 +115,16 @@ def main():
             "Canonical numeric serialization (§6.6)",
             "Prohibition of note_text in adjudication output (§6.1)",
             "F7 location-independent canonical logical GT schema and serializer (IC-1)",
-            "F8 placement-derived class from actual byte occurrence position (IC-2)",
+            "F8 multi-structural XOR placement derivation from actual byte occurrence (IC-2)",
             "Executable CVD bundle generator implementing frozen placement across 30 bundles (IC-3)",
+            "Downstream bank consumption: 330 entries consumed exactly once, verbatim, without paraphrase",
+            "Strict non-circular fidelity verification against pre-F8 expected ground truth",
             "Preservation of 330-cell layout iteration including NEG-ABSENT",
+            "Inherited clean G2 regression baseline: 31 tests minimum; 0 deleted or weakened",
         ],
         "artifacts": artifacts_manifest,
     }
+
 
     manifest_path = os.path.join(base_dir, "MANIFEST_F2_F3.json")
     with open(manifest_path, "w", encoding="utf-8") as f:
@@ -127,7 +132,8 @@ def main():
     print(f"-> Written to {manifest_path}")
 
     print("\n================================================================")
-    print("STATE TRANSITION: READY_FOR_G2_ARTIFACT_CONFORMITY_GATE")
+    print("IMPLEMENTATION PACKAGE STATUS: READY_FOR_SCOPED_G2_ARTIFACT_CONFORMITY_REVIEW")
+    print("INSTANCE STATUS: F7_BLOCKED_PENDING_SCOPED_G2_REGATE")
     print("================================================================")
 
 

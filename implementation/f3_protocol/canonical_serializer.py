@@ -175,8 +175,17 @@ def serialize_adjudication_record(record: Dict[str, Any]) -> str:
         }
         formatted_readings.append(r_entry)
 
-    # Sort readings lexicographically by canonical string representation of semantic_value
-    formatted_readings.sort(key=lambda x: serialize_canonical_semantic_value_string(x["semantic_value"]))
+    # Sort readings lexicographically by canonical string representation of semantic_value,
+    # then by entry fields for total deterministic ordering
+    def reading_sort_key(r: Dict[str, Any]) -> tuple:
+        return (
+            serialize_canonical_semantic_value_string(r.get("semantic_value")),
+            str(r.get("evidence_stratum", "")),
+            str(r.get("artifact_sha256", "")),
+            str(r.get("locator", "")),
+            str(r.get("verbatim_excerpt", "")),
+        )
+    formatted_readings.sort(key=reading_sort_key)
     output["readings"] = formatted_readings
 
     if "traversal_record" in record:
