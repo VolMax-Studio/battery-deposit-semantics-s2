@@ -1,0 +1,284 @@
+{
+  "total_entries": 330,
+  "unique_entry_id_count": 330,
+  "unique_entry_text_count": 330,
+  "per_parameter_entry_counts": {
+    "E1": 30,
+    "E2": 30,
+    "E3": 30,
+    "E4a": 30,
+    "E4b": 30,
+    "E5": 30,
+    "E6": 30,
+    "E7a": 30,
+    "E7b": 30,
+    "E8a": 30,
+    "E8b": 30
+  },
+  "per_parameter_class_cell_counts": {
+    "E1": {
+      "POS-EXPLICIT": 5,
+      "POS-BURIED": 5,
+      "NEG-ADJACENT": 5,
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5
+    },
+    "E2": {
+      "POS-BURIED": 5,
+      "NEG-ADJACENT": 5,
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5,
+      "POS-EXPLICIT": 5
+    },
+    "E3": {
+      "NEG-ADJACENT": 5,
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5,
+      "POS-EXPLICIT": 5,
+      "POS-BURIED": 5
+    },
+    "E4a": {
+      "NEG-ADJACENT": 5,
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5,
+      "POS-EXPLICIT": 5,
+      "POS-BURIED": 5
+    },
+    "E4b": {
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5,
+      "POS-EXPLICIT": 5,
+      "POS-BURIED": 5,
+      "NEG-ADJACENT": 5
+    },
+    "E5": {
+      "NA-CONSTRUCTED": 5,
+      "POS-EXPLICIT": 5,
+      "POS-BURIED": 5,
+      "NEG-ADJACENT": 5,
+      "AMBIG-CONSTRUCTED": 5
+    },
+    "E6": {
+      "POS-EXPLICIT": 5,
+      "POS-BURIED": 5,
+      "NEG-ADJACENT": 5,
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5
+    },
+    "E7a": {
+      "POS-BURIED": 5,
+      "NEG-ADJACENT": 5,
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5,
+      "POS-EXPLICIT": 5
+    },
+    "E7b": {
+      "NEG-ADJACENT": 5,
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5,
+      "POS-EXPLICIT": 5,
+      "POS-BURIED": 5
+    },
+    "E8a": {
+      "NEG-ADJACENT": 5,
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5,
+      "POS-EXPLICIT": 5,
+      "POS-BURIED": 5
+    },
+    "E8b": {
+      "AMBIG-CONSTRUCTED": 5,
+      "NA-CONSTRUCTED": 5,
+      "POS-EXPLICIT": 5,
+      "POS-BURIED": 5,
+      "NEG-ADJACENT": 5
+    }
+  },
+  "per_parameter_standalone_category_coverage": {
+    "E1": {
+      "charge_positive": 5,
+      "discharge_positive": 5
+    },
+    "E2": {
+      "measured": 5,
+      "placeholder": 5
+    },
+    "E3": {
+      "step": 3,
+      "cycle": 3,
+      "test": 2,
+      "never": 2
+    },
+    "E4a": {
+      "start": 4,
+      "end": 3,
+      "midpoint": 3
+    },
+    "E4b": {
+      "closed_closed": 3,
+      "open_open": 3,
+      "closed_open": 2,
+      "open_closed": 2
+    },
+    "E5": {
+      "fixed": 6,
+      "event_driven(delta_voltage)": 3,
+      "event_driven(delta_current)": 3,
+      "event_driven(step_transition)": 3
+    },
+    "E6": {
+      "completeness_counter": 4,
+      "expected_count_comparison": 4,
+      "gap_flag_column": 4,
+      "acquisition_log_reconciliation": 3
+    },
+    "E7a": {
+      "explicit_index_column": 4,
+      "filename_encoding": 3,
+      "time_segmentation_rule": 4,
+      "row_grouping_marker": 4
+    },
+    "E7b": {
+      "step_type_column": 4,
+      "current_sign": 3,
+      "separate_state_column": 4,
+      "mode_code_enum": 4
+    },
+    "E8a": {
+      "A": 2,
+      "mA": 3,
+      "mV": 3,
+      "V": 2
+    },
+    "E8b": {
+      "none": 3,
+      "factor": 4,
+      "affine": 3
+    }
+  },
+  "per_parameter_standalone_stratum_counts": {
+    "E1": {
+      "S-DOC": 6,
+      "S-FILE": 4
+    },
+    "E2": {
+      "S-DOC": 6,
+      "S-FILE": 4
+    },
+    "E3": {
+      "S-DOC": 5,
+      "S-FILE": 5
+    },
+    "E4a": {
+      "S-DOC": 5,
+      "S-FILE": 5
+    },
+    "E4b": {
+      "S-DOC": 5,
+      "S-FILE": 5
+    },
+    "E5": {
+      "S-DOC": 5,
+      "S-FILE": 5
+    },
+    "E6": {
+      "S-DOC": 5,
+      "S-FILE": 5
+    },
+    "E7a": {
+      "S-DOC": 5,
+      "S-FILE": 5
+    },
+    "E7b": {
+      "S-DOC": 5,
+      "S-FILE": 5
+    },
+    "E8a": {
+      "S-FILE": 5,
+      "S-DOC": 5
+    },
+    "E8b": {
+      "S-DOC": 5,
+      "S-FILE": 5
+    }
+  },
+  "set_valued_composition_counts": {
+    "E5": {
+      "num_size_ge2": 4,
+      "sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        1,
+        2
+      ]
+    },
+    "E6": {
+      "num_size_ge2": 4,
+      "sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        1,
+        2,
+        1
+      ]
+    },
+    "E7a": {
+      "num_size_ge2": 4,
+      "sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        1,
+        2,
+        1
+      ]
+    },
+    "E7b": {
+      "num_size_ge2": 4,
+      "sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        1,
+        2,
+        1
+      ]
+    }
+  },
+  "E8a_unit_counts_by_scope": {
+    "current": {
+      "A": 2,
+      "mA": 3
+    },
+    "voltage": {
+      "mV": 3,
+      "V": 2
+    }
+  },
+  "invalid_scope_count": 0,
+  "null_semantic_value_violations": 0,
+  "exclusive_assertion_violations": 0,
+  "duplicate_entry_text_count": 0,
+  "invalid_e8b_canonical_forms": 0,
+  "tid_marker_count": 0,
+  "sfile_prose_issue_count": 0
+}
