@@ -1,0 +1,66 @@
+[
+  {
+    "entry_id": "F5-E5-B29-AMB2",
+    "entry_text": "# sampling_policy_current=event_driven(delta_voltage); exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E6-B10-AMB2",
+    "entry_text": "# completeness_check_voltage=gap_flag_column; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E4b-B07-NA",
+    "entry_text": "# interval_bounds_power: N/A; no_interval_structure"
+  },
+  {
+    "entry_id": "F5-E7a-B09-AMB2",
+    "entry_text": "# step_index_recovery=filename_encoding; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E7a-B27-AMB2",
+    "entry_text": "# index_recovery_step_index=filename_encoding; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E7b-B08-AMB2",
+    "entry_text": "# state_encoding_dataset=current_sign; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E7a-B15-AMB2",
+    "entry_text": "# cycle_index_recovery=filename_encoding; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E6-B22-AMB2",
+    "entry_text": "# completeness_check_temperature=gap_flag_column; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E6-B04-AMB2",
+    "entry_text": "# current_completeness=gap_flag_column; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E6-B28-AMB2",
+    "entry_text": "# completeness_check_current=gap_flag_column; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E7b-B14-AMB2",
+    "entry_text": "# dataset_state_encoding=current_sign; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E7b-B02-AMB2",
+    "entry_text": "# state_via_dataset=current_sign; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E5-B17-AMB2",
+    "entry_text": "# sampling_policy_power=event_driven(delta_voltage); exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E5-B23-AMB2",
+    "entry_text": "# sampling_policy_temperature=event_driven(delta_voltage); exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E7a-B03-AMB2",
+    "entry_text": "# test_index_recovery=filename_encoding; exclusive=true; alternatives=none"
+  },
+  {
+    "entry_id": "F5-E6-B16-AMB2",
+    "entry_text": "# completeness_check_power=gap_flag_column; exclusive=true; alternatives=none"
+  }
+]

@@ -1,0 +1,150 @@
+[
+  {
+    "entry_id": "F5-E3-B09-NA",
+    "entry_text": "# energy_counter: N/A — no energy accumulator exists in this file"
+  },
+  {
+    "entry_id": "F5-E7b-B14-AMB2",
+    "entry_text": "# state_encoding_dataset: current_sign ONLY — exclusive and complete; no other method permitted"
+  },
+  {
+    "entry_id": "F5-E4b-B27-DET",
+    "entry_text": "# interval_bounds_voltage: open_open — both endpoints excluded"
+  },
+  {
+    "entry_id": "F5-E4b-B23-ADJ",
+    "entry_text": "# interval_bounds_power: unspecified — inclusive/exclusive character not declared"
+  },
+  {
+    "entry_id": "F5-E7a-B21-AMB2",
+    "entry_text": "# index_recovery_test_index: filename_encoding ONLY — exclusive sole method; no other recovery allowed"
+  },
+  {
+    "entry_id": "F5-E6-B22-AMB2",
+    "entry_text": "# completeness_check_temperature: gap_flag_column ONLY — exclusive and complete verification method"
+  },
+  {
+    "entry_id": "F5-E8a-B06-ADJ",
+    "entry_text": "The protocol sheet mentions a unit attribute for the current channel but leaves the concrete unit (A or mA) unspecified."
+  },
+  {
+    "entry_id": "F5-E5-B11-AMB2",
+    "entry_text": "# sampling_policy_voltage: event_driven(delta_voltage) ONLY — exclusive sole trigger; no other sampling rule permitted"
+  },
+  {
+    "entry_id": "F5-E5-B17-AMB2",
+    "entry_text": "# sampling_policy_power: event_driven(delta_voltage) ONLY — exclusive and complete; no other trigger allowed"
+  },
+  {
+    "entry_id": "F5-E6-B28-AMB2",
+    "entry_text": "# completeness_check_current: gap_flag_column ONLY — exclusive sole method; no other completeness check permitted"
+  },
+  {
+    "entry_id": "F5-E7a-B09-AMB2",
+    "entry_text": "# index_recovery_step_index: time_segmentation_rule ONLY — exclusive sole recovery method; nothing else permitted"
+  },
+  {
+    "entry_id": "F5-E7a-B15-AMB2",
+    "entry_text": "# index_recovery_cycle_index: explicit_index_column ONLY — exclusive and complete; no other recovery method allowed"
+  },
+  {
+    "entry_id": "F5-E1-B29-NA",
+    "entry_text": "# polarity_power: N/A — no power channel present in this deposit"
+  },
+  {
+    "entry_id": "F5-E8b-B13-NA",
+    "entry_text": "# scale_capacity_charge: N/A — capacity_charge channel absent from this file"
+  },
+  {
+    "entry_id": "F5-E6-B04-AMB2",
+    "entry_text": "# completeness_check_current: completeness_counter ONLY — exclusive sole verification method; no other method permitted"
+  },
+  {
+    "entry_id": "F5-E1-B17-NA",
+    "entry_text": "# polarity_power: N/A — power signal not recorded in this configuration"
+  },
+  {
+    "entry_id": "F5-E7b-B08-AMB2",
+    "entry_text": "# state_encoding_dataset: step_type_column ONLY — exclusive and complete; no other state method permitted"
+  },
+  {
+    "entry_id": "F5-E4b-B17-ADJ",
+    "entry_text": "# interval_bounds_voltage: unspecified — closed/open character of endpoints left unresolved"
+  },
+  {
+    "entry_id": "F5-E1-B05-NA",
+    "entry_text": "# polarity_power: N/A — no directed power channel exists in this deposit"
+  },
+  {
+    "entry_id": "F5-E4b-B07-NA",
+    "entry_text": "Interval bound-inclusivity semantics do not apply to the power signal because this deposit records power only as discrete point samples without any interval structure."
+  },
+  {
+    "entry_id": "F5-E7a-B03-AMB2",
+    "entry_text": "# index_recovery_test_index: explicit_index_column ONLY — exclusive sole method; no other recovery permitted"
+  },
+  {
+    "entry_id": "F5-E7a-B15-AMB1",
+    "entry_text": "According to the deposit README the cycle index is recovered exclusively via an explicit index column present in the data table."
+  },
+  {
+    "entry_id": "F5-E4b-B09-DET",
+    "entry_text": "# interval_bounds_power: open_open — both start and end endpoints are excluded"
+  },
+  {
+    "entry_id": "F5-E7a-B27-AMB2",
+    "entry_text": "# index_recovery_step_index: row_grouping_marker ONLY — exclusive sole recovery method; nothing else allowed"
+  },
+  {
+    "entry_id": "F5-E4b-B06-AMB2",
+    "entry_text": "# interval_bounds_voltage: open_open — start and end both excluded (open interval)"
+  },
+  {
+    "entry_id": "F5-E3-B25-ADJ",
+    "entry_text": "# time_reset_policy: unspecified — reset boundary of the time counter is left undeclared"
+  },
+  {
+    "entry_id": "F5-E6-B16-AMB2",
+    "entry_text": "# completeness_check_power: acquisition_log_reconciliation ONLY — exclusive sole method; no other verification permitted"
+  },
+  {
+    "entry_id": "F5-E5-B05-AMB2",
+    "entry_text": "# sampling_policy_current: event_driven(delta_voltage) ONLY — exclusive sole trigger; no other sampling rule allowed"
+  },
+  {
+    "entry_id": "F5-E3-B15-NA",
+    "entry_text": "# time_counter: N/A — no time accumulator is maintained in this experiment"
+  },
+  {
+    "entry_id": "F5-E5-B23-AMB2",
+    "entry_text": "# sampling_policy_temperature: event_driven(delta_voltage) ONLY — exclusive and complete; no other trigger permitted"
+  },
+  {
+    "entry_id": "F5-E6-B27-ADJ",
+    "entry_text": "# completeness_temperature: unspecified — concrete verification method left undeclared"
+  },
+  {
+    "entry_id": "F5-E8b-B07-NA",
+    "entry_text": "# scale_power: N/A — power channel is absent from this deposit configuration"
+  },
+  {
+    "entry_id": "F5-E2-B02-ADJ",
+    "entry_text": "The accompanying protocol description refers to the temperature field but does not state whether the values are measured instrument readings or placeholders."
+  },
+  {
+    "entry_id": "F5-E8a-B00-ADJ",
+    "entry_text": "Deposit documentation mentions a unit-related attribute on the current channel yet never writes out the concrete unit string."
+  },
+  {
+    "entry_id": "F5-E6-B10-AMB2",
+    "entry_text": "# completeness_check_voltage: completeness_counter ONLY — exclusive sole verification method; no other method permitted"
+  },
+  {
+    "entry_id": "F5-E5-B29-AMB2",
+    "entry_text": "# sampling_policy_current: fixed(5 s) ONLY — exclusive sole sampling rule; no other trigger permitted"
+  },
+  {
+    "entry_id": "F5-E7b-B02-AMB2",
+    "entry_text": "# state_encoding_dataset: step_type_column ONLY — exclusive and complete; no other state-encoding method allowed"
+  }
+]

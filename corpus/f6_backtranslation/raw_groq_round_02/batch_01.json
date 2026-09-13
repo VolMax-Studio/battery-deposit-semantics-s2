@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-20439710-12fa-49ce-9dd7-da48869189ed",
+  "object": "chat.completion",
+  "created": 1789298146,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"records\": [{\"blind_id\": \"BT2-001\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E4b\", \"scope\": \"voltage\", \"semantic_role\": \"determining\", \"semantic_value\": \"open_open\"}, {\"blind_id\": \"BT2-002\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E4b\", \"scope\": \"voltage\", \"semantic_role\": \"determining\", \"semantic_value\": \"open_open\"}, {\"blind_id\": \"BT2-003\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E1\", \"scope\": \"power\", \"semantic_role\": \"non_applicable\", \"semantic_value\": null}, {\"blind_id\": \"BT2-004\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E5\", \"scope\": \"current\", \"semantic_role\": \"determining\", \"semantic_value\": [\"fixed(5 s)\"]}, {\"blind_id\": \"BT2-005\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E4b\", \"scope\": \"voltage\", \"semantic_role\": \"non_determining_adjacent\", \"semantic_value\": null}, {\"blind_id\": \"BT2-006\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E3\", \"scope\": \"energy\", \"semantic_role\": \"non_applicable\", \"semantic_value\": null}, {\"blind_id\": \"BT2-007\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": false, \"parameter\": \"E2\", \"scope\": \"temperature\", \"semantic_role\": \"non_determining_adjacent\", \"semantic_value\": null}, {\"blind_id\": \"BT2-008\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E6\", \"scope\": \"voltage\", \"semantic_role\": \"determining\", \"semantic_value\": [\"completeness_counter\"]}, {\"blind_id\": \"BT2-009\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": false, \"parameter\": \"E4b\", \"scope\": \"power\", \"semantic_role\": \"non_applicable\", \"semantic_value\": null}, {\"blind_id\": \"BT2-010\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E5\", \"scope\": \"voltage\", \"semantic_role\": \"determining\", \"semantic_value\": [\"event_driven(delta_voltage)\"]}]}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "queue_time": 0.055260319,
+    "prompt_tokens": 1509,
+    "prompt_time": 0.125843914,
+    "completion_tokens": 622,
+    "completion_time": 1.265534113,
+    "total_tokens": 2131,
+    "total_time": 1.391378027
+  },
+  "usage_breakdown": null,
+  "system_fingerprint": "fp_8da23ae6c7",
+  "x_groq": {
+    "id": "req_01m2d7ny56exp8pttq23qgbmw8",
+    "seed": 20260913
+  },
+  "service_tier": "on_demand"
+}

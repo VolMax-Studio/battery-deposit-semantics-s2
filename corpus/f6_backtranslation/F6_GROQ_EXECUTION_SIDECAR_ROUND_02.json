@@ -1,0 +1,95 @@
+{
+  "stage": "F6",
+  "attempt": 2,
+  "party": "GROQ-CLEAN-P3-01",
+  "model_requested": "qwen/qwen3.8-27b",
+  "temperature": 0.0,
+  "random_seed": 20260913,
+  "record_count": 37,
+  "execution_transport": "sequential_batches",
+  "batch_sizes": [
+    10,
+    10,
+    10,
+    7
+  ],
+  "inter_batch_seconds": 30,
+  "blind_input_sha256": "25a8a46b5417bc4a9028a8cab72dbdf58e5835f1ab5fa8226a41e30ae8576e7f",
+  "output_sha256": "4c62b8f3fc765a295151db05cedf47d57480d84ed73c94ba8b9ff7574a7c11fd",
+  "base_party3_runner_sha256": "fb8519af995390f2379a5e9e649ab9c7e26f6bcb9a6e76ea35ecc351cb5351cf",
+  "batches": [
+    {
+      "batch_index": 1,
+      "record_count": 10,
+      "first_blind_id": "BT2-001",
+      "last_blind_id": "BT2-010",
+      "raw_file": "corpus/f6_backtranslation/raw_groq_round_02/batch_01.json",
+      "raw_file_sha256": "ee46a82a16debff58876c8678dedf0b3616d6ded32eb8f447dddb8355dafabb0",
+      "usage": {
+        "queue_time": 0.055260319,
+        "prompt_tokens": 1509,
+        "prompt_time": 0.125843914,
+        "completion_tokens": 622,
+        "completion_time": 1.265534113,
+        "total_tokens": 2131,
+        "total_time": 1.391378027
+      },
+      "model_returned": "qwen/qwen3.8-27b"
+    },
+    {
+      "batch_index": 2,
+      "record_count": 10,
+      "first_blind_id": "BT2-011",
+      "last_blind_id": "BT2-020",
+      "raw_file": "corpus/f6_backtranslation/raw_groq_round_02/batch_02.json",
+      "raw_file_sha256": "04f0bd104ada33c5545bb138a2863f6d88dc0b1729a11858c82ce8f0e4897823",
+      "usage": {
+        "queue_time": 0.258188556,
+        "prompt_tokens": 1494,
+        "prompt_time": 0.125468875,
+        "completion_tokens": 623,
+        "completion_time": 1.35590841,
+        "total_tokens": 2117,
+        "total_time": 1.481377285
+      },
+      "model_returned": "qwen/qwen3.8-27b"
+    },
+    {
+      "batch_index": 3,
+      "record_count": 10,
+      "first_blind_id": "BT2-021",
+      "last_blind_id": "BT2-030",
+      "raw_file": "corpus/f6_backtranslation/raw_groq_round_02/batch_03.json",
+      "raw_file_sha256": "d4c5801f61d29cac3a3183b161746dcd1d4f02c5be10c0cafb32a6a22acb7c5e",
+      "usage": {
+        "queue_time": 1.992355589,
+        "prompt_tokens": 1525,
+        "prompt_time": 0.137403476,
+        "completion_tokens": 636,
+        "completion_time": 1.342166341,
+        "total_tokens": 2161,
+        "total_time": 1.479569817
+      },
+      "model_returned": "qwen/qwen3.8-27b"
+    },
+    {
+      "batch_index": 4,
+      "record_count": 7,
+      "first_blind_id": "BT2-031",
+      "last_blind_id": "BT2-037",
+      "raw_file": "corpus/f6_backtranslation/raw_groq_round_02/batch_04.json",
+      "raw_file_sha256": "67e22ac05be58b8ee9adb3175f354539c4cdc9469d4b2fc8223b2ef37d5d1d0c",
+      "usage": {
+        "queue_time": 2.19958137,
+        "prompt_tokens": 1389,
+        "prompt_time": 0.12506174,
+        "completion_tokens": 439,
+        "completion_time": 0.956958506,
+        "total_tokens": 1828,
+        "total_time": 1.082020246
+      },
+      "model_returned": "qwen/qwen3.8-27b"
+    }
+  ],
+  "note": "Attempt-02 Party-3 validation receives only the 37 replacement blind texts. No private-key metadata is supplied to the provider."
+}

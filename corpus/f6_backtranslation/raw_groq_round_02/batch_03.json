@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-070699b9-b6a8-4168-af37-f748b59c30cd",
+  "object": "chat.completion",
+  "created": 1789298328,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"records\": [{\"blind_id\": \"BT2-021\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": true, \"parameter\": \"E6\", \"scope\": \"temperature\", \"semantic_role\": \"determining\", \"semantic_value\": [\"gap_flag_column\"]}, {\"blind_id\": \"BT2-022\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": true, \"parameter\": \"E6\", \"scope\": \"current\", \"semantic_role\": \"determining\", \"semantic_value\": [\"completeness_counter\"]}, {\"blind_id\": \"BT2-023\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": false, \"parameter\": \"E8a\", \"scope\": \"current\", \"semantic_role\": \"non_determining_adjacent\", \"semantic_value\": null}, {\"blind_id\": \"BT2-024\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": true, \"parameter\": \"E7a\", \"scope\": \"cycle_index\", \"semantic_role\": \"determining\", \"semantic_value\": [\"explicit_index_column\"]}, {\"blind_id\": \"BT2-025\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": true, \"parameter\": \"E6\", \"scope\": \"current\", \"semantic_role\": \"determining\", \"semantic_value\": [\"gap_flag_column\"]}, {\"blind_id\": \"BT2-026\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": true, \"parameter\": \"E7b\", \"scope\": \"dataset\", \"semantic_role\": \"determining\", \"semantic_value\": [\"current_sign\"]}, {\"blind_id\": \"BT2-027\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": true, \"parameter\": \"E7b\", \"scope\": \"dataset\", \"semantic_role\": \"determining\", \"semantic_value\": [\"step_type_column\"]}, {\"blind_id\": \"BT2-028\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": false, \"parameter\": \"E8a\", \"scope\": \"current\", \"semantic_role\": \"non_determining_adjacent\", \"semantic_value\": null}, {\"blind_id\": \"BT2-029\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": true, \"parameter\": \"E5\", \"scope\": \"power\", \"semantic_role\": \"determining\", \"semantic_value\": [\"event_driven(delta_voltage)\"]}, {\"blind_id\": \"BT2-030\", \"evidence_stratum\": \"S-DOC\", \"exclusive_assertion\": true, \"parameter\": \"E5\", \"scope\": \"temperature\", \"semantic_role\": \"determining\", \"semantic_value\": [\"event_driven(delta_voltage)\"]}]}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "queue_time": 1.992355589,
+    "prompt_tokens": 1525,
+    "prompt_time": 0.137403476,
+    "completion_tokens": 636,
+    "completion_time": 1.342166341,
+    "total_tokens": 2161,
+    "total_time": 1.479569817
+  },
+  "usage_breakdown": null,
+  "system_fingerprint": "fp_43dd1ea4ee",
+  "x_groq": {
+    "id": "req_01m2d7vdsjehnv3k7jz6qbqg8n",
+    "seed": 20260913
+  },
+  "service_tier": "on_demand"
+}

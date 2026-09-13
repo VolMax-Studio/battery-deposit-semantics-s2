@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-f083833c-f0a0-43af-af33-e884b39dc8e7",
+  "object": "chat.completion",
+  "created": 1789298362,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"records\": [{\"blind_id\": \"BT2-031\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E7a\", \"scope\": \"test_index\", \"semantic_role\": \"determining\", \"semantic_value\": [\"explicit_index_column\"]}, {\"blind_id\": \"BT2-032\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E1\", \"scope\": \"power\", \"semantic_role\": \"non_applicable\", \"semantic_value\": null}, {\"blind_id\": \"BT2-033\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E6\", \"scope\": \"power\", \"semantic_role\": \"determining\", \"semantic_value\": [\"acquisition_log_reconciliation\"]}, {\"blind_id\": \"BT2-034\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E5\", \"scope\": \"current\", \"semantic_role\": \"determining\", \"semantic_value\": [\"event_driven(delta_voltage)\"]}, {\"blind_id\": \"BT2-035\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E7a\", \"scope\": \"test_index\", \"semantic_role\": \"determining\", \"semantic_value\": [\"filename_encoding\"]}, {\"blind_id\": \"BT2-036\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E8b\", \"scope\": \"power\", \"semantic_role\": \"non_applicable\", \"semantic_value\": null}, {\"blind_id\": \"BT2-037\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E6\", \"scope\": \"temperature\", \"semantic_role\": \"non_determining_adjacent\", \"semantic_value\": null}]}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "queue_time": 2.19958137,
+    "prompt_tokens": 1389,
+    "prompt_time": 0.12506174,
+    "completion_tokens": 439,
+    "completion_time": 0.956958506,
+    "total_tokens": 1828,
+    "total_time": 1.082020246
+  },
+  "usage_breakdown": null,
+  "system_fingerprint": "fp_43dd1ea4ee",
+  "x_groq": {
+    "id": "req_01m2d7wf4xe0ct9ag6vz5asy7v",
+    "seed": 20260913
+  },
+  "service_tier": "on_demand"
+}

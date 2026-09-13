@@ -1,0 +1,57 @@
+{
+  "stage": "F6",
+  "attempt": 3,
+  "party": "GROQ-CLEAN-P3-01",
+  "model_requested": "qwen/qwen3.8-27b",
+  "temperature": 0.0,
+  "random_seed": 20260913,
+  "record_count": 16,
+  "execution_transport": "sequential_batches",
+  "batch_sizes": [
+    8,
+    8
+  ],
+  "inter_batch_seconds": 30,
+  "blind_input_sha256": "2498f0fbb0084ff0579d53aae3e45fa7362ceebeb418ed23c7a3fdf7c235b017",
+  "output_sha256": "cb6c238667c0a750922894fc52d60e1d557dae91a485777e99d300956b9ef472",
+  "base_party3_runner_sha256": "fb8519af995390f2379a5e9e649ab9c7e26f6bcb9a6e76ea35ecc351cb5351cf",
+  "batches": [
+    {
+      "batch_index": 1,
+      "record_count": 8,
+      "first_blind_id": "BT3-001",
+      "last_blind_id": "BT3-008",
+      "raw_file": "corpus/f6_backtranslation/raw_groq_round_03/batch_01.json",
+      "raw_file_sha256": "a6c0b51ef0bb3fdb8086b93422a5568a771d5ff161cf86f8dc167a125b7c2c8e",
+      "usage": {
+        "queue_time": 1.343909117,
+        "prompt_tokens": 1404,
+        "prompt_time": 0.121613989,
+        "completion_tokens": 506,
+        "completion_time": 1.082283637,
+        "total_tokens": 1910,
+        "total_time": 1.203897626
+      },
+      "model_returned": "qwen/qwen3.8-27b"
+    },
+    {
+      "batch_index": 2,
+      "record_count": 8,
+      "first_blind_id": "BT3-009",
+      "last_blind_id": "BT3-016",
+      "raw_file": "corpus/f6_backtranslation/raw_groq_round_03/batch_02.json",
+      "raw_file_sha256": "4571099eda322fe9635d658422378af4b10aa4ac748ce4128df3b7a55ef1f350",
+      "usage": {
+        "queue_time": 0.203237699,
+        "prompt_tokens": 1403,
+        "prompt_time": 0.102739474,
+        "completion_tokens": 507,
+        "completion_time": 1.047105361,
+        "total_tokens": 1910,
+        "total_time": 1.1498448350000001
+      },
+      "model_returned": "qwen/qwen3.8-27b"
+    }
+  ],
+  "note": "Attempt-03 Party-3 validation receives only the 16 final replacement blind texts. No private-key metadata is supplied to the provider."
+}

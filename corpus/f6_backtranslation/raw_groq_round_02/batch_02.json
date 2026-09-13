@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-d95794e6-3782-4c47-949f-3d160f889bb6",
+  "object": "chat.completion",
+  "created": 1789298294,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"records\": [{\"blind_id\": \"BT2-011\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E7a\", \"scope\": \"step_index\", \"semantic_role\": \"determining\", \"semantic_value\": [\"time_segmentation_rule\"]}, {\"blind_id\": \"BT2-012\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E4b\", \"scope\": \"power\", \"semantic_role\": \"determining\", \"semantic_value\": \"open_open\"}, {\"blind_id\": \"BT2-013\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E7a\", \"scope\": \"step_index\", \"semantic_role\": \"determining\", \"semantic_value\": [\"row_grouping_marker\"]}, {\"blind_id\": \"BT2-014\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E3\", \"scope\": \"time\", \"semantic_role\": \"non_applicable\", \"semantic_value\": null}, {\"blind_id\": \"BT2-015\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E7b\", \"scope\": \"dataset\", \"semantic_role\": \"determining\", \"semantic_value\": [\"step_type_column\"]}, {\"blind_id\": \"BT2-016\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E8b\", \"scope\": \"capacity_charge\", \"semantic_role\": \"non_applicable\", \"semantic_value\": null}, {\"blind_id\": \"BT2-017\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": true, \"parameter\": \"E7a\", \"scope\": \"cycle_index\", \"semantic_role\": \"determining\", \"semantic_value\": [\"explicit_index_column\"]}, {\"blind_id\": \"BT2-018\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E1\", \"scope\": \"power\", \"semantic_role\": \"non_applicable\", \"semantic_value\": null}, {\"blind_id\": \"BT2-019\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E3\", \"scope\": \"time\", \"semantic_role\": \"non_determining_adjacent\", \"semantic_value\": null}, {\"blind_id\": \"BT2-020\", \"evidence_stratum\": \"S-FILE\", \"exclusive_assertion\": false, \"parameter\": \"E4b\", \"scope\": \"power\", \"semantic_role\": \"non_determining_adjacent\", \"semantic_value\": null}]}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "queue_time": 0.258188556,
+    "prompt_tokens": 1494,
+    "prompt_time": 0.125468875,
+    "completion_tokens": 623,
+    "completion_time": 1.35590841,
+    "total_tokens": 2117,
+    "total_time": 1.481377285
+  },
+  "usage_breakdown": null,
+  "system_fingerprint": "fp_43dd1ea4ee",
+  "x_groq": {
+    "id": "req_01m2d7te1fe979kd3w9bea12x6",
+    "seed": 20260913
+  },
+  "service_tier": "on_demand"
+}
